@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import Tilt from 'react-parallax-tilt';
+import { FaGithub, FaExternalLinkAlt, FaPlay } from 'react-icons/fa';
 
 const projects = [
   {
@@ -58,68 +59,101 @@ const Projects = () => {
     <section id="projects" className="py-20 px-6 relative z-10">
       <div className="container mx-auto max-w-7xl">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-center mb-20"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">Projects</span>
+          <div className="inline-flex items-center gap-2 py-1 px-3 rounded-full bg-cyan-500/10 text-cyan-400 text-xs font-bold mb-4 border border-cyan-500/20 uppercase tracking-widest">
+            <FaPlay className="text-[10px]" /> Portfolios
+          </div>
+          <h2 className="text-4xl md:text-6xl font-black mb-4 tracking-tighter">
+            Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-cyan-400">Projects</span>
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-purple-400 to-cyan-400 mx-auto rounded-full"></div>
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+            A selection of my recent works ranging from AI/ML models to full-stack web applications.
+          </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           {projects.map((project, idx) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="glass-card group overflow-hidden rounded-2xl flex flex-col"
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: idx * 0.15 }}
+              className="h-full"
             >
-              <div className="relative h-48 overflow-hidden">
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-300 z-10"></div>
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
-                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-                />
-              </div>
-              
-              <div className="p-6 flex-1 flex flex-col">
-                <h3 className="text-xl font-bold mb-2 text-white group-hover:text-cyan-400 transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-gray-400 text-sm mb-4 flex-1 line-clamp-3">
-                  {project.description}
-                </p>
-                
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tags.map(tag => (
-                    <span key={tag} className="text-xs font-medium px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/20">
-                      {tag}
-                    </span>
-                  ))}
+              <Tilt
+                tiltMaxAngleX={10}
+                tiltMaxAngleY={10}
+                perspective={1000}
+                scale={1.02}
+                transitionSpeed={2000}
+                className="h-full"
+              >
+                <div className="glass-card group h-full flex flex-col border border-white/5 hover:border-cyan-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] interactive bg-[#050510]/80">
+                  
+                  {/* Image Container with Zoom */}
+                  <div className="relative h-56 overflow-hidden border-b border-white/5">
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#050510] to-transparent z-10 opacity-60"></div>
+                    
+                    {/* Hover Overlay */}
+                    <div className="absolute inset-0 bg-purple-500/40 mix-blend-overlay z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
+                    />
+                    
+                    {/* Floating Tech Badges on Image */}
+                    <div className="absolute top-4 right-4 z-30 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-x-4 group-hover:translate-x-0">
+                      {project.tags.slice(0, 2).map((tag, i) => (
+                        <span key={i} className="text-[10px] font-bold px-2 py-1 rounded-md bg-black/60 backdrop-blur-md text-white border border-white/20 shadow-lg">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="p-8 flex-1 flex flex-col relative z-20">
+                    <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-cyan-400 transition-colors duration-300">
+                      {project.title}
+                    </h3>
+                    <p className="text-gray-400 text-sm mb-6 flex-1 line-clamp-3 leading-relaxed">
+                      {project.description}
+                    </p>
+                    
+                    <div className="flex flex-wrap gap-2 mb-8">
+                      {project.tags.map(tag => (
+                        <span key={tag} className="text-xs font-medium px-3 py-1.5 rounded-lg bg-white/5 text-gray-300 border border-white/10 group-hover:border-purple-500/30 transition-colors">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    {/* Action Buttons */}
+                    <div className="flex items-center justify-between mt-auto pt-4 border-t border-white/10">
+                      <a 
+                        href={project.github} 
+                        className="flex items-center gap-2 text-sm font-medium text-gray-400 hover:text-white transition-colors group/btn"
+                      >
+                        <FaGithub className="text-lg group-hover/btn:scale-110 transition-transform" /> Code
+                      </a>
+                      <a 
+                        href={project.live} 
+                        className="flex items-center gap-2 text-sm font-medium text-cyan-400 hover:text-cyan-300 transition-colors group/btn"
+                      >
+                        Live Demo <FaExternalLinkAlt className="group-hover/btn:-translate-y-1 group-hover/btn:translate-x-1 transition-transform" />
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                
-                <div className="flex items-center gap-4 mt-auto">
-                  <a 
-                    href={project.github} 
-                    className="flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors border border-gray-600 hover:border-white rounded-full px-4 py-2"
-                  >
-                    <FaGithub /> GitHub
-                  </a>
-                  <a 
-                    href={project.live} 
-                    className="flex items-center gap-2 text-sm text-gray-300 hover:text-cyan-400 transition-colors border border-gray-600 hover:border-cyan-400 rounded-full px-4 py-2"
-                  >
-                    <FaExternalLinkAlt /> Live Demo
-                  </a>
-                </div>
-              </div>
+              </Tilt>
             </motion.div>
           ))}
         </div>
