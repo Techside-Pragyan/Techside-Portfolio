@@ -6,6 +6,7 @@ import About from './sections/About';
 import Skills from './sections/Skills';
 import Projects from './sections/Projects';
 import Experience from './sections/Experience';
+import WhatIDo from './sections/WhatIDo';
 import Activity from './sections/Activity';
 import Contact from './sections/Contact';
 import Footer from './sections/Footer';
@@ -39,6 +40,7 @@ function App() {
             <main className="relative z-10 flex flex-col gap-24 pb-20">
               <Hero />
               <About />
+              <WhatIDo />
               <Skills />
               <Activity />
               <Projects />
