@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
-import { HiOutlineDownload, HiOutlineArrowRight } from 'react-icons/hi';
+import { FaGithub, FaLinkedin, FaDiscord } from 'react-icons/fa';
+import { HiOutlineDownload, HiOutlineArrowRight, HiOutlineLocationMarker } from 'react-icons/hi';
 import { SiX, SiInstagram } from 'react-icons/si';
 
 const Hero = () => {
@@ -53,20 +53,52 @@ const Hero = () => {
   const formattedDate = time.toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' });
 
   return (
-    <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden pt-20">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden pt-20">
       {/* Background Mesh Gradients */}
-      <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-purple-600/10 rounded-full blur-[120px] animate-pulse"></div>
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-cyan-600/10 rounded-full blur-[150px] animate-pulse" style={{ animationDelay: '1s' }}></div>
+      <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden pointer-events-none mesh-gradient"></div>
+
+      {/* Dashboard Elements (Left) */}
+      <div className="absolute top-24 left-8 lg:left-12 hidden xl:flex flex-col gap-10 z-20">
+        <motion.div 
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="space-y-4"
+        >
+          <div className="flex items-center gap-3 text-gray-400">
+             <HiOutlineLocationMarker className="text-cyan-400" />
+             <span className="text-xs font-bold tracking-widest uppercase">India / Odisha</span>
+          </div>
+          <div className="flex flex-wrap gap-2 max-w-[200px]">
+             {['English', 'Hindi', 'Odia'].map(lang => (
+               <span key={lang} className="badge-tag">{lang}</span>
+             ))}
+          </div>
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.2 }}
+          className="glass-card p-6 border-white/5 space-y-4"
+        >
+           <div className="flex items-center gap-3">
+              <div className="relative">
+                 <FaDiscord className="text-indigo-400 text-2xl" />
+                 <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-[#030014]"></div>
+              </div>
+              <div className="flex flex-col">
+                 <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Discord Status</span>
+                 <span className="text-xs font-bold text-green-400">Online</span>
+              </div>
+           </div>
+           <div className="text-[10px] text-gray-400 font-mono">
+              Live Activity: <span className="text-cyan-400">Coding...</span>
+           </div>
+        </motion.div>
       </div>
 
-      {/* Top Header Information */}
-      <div className="absolute top-8 left-8 lg:left-12 flex items-center gap-3">
-        <span className="text-xl font-bold tracking-tighter text-white">Hello World</span>
-        <span className="text-xl animate-bounce">👋</span>
-      </div>
-
-      <div className="absolute top-8 right-8 lg:right-12 text-right font-mono text-sm text-gray-500 tracking-widest hidden sm:block">
+      {/* Top Right Info */}
+      <div className="absolute top-8 right-8 lg:right-12 text-right font-mono text-sm text-gray-500 tracking-widest hidden sm:block z-20">
         {formattedTime} | {formattedDate}
       </div>
 
@@ -92,7 +124,7 @@ const Hero = () => {
           </div>
 
           <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light">
-            Passionate about creating innovative digital solutions and exploring the world of AI. Currently pursuing my journey in Computer Science and Engineering.
+            Engineering intelligent systems and crafting futuristic digital experiences. Passionate about AI/ML and full-stack development.
           </p>
         </motion.div>
 
@@ -108,7 +140,7 @@ const Hero = () => {
             Download Resume
           </a>
           <a href="#about" className="px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-bold hover:bg-white/10 transition-all backdrop-blur-xl flex items-center gap-2 group interactive">
-            Learn More
+            Explore Details
             <HiOutlineArrowRight className="group-hover:translate-x-1 transition-transform" />
           </a>
         </motion.div>
@@ -127,8 +159,8 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* Spline 3D Integration - Subtle Background/Side element */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-20 pointer-events-none z-0">
+      {/* Spline 3D Integration - Subtle Background element */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-10 pointer-events-none z-0">
         <spline-viewer url="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode" className="w-full h-full"></spline-viewer>
       </div>
 
