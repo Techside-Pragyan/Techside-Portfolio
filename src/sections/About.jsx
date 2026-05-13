@@ -1,6 +1,58 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { HiOutlineLightBulb, HiOutlineAcademicCap, HiOutlineCode, HiOutlineGlobe } from 'react-icons/hi';
+import { HiOutlineLightBulb, HiOutlineAcademicCap, HiOutlineCode, HiOutlineBadgeCheck } from 'react-icons/hi';
+
+const SkillRadar = () => {
+  const points = "150,50 250,120 220,230 80,230 50,120"; // Sample points for a pentagon
+  return (
+    <div className="relative w-64 h-64 flex items-center justify-center">
+      <svg viewBox="0 0 300 300" className="w-full h-full">
+        {/* Radar Background Polygons */}
+        {[0.2, 0.4, 0.6, 0.8, 1].map((scale, i) => (
+          <motion.polygon
+            key={i}
+            points={points}
+            fill="none"
+            stroke="white"
+            strokeWidth="1"
+            opacity={0.1}
+            style={{ transform: `scale(${scale})`, transformOrigin: 'center' }}
+          />
+        ))}
+        {/* Connecting Lines */}
+        <line x1="150" y1="150" x2="150" y2="50" stroke="white" strokeWidth="1" opacity="0.1" />
+        <line x1="150" y1="150" x2="250" y2="120" stroke="white" strokeWidth="1" opacity="0.1" />
+        <line x1="150" y1="150" x2="220" y2="230" stroke="white" strokeWidth="1" opacity="0.1" />
+        <line x1="150" y1="150" x2="80" y2="230" stroke="white" strokeWidth="1" opacity="0.1" />
+        <line x1="150" y1="150" x2="50" y2="120" stroke="white" strokeWidth="1" opacity="0.1" />
+
+        {/* Data Polygon */}
+        <motion.polygon
+          initial={{ opacity: 0, scale: 0 }}
+          whileInView={{ opacity: 0.6, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.5 }}
+          points="150,80 230,130 190,200 100,210 70,130"
+          fill="url(#radarGradient)"
+          stroke="#06b6d4"
+          strokeWidth="2"
+          style={{ transformOrigin: 'center' }}
+        />
+        <defs>
+          <linearGradient id="radarGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#a855f7" />
+            <stop offset="100%" stopColor="#06b6d4" />
+          </linearGradient>
+        </defs>
+      </svg>
+      {/* Labels */}
+      <div className="absolute top-0 text-[8px] font-bold text-gray-500 uppercase tracking-widest">Logic</div>
+      <div className="absolute bottom-0 text-[8px] font-bold text-gray-500 uppercase tracking-widest">AI/ML</div>
+      <div className="absolute left-0 top-1/2 -translate-y-1/2 text-[8px] font-bold text-gray-500 uppercase tracking-widest">Tools</div>
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 text-[8px] font-bold text-gray-500 uppercase tracking-widest">Web</div>
+    </div>
+  );
+};
 
 const About = () => {
   return (
@@ -28,81 +80,62 @@ const About = () => {
                 The Developer
               </motion.span>
               <h2 className="text-4xl md:text-6xl font-black mb-8 tracking-tighter text-white leading-tight">
-                Passionate <br/>
-                <span className="text-gradient-animated">Full Stack Developer</span>
+                Decoding <br/>
+                <span className="text-gradient-animated">Intelligence</span>
               </h2>
               <div className="w-20 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full mb-8"></div>
             </div>
             
             <div className="space-y-6 text-gray-400 text-lg leading-relaxed">
               <p>
-                I'm a B.Tech Computer Science student at <span className="text-white font-semibold">DRIEMS University</span> with a deep love for code. I don't just build websites; I build digital experiences.
+                I'm Pragyan, an <span className="text-white font-semibold">AI/ML Enthusiast</span> and Full Stack Developer. My journey is fueled by a relentless drive to build clean, functional, and creative technology.
               </p>
               <p>
-                My core strength lies in translating complex requirements into clean, efficient, and scalable code. Whether it's crafting a pixel-perfect frontend or architecting a robust backend, I thrive on challenges.
+                I specialize in bridging the gap between sophisticated Machine Learning models and high-performance web interfaces, ensuring every project is as smart as it is beautiful.
               </p>
             </div>
 
-            {/* Stats Integrated */}
-            <div className="grid grid-cols-2 gap-8 pt-8 border-t border-white/5">
-              <div className="space-y-2">
-                <div className="text-4xl font-black text-purple-500">1+ Years</div>
-                <div className="text-xs font-bold text-gray-500 uppercase tracking-widest">Experience</div>
-              </div>
-              <div className="space-y-2">
-                <div className="text-4xl font-black text-cyan-400">10+</div>
-                <div className="text-xs font-bold text-gray-500 uppercase tracking-widest">Projects</div>
-              </div>
-            </div>
-
-            <div className="flex gap-4">
-               <div className="p-3 rounded-2xl bg-white/5 border border-white/10 text-purple-400">
-                  <HiOutlineLightBulb size={24} />
-               </div>
-               <div className="p-3 rounded-2xl bg-white/5 border border-white/10 text-cyan-400">
-                  <HiOutlineCode size={24} />
-               </div>
-               <div className="p-3 rounded-2xl bg-white/5 border border-white/10 text-blue-400">
-                  <HiOutlineAcademicCap size={24} />
+            <div className="flex items-center gap-10">
+               <SkillRadar />
+               <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                     <HiOutlineBadgeCheck className="text-cyan-400 text-xl" />
+                     <span className="text-sm font-bold text-gray-300">Verified Researcher</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                     <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
+                     <span className="text-sm font-bold text-gray-300">Open for Collaboration</span>
+                  </div>
                </div>
             </div>
           </motion.div>
 
           {/* Right Side: Portrait Image with Premium Frame */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, rotate: 2 }}
-            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1, ease: "easeOut" }}
             className="relative"
           >
-            {/* Main Image Frame */}
             <div className="relative z-10 rounded-[2.5rem] overflow-hidden aspect-[4/5] border border-white/10 shadow-2xl group">
               <img 
                 src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop" 
                 alt="Portrait" 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
               />
-              {/* Overlay Glassmorphism */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
               
               <div className="absolute bottom-8 left-8 right-8 p-6 glass-card border-white/20">
-                 <div className="text-white font-bold text-lg mb-1">The Developer</div>
-                 <div className="text-gray-400 text-sm">Building the future, one line at a time.</div>
+                 <div className="text-white font-bold text-lg mb-1 flex items-center gap-2">
+                    Pragyan <HiOutlineBadgeCheck className="text-cyan-400" />
+                 </div>
+                 <div className="text-gray-400 text-sm">Building the future of AI.</div>
               </div>
             </div>
 
-            {/* Floating Decorative Elements */}
-            <motion.div 
-              animate={{ y: [0, -20, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-10 -right-10 w-32 h-32 bg-purple-500/20 rounded-full blur-[50px] -z-10"
-            ></motion.div>
-            <motion.div 
-              animate={{ y: [0, 20, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute -bottom-10 -left-10 w-40 h-40 bg-cyan-500/20 rounded-full blur-[60px] -z-10"
-            ></motion.div>
+            {/* Decorative mesh */}
+            <div className="absolute -top-10 -right-10 w-full h-full border-r-2 border-t-2 border-white/5 rounded-[2.5rem] -z-10"></div>
           </motion.div>
 
         </div>
