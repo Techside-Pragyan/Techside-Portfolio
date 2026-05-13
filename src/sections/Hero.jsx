@@ -131,16 +131,3 @@ const SocialIcon = ({ href, icon }) => (
 );
 
 export default Hero;
-
-const SocialLink = ({ href, icon }) => (
-  <a 
-    href={href} 
-    target="_blank" 
-    rel="noopener noreferrer"
-    className="w-12 h-12 rounded-full flex items-center justify-center bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-white/30 hover:bg-white/10 transition-all duration-300 interactive shadow-lg hover:shadow-cyan-500/20"
-  >
-    {icon}
-  </a>
-);
-
-export default Hero;
