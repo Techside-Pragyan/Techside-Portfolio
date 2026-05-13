@@ -1,21 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaDiscord } from 'react-icons/fa';
-import { HiOutlineDownload, HiOutlineArrowRight, HiOutlineLocationMarker } from 'react-icons/hi';
-import { SiX, SiInstagram } from 'react-icons/si';
+import { FaGithub, FaLinkedin, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { HiOutlineDownload, HiOutlineArrowRight } from 'react-icons/hi';
 
 const Hero = () => {
-  const [text, setText] = useState('');
-  const [roleIndex, setRoleIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
   const [time, setTime] = useState(new Date());
-  
-  const roles = [
-    "AI/ML Engineer",
-    "Full Stack Developer",
-    "Problem Solver",
-    "Tech Enthusiast"
-  ];
 
   useEffect(() => {
     // Inject Spline Viewer Script
@@ -26,155 +15,122 @@ const Hero = () => {
       document.body.appendChild(script);
     }
 
-    // Typing Effect
-    const typeSpeed = isDeleting ? 50 : 100;
-    const currentRole = roles[roleIndex];
-    const timeout = setTimeout(() => {
-      if (!isDeleting && text === currentRole) {
-        setTimeout(() => setIsDeleting(true), 2000);
-      } else if (isDeleting && text === '') {
-        setIsDeleting(false);
-        setRoleIndex((prev) => (prev + 1) % roles.length);
-      } else {
-        setText(currentRole.substring(0, text.length + (isDeleting ? -1 : 1)));
-      }
-    }, typeSpeed);
-
-    // Clock
     const timer = setInterval(() => setTime(new Date()), 1000);
-
-    return () => {
-      clearTimeout(timeout);
-      clearInterval(timer);
-    };
-  }, [text, isDeleting, roleIndex]);
+    return () => clearInterval(timer);
+  }, []);
 
   const formattedTime = time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  const formattedDate = time.toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' });
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden pt-20">
-      {/* Background Mesh Gradients */}
-      <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden pointer-events-none mesh-gradient"></div>
+    <section id="hero" className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden bg-[#030014]">
+      {/* Background Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.05),transparent_70%)] pointer-events-none"></div>
 
-      {/* Dashboard Elements (Left) */}
-      <div className="absolute top-24 left-8 lg:left-12 hidden xl:flex flex-col gap-10 z-20">
-        <motion.div 
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="space-y-4"
-        >
-          <div className="flex items-center gap-3 text-gray-400">
-             <HiOutlineLocationMarker className="text-cyan-400" />
-             <span className="text-xs font-bold tracking-widest uppercase">India / Odisha</span>
-          </div>
-          <div className="flex flex-wrap gap-2 max-w-[200px]">
-             {['English', 'Hindi', 'Odia'].map(lang => (
-               <span key={lang} className="badge-tag">{lang}</span>
-             ))}
-          </div>
-        </motion.div>
-
-        <motion.div 
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.2 }}
-          className="glass-card p-6 border-white/5 space-y-4"
-        >
-           <div className="flex items-center gap-3">
-              <div className="relative">
-                 <FaDiscord className="text-indigo-400 text-2xl" />
-                 <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-[#030014]"></div>
-              </div>
-              <div className="flex flex-col">
-                 <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Discord Status</span>
-                 <span className="text-xs font-bold text-green-400">Online</span>
-              </div>
-           </div>
-           <div className="text-[10px] text-gray-400 font-mono">
-              Live Activity: <span className="text-cyan-400">Coding...</span>
-           </div>
-        </motion.div>
+      {/* Navigation Metadata (Top) */}
+      <div className="absolute top-8 left-8 lg:left-12 font-bold text-white tracking-tighter text-xl z-20">
+        pragyan.dev
+      </div>
+      
+      <div className="absolute top-8 right-8 lg:right-12 font-mono text-gray-500 text-sm tracking-widest z-20">
+        {formattedTime}
       </div>
 
-      {/* Top Right Info */}
-      <div className="absolute top-8 right-8 lg:right-12 text-right font-mono text-sm text-gray-500 tracking-widest hidden sm:block z-20">
-        {formattedTime} | {formattedDate}
+      <div className="absolute top-8 left-1/2 -translate-x-1/2 hidden md:block text-gray-500 text-xs font-bold tracking-[0.3em] uppercase z-20">
+        connect@pragyan.dev
       </div>
 
-      {/* Main Content Container */}
-      <div className="container max-w-4xl mx-auto flex flex-col items-center text-center relative z-10">
+      {/* Social Sidebar (Left) */}
+      <div className="absolute left-8 lg:left-12 top-1/2 -translate-y-1/2 flex flex-col gap-8 z-20">
+        <SocialIcon href="#" icon={<FaGithub />} />
+        <SocialIcon href="#" icon={<FaLinkedin />} />
+        <SocialIcon href="#" icon={<FaTwitter />} />
+        <SocialIcon href="#" icon={<FaInstagram />} />
+      </div>
+
+      {/* Main Content Layout */}
+      <div className="container max-w-7xl mx-auto grid lg:grid-cols-2 items-center gap-10 relative z-10">
         
-        {/* Name Heading */}
+        {/* Left: Text Info */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="space-y-4"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+          className="space-y-6 text-left"
         >
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-tight text-white">
-            Hi, I'm <br/>
-            <span className="text-gradient-animated">Pragyan</span>
-          </h1>
-
-          {/* Typing Role */}
-          <div className="text-2xl md:text-3xl font-medium text-gray-400 h-12 flex items-center justify-center gap-2">
-            <span>{text}</span>
-            <span className="w-1 h-8 bg-cyan-400 animate-pulse"></span>
+          <div className="space-y-2">
+            <span className="text-purple-400 font-bold tracking-widest uppercase text-xs">Hello! I'm</span>
+            <h1 className="text-6xl md:text-8xl font-black text-white leading-none tracking-tighter">
+              PRAGYAN <br/>
+              <span className="text-gradient-animated uppercase">SAHOO</span>
+            </h1>
           </div>
-
-          <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light">
-            Engineering intelligent systems and crafting futuristic digital experiences. Passionate about AI/ML and full-stack development.
-          </p>
+          
+          <div className="flex flex-col gap-4">
+            <p className="text-gray-400 text-lg max-w-md font-light leading-relaxed">
+              A Creative Developer & Designer with a passion for blending technical expertise with creative edge.
+            </p>
+            
+            <div className="flex items-center gap-6 pt-4">
+              <motion.button 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-white text-black font-black text-sm uppercase tracking-widest rounded-full hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] transition-all"
+              >
+                Welcome
+              </motion.button>
+              <a href="#work" className="text-white font-bold text-sm uppercase tracking-widest flex items-center gap-2 group">
+                Works <HiOutlineArrowRight className="group-hover:translate-x-2 transition-transform" />
+              </a>
+            </div>
+          </div>
         </motion.div>
 
-        {/* Action Buttons */}
+        {/* Right: Large 3D Female Character */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          className="flex flex-wrap items-center justify-center gap-6 mt-12"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          className="relative h-[600px] lg:h-[800px] w-full flex items-center justify-center pointer-events-none"
         >
-          <a href="/resume.pdf" className="glow-button flex items-center gap-2 interactive group">
-            <HiOutlineDownload className="text-xl group-hover:scale-110 transition-transform" />
-            Download Resume
-          </a>
-          <a href="#about" className="px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-bold hover:bg-white/10 transition-all backdrop-blur-xl flex items-center gap-2 group interactive">
-            Explore Details
-            <HiOutlineArrowRight className="group-hover:translate-x-1 transition-transform" />
-          </a>
+          <spline-viewer 
+            url="https://prod.spline.design/ATpf8S9X9o9y4z-m/scene.splinecode" 
+            className="w-full h-full scale-125"
+          ></spline-viewer>
+          
+          {/* Floating Text Overlay (Right) */}
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden xl:block text-right">
+             <h2 className="text-6xl font-black text-white/5 tracking-tighter leading-none select-none">
+                CREATIVE <br/>
+                DESIGNER <br/>
+                DEVELOPER
+             </h2>
+          </div>
         </motion.div>
-
-        {/* Social Icons */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 1 }}
-          className="flex items-center gap-6 mt-16"
-        >
-          <SocialLink href="https://github.com" icon={<FaGithub size={22} />} />
-          <SocialLink href="https://linkedin.com" icon={<FaLinkedin size={22} />} />
-          <SocialLink href="https://twitter.com" icon={<SiX size={20} />} />
-          <SocialLink href="https://instagram.com" icon={<SiInstagram size={20} />} />
-        </motion.div>
-      </div>
-
-      {/* Spline 3D Integration - Subtle Background element */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-10 pointer-events-none z-0">
-        <spline-viewer url="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode" className="w-full h-full"></spline-viewer>
       </div>
 
       {/* Scroll Indicator */}
       <motion.div 
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 w-6 h-10 border-2 border-white/20 rounded-full flex justify-center p-1"
       >
-        <div className="w-[1px] h-12 bg-gradient-to-b from-cyan-400 to-transparent"></div>
+        <div className="w-1 h-2 bg-purple-500 rounded-full"></div>
       </motion.div>
     </section>
   );
 };
+
+const SocialIcon = ({ href, icon }) => (
+  <motion.a
+    href={href}
+    whileHover={{ scale: 1.2, color: '#a855f7' }}
+    className="text-gray-500 text-2xl transition-colors cursor-pointer"
+  >
+    {icon}
+  </motion.a>
+);
+
+export default Hero;
 
 const SocialLink = ({ href, icon }) => (
   <a 
