@@ -1,56 +1,46 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaCodeBranch, FaRegStar, FaRegEye } from 'react-icons/fa';
+import { FaGithub, FaCodeBranch, FaRegStar } from 'react-icons/fa';
 
-const GitHubGraph = () => {
-  // Generate random data for contribution graph
-  const rows = 7;
-  const cols = 20;
-  const graph = Array.from({ length: rows * cols }, () => Math.floor(Math.random() * 5));
-
-  return (
-    <div className="relative group perspective-1000">
-      <div className="grid grid-flow-col grid-rows-7 gap-1 md:gap-2 transform rotate-x-20 rotate-y-[-20deg] skew-x-5 transition-transform duration-700 group-hover:rotate-x-30 group-hover:rotate-y-[-30deg]">
-        {graph.map((level, i) => (
-          <motion.div
-            key={i}
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            transition={{ delay: i * 0.005 }}
-            className={`w-3 h-3 md:w-5 md:h-5 rounded-sm md:rounded shadow-[0_0_10px_rgba(0,0,0,0.5)] ${
-              level === 0 ? 'bg-white/5' : 
-              level === 1 ? 'bg-emerald-900/40' :
-              level === 2 ? 'bg-emerald-700/60' :
-              level === 3 ? 'bg-emerald-500/80' : 'bg-emerald-400'
-            }`}
-            style={{ 
-              height: `${level * 4 + 12}px`,
-              boxShadow: level > 0 ? `0 0 ${level * 5}px rgba(52, 211, 153, 0.4)` : 'none'
-            }}
-          ></motion.div>
-        ))}
-      </div>
-      
-      {/* 3D Label */}
-      <div className="absolute -bottom-10 left-0 text-xs font-mono text-emerald-400/50 flex items-center gap-2">
-         <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
-         2,164 contributions in the last year
-      </div>
+const TechBall = ({ icon, color, label }) => (
+  <motion.div
+    drag
+    dragConstraints={{ left: -100, right: 100, top: -100, bottom: 100 }}
+    animate={{ 
+      y: [0, Math.random() * 20 - 10, 0],
+      x: [0, Math.random() * 20 - 10, 0],
+      rotate: [0, Math.random() * 10 - 5, 0]
+    }}
+    transition={{ duration: 4 + Math.random() * 2, repeat: Infinity, ease: "easeInOut" }}
+    className="relative w-24 h-24 md:w-32 md:h-32 flex items-center justify-center cursor-grab active:cursor-grabbing"
+  >
+    {/* The Ball */}
+    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/10 to-white/5 border border-white/10 backdrop-blur-xl shadow-2xl overflow-hidden group">
+       <div className={`absolute inset-0 bg-gradient-to-br ${color} opacity-10 group-hover:opacity-20 transition-opacity`}></div>
+       <div className="absolute top-1/4 left-1/4 w-1/2 h-1/2 bg-white opacity-10 blur-xl rounded-full"></div>
     </div>
-  );
-};
+    
+    {/* Icon */}
+    <div className="relative z-10 text-3xl md:text-5xl text-white/80">
+      {icon}
+    </div>
+    
+    {/* Label */}
+    <div className="absolute -bottom-4 text-[8px] font-bold text-gray-500 uppercase tracking-widest">{label}</div>
+  </motion.div>
+);
 
 const Activity = () => {
   return (
-    <section id="activity" className="py-24 px-6 relative z-10 overflow-hidden">
+    <section id="activity" className="py-24 px-6 relative z-10 overflow-hidden bg-[#030014]">
       <div className="container mx-auto max-w-7xl">
         <div className="flex flex-col md:flex-row items-center justify-between mb-20 gap-10">
            <div>
-              <h2 className="text-4xl md:text-5xl font-black mb-4 tracking-tighter text-white">
-                GitHub <span className="text-gradient-animated">Activity</span>
+              <h2 className="text-4xl md:text-6xl font-black mb-4 tracking-tighter text-white">
+                MY TECH <span className="text-gradient-animated">STACK</span>
               </h2>
-              <p className="text-gray-400 max-w-md">
-                Tracking the evolution of code. A visual representation of daily commits and technical growth.
+              <p className="text-gray-400 max-w-md font-light">
+                The core technologies I use to bring ideas to life. Interactive 3D elements representing my technical foundation.
               </p>
            </div>
            
@@ -60,42 +50,51 @@ const Activity = () => {
                  <span className="text-2xl font-black text-white">178</span>
                  <span className="text-[8px] font-bold text-gray-500 uppercase tracking-widest">Repos</span>
               </div>
-              <div className="glass-card p-4 flex flex-col items-center gap-1 min-w-[100px]">
-                 <FaRegStar className="text-cyan-400 text-xl" />
-                 <span className="text-2xl font-black text-white">1.2k</span>
-                 <span className="text-[8px] font-bold text-gray-500 uppercase tracking-widest">Stars</span>
-              </div>
            </div>
         </div>
 
-        <div className="glass-card p-10 md:p-20 flex flex-col items-center justify-center overflow-hidden">
-           <GitHubGraph />
-           
-           <div className="mt-20 grid md:grid-cols-3 gap-10 w-full">
-              {[
-                { label: "JavaScript", color: "bg-yellow-400", percent: 45 },
-                { label: "Python", color: "bg-blue-500", percent: 35 },
-                { label: "TypeScript", color: "bg-cyan-500", percent: 20 },
-              ].map(lang => (
-                <div key={lang.label} className="space-y-3">
-                   <div className="flex justify-between text-xs font-bold uppercase tracking-widest">
-                      <span className="text-gray-400">{lang.label}</span>
-                      <span className="text-white">{lang.percent}%</span>
-                   </div>
-                   <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
-                      <motion.div 
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${lang.percent}%` }}
-                        transition={{ duration: 1 }}
-                        className={`h-full ${lang.color} shadow-[0_0_10px_rgba(0,0,0,0.5)]`}
-                      ></motion.div>
-                   </div>
-                </div>
-              ))}
+        {/* Tech Balls Container */}
+        <div className="relative py-20 flex flex-wrap items-center justify-center gap-10 md:gap-20">
+           <TechBall label="React" color="from-cyan-500/20" icon="⚛️" />
+           <TechBall label="Next.js" color="from-gray-500/20" icon="▲" />
+           <TechBall label="Tailwind" color="from-blue-400/20" icon="🎨" />
+           <TechBall label="Node.js" color="from-green-500/20" icon="🟢" />
+           <TechBall label="Python" color="from-blue-600/20" icon="🐍" />
+           <TechBall label="JS" color="from-yellow-400/20" icon="JS" />
+           <TechBall label="Figma" color="from-purple-500/20" icon="🎨" />
+        </div>
+
+        {/* GitHub Graph (Subtle Background) */}
+        <div className="mt-32 opacity-30 grayscale hover:grayscale-0 transition-all duration-1000">
+           <h3 className="text-center text-[10px] font-bold text-gray-600 uppercase tracking-[0.5em] mb-10">Contribution History</h3>
+           <div className="flex justify-center overflow-hidden pointer-events-none">
+              <GitHubGraphPreview />
            </div>
         </div>
       </div>
     </section>
+  );
+};
+
+const GitHubGraphPreview = () => {
+  const rows = 7;
+  const cols = 50;
+  const graph = Array.from({ length: rows * cols }, () => Math.floor(Math.random() * 5));
+
+  return (
+    <div className="grid grid-flow-col grid-rows-7 gap-1">
+      {graph.map((level, i) => (
+        <div
+          key={i}
+          className={`w-2 h-2 rounded-sm ${
+            level === 0 ? 'bg-white/5' : 
+            level === 1 ? 'bg-emerald-900/40' :
+            level === 2 ? 'bg-emerald-700/60' :
+            level === 3 ? 'bg-emerald-500/80' : 'bg-emerald-400'
+          }`}
+        ></div>
+      ))}
+    </div>
   );
 };
 
