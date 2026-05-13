@@ -28,7 +28,7 @@ const Hero = () => {
 
       {/* Navigation Metadata (Top) */}
       <div className="absolute top-8 left-8 lg:left-12 font-bold text-white tracking-tighter text-xl z-20">
-        pragyan.dev
+        pragyan.me
       </div>
       
       <div className="absolute top-8 right-8 lg:right-12 font-mono text-gray-500 text-sm tracking-widest z-20">
@@ -36,7 +36,7 @@ const Hero = () => {
       </div>
 
       <div className="absolute top-8 left-1/2 -translate-x-1/2 hidden md:block text-gray-500 text-xs font-bold tracking-[0.3em] uppercase z-20">
-        connect@pragyan.dev
+        connect@pragyan.me
       </div>
 
       {/* Social Sidebar (Left) */}
