@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, HiOutlineDownload, HiOutlineArrowRight } from 'react-icons/hi';
+import { SiX, SiInstagram } from 'react-icons/si';
 
 const Hero = () => {
   const [text, setText] = useState('');
   const [roleIndex, setRoleIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [time, setTime] = useState(new Date());
   
   const roles = [
     "AI/ML Engineer",
@@ -15,7 +17,7 @@ const Hero = () => {
   ];
 
   useEffect(() => {
-    // Inject Spline Viewer Script for the 3D AI Assistant
+    // Inject Spline Viewer Script
     if (!document.querySelector('script[src="https://unpkg.com/@splinetool/viewer@1.0.51/build/spline-viewer.js"]')) {
       const script = document.createElement('script');
       script.type = 'module';
@@ -23,9 +25,9 @@ const Hero = () => {
       document.body.appendChild(script);
     }
 
+    // Typing Effect
     const typeSpeed = isDeleting ? 50 : 100;
     const currentRole = roles[roleIndex];
-
     const timeout = setTimeout(() => {
       if (!isDeleting && text === currentRole) {
         setTimeout(() => setIsDeleting(true), 2000);
@@ -37,136 +39,116 @@ const Hero = () => {
       }
     }, typeSpeed);
 
-    return () => clearTimeout(timeout);
+    // Clock
+    const timer = setInterval(() => setTime(new Date()), 1000);
+
+    return () => {
+      clearTimeout(timeout);
+      clearInterval(timer);
+    };
   }, [text, isDeleting, roleIndex]);
 
-  return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden">
-      {/* Background Glows */}
-      <div className="absolute top-[20%] left-[10%] w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[120px] mix-blend-screen pointer-events-none"></div>
-      <div className="absolute bottom-[10%] right-[10%] w-[600px] h-[600px] bg-cyan-600/20 rounded-full blur-[150px] mix-blend-screen pointer-events-none"></div>
+  const formattedTime = time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  const formattedDate = time.toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' });
 
-      <div className="container mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
+  return (
+    <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden pt-20">
+      {/* Background Mesh Gradients */}
+      <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-purple-600/10 rounded-full blur-[120px] animate-pulse"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-cyan-600/10 rounded-full blur-[150px] animate-pulse" style={{ animationDelay: '1s' }}></div>
+      </div>
+
+      {/* Top Header Information */}
+      <div className="absolute top-8 left-8 lg:left-12 flex items-center gap-3">
+        <span className="text-xl font-bold tracking-tighter text-white">Hello World</span>
+        <span className="text-xl animate-bounce">👋</span>
+      </div>
+
+      <div className="absolute top-8 right-8 lg:right-12 text-right font-mono text-sm text-gray-500 tracking-widest hidden sm:block">
+        {formattedTime} | {formattedDate}
+      </div>
+
+      {/* Main Content Container */}
+      <div className="container max-w-4xl mx-auto flex flex-col items-center text-center relative z-10">
         
-        {/* Text Content */}
-        <motion.div 
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
+        {/* Name Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="flex flex-col gap-6"
+          className="space-y-4"
         >
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2 py-2 px-4 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 w-fit text-sm font-medium backdrop-blur-sm shadow-[0_0_10px_rgba(6,182,212,0.2)]"
-          >
-            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-            System Initialized
-          </motion.div>
-          
-          <h1 className="text-5xl lg:text-7xl font-bold leading-tight tracking-tight">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-tight text-white">
             Hi, I'm <br/>
             <span className="text-gradient-animated">Pragyan</span>
           </h1>
-          
-          <div className="text-2xl lg:text-3xl font-semibold text-gray-300 h-10 flex items-center gap-2">
-            <span className="text-cyan-400">&gt;</span>
-            {text}<span className="animate-pulse w-3 h-8 bg-cyan-400 inline-block ml-1"></span>
-          </div>
-          
-          <p className="text-gray-400 text-lg max-w-lg leading-relaxed">
-            I build intelligent systems and elegant interfaces. Passionate about Artificial Intelligence, Machine Learning, and crafting modern web experiences.
-          </p>
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="flex flex-wrap gap-4 mt-4"
-          >
-            <a href="#projects" className="glow-button interactive">
-              Explore Work
-            </a>
-            <a href="#contact" className="px-8 py-3 rounded-full border border-white/20 hover:bg-white/5 hover:border-white/50 transition-all text-white font-medium interactive backdrop-blur-md">
-              Contact Me
-            </a>
-          </motion.div>
 
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="flex gap-6 mt-8"
-          >
-            <SocialIcon href="https://github.com" icon={<FaGithub size={24} />} />
-            <SocialIcon href="https://linkedin.com" icon={<FaLinkedin size={24} />} />
-            <SocialIcon href="https://twitter.com" icon={<FaTwitter size={24} />} />
-            <SocialIcon href="mailto:example@gmail.com" icon={<FaEnvelope size={24} />} />
-          </motion.div>
+          {/* Typing Role */}
+          <div className="text-2xl md:text-3xl font-medium text-gray-400 h-12 flex items-center justify-center gap-2">
+            <span>{text}</span>
+            <span className="w-1 h-8 bg-cyan-400 animate-pulse"></span>
+          </div>
+
+          <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light">
+            Passionate about creating innovative digital solutions and exploring the world of AI. Currently pursuing my journey in Computer Science and Engineering.
+          </p>
         </motion.div>
 
-        {/* 3D Spline AI Assistant */}
+        {/* Action Buttons */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="relative flex justify-center lg:justify-end h-[500px] lg:h-[600px] w-full"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          className="flex flex-wrap items-center justify-center gap-6 mt-12"
         >
-          {/* Glassmorphism Frame behind the 3D model */}
-          <div className="absolute inset-4 lg:inset-10 rounded-[3rem] bg-gradient-to-tr from-purple-500/10 to-cyan-500/10 backdrop-blur-3xl border border-white/10 shadow-[0_0_50px_rgba(168,85,247,0.2)] -z-10 animate-pulse-glow"></div>
-          
-          {/* Spline 3D Viewer */}
-          <div className="w-full h-full relative z-10 interactive" style={{ cursor: 'grab' }}>
-            <spline-viewer url="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode" className="w-full h-full"></spline-viewer>
-          </div>
-          
-          {/* Hologram details */}
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-32 h-2 bg-gradient-to-r from-transparent via-cyan-400 to-transparent blur-[2px] opacity-70"></div>
-          
-          {/* Floating tags */}
-          <motion.div 
-            className="absolute top-20 right-0 lg:-right-10 z-30 bg-black/40 backdrop-blur-xl px-4 py-2 rounded-2xl border border-cyan-500/30 text-cyan-300 font-mono text-sm shadow-[0_0_15px_rgba(6,182,212,0.3)]"
-            animate={{ y: [0, -15, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          >
-            AI_ASSISTANT_V1
-          </motion.div>
-          
-          <motion.div 
-            className="absolute bottom-32 left-0 lg:-left-10 z-30 bg-black/40 backdrop-blur-xl px-4 py-2 rounded-2xl border border-purple-500/30 text-purple-300 font-mono text-sm shadow-[0_0_15px_rgba(168,85,247,0.3)]"
-            animate={{ y: [0, 15, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          >
-            STATUS: ONLINE
-          </motion.div>
+          <a href="/resume.pdf" className="glow-button flex items-center gap-2 interactive group">
+            <HiOutlineDownload className="text-xl group-hover:scale-110 transition-transform" />
+            Download Resume
+          </a>
+          <a href="#about" className="px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-bold hover:bg-white/10 transition-all backdrop-blur-xl flex items-center gap-2 group interactive">
+            Learn More
+            <HiOutlineArrowRight className="group-hover:translate-x-1 transition-transform" />
+          </a>
+        </motion.div>
+
+        {/* Social Icons */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 1 }}
+          className="flex items-center gap-6 mt-16"
+        >
+          <SocialLink href="https://github.com" icon={<FaGithub size={22} />} />
+          <SocialLink href="https://linkedin.com" icon={<FaLinkedin size={22} />} />
+          <SocialLink href="https://twitter.com" icon={<SiX size={20} />} />
+          <SocialLink href="https://instagram.com" icon={<SiInstagram size={20} />} />
         </motion.div>
       </div>
 
-      {/* Scroll Down Indicator */}
+      {/* Spline 3D Integration - Subtle Background/Side element */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-20 pointer-events-none z-0">
+        <spline-viewer url="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode" className="w-full h-full"></spline-viewer>
+      </div>
+
+      {/* Scroll Indicator */}
       <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30"
       >
-        <span className="text-gray-500 text-xs tracking-widest uppercase font-mono">Scroll</span>
-        <motion.div 
-          animate={{ y: [0, 10, 0], opacity: [0.3, 1, 0.3] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="w-[1px] h-12 bg-gradient-to-b from-cyan-500 to-transparent"
-        ></motion.div>
+        <div className="w-[1px] h-12 bg-gradient-to-b from-cyan-400 to-transparent"></div>
       </motion.div>
     </section>
   );
 };
 
-const SocialIcon = ({ href, icon }) => (
+const SocialLink = ({ href, icon }) => (
   <a 
     href={href} 
     target="_blank" 
     rel="noopener noreferrer"
-    className="w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:border-cyan-400 hover:bg-cyan-400/10 transition-all hover:-translate-y-2 hover:shadow-[0_0_15px_rgba(6,182,212,0.4)] interactive"
+    className="w-12 h-12 rounded-full flex items-center justify-center bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-white/30 hover:bg-white/10 transition-all duration-300 interactive shadow-lg hover:shadow-cyan-500/20"
   >
     {icon}
   </a>
