@@ -1,81 +1,108 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { HiOutlineLightBulb, HiOutlineAcademicCap, HiOutlineCode, HiOutlineGlobe } from 'react-icons/hi';
 
 const About = () => {
   return (
     <section id="about" className="py-24 px-6 relative z-10 overflow-hidden">
-      {/* Decorative background lines */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px)] bg-[size:40px] pointer-events-none opacity-20 transform skew-x-12"></div>
+      {/* Background Decorative Elements */}
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.05),transparent_70%)] pointer-events-none"></div>
 
       <div className="container mx-auto max-w-7xl">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
           
+          {/* Left Side: Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.8 }}
             className="space-y-8"
           >
             <div>
-              <div className="inline-flex items-center gap-2 py-1 px-3 rounded-full bg-cyan-500/10 text-cyan-400 text-xs font-bold mb-4 border border-cyan-500/20 uppercase tracking-widest">
-                System Logic
-              </div>
-              <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tighter">
-                Decoding <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">Intelligence</span>
+              <motion.span 
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                className="text-purple-500 font-bold tracking-[0.3em] uppercase text-xs mb-4 block"
+              >
+                The Developer
+              </motion.span>
+              <h2 className="text-4xl md:text-6xl font-black mb-8 tracking-tighter text-white leading-tight">
+                Passionate <br/>
+                <span className="text-gradient-animated">Full Stack Developer</span>
               </h2>
+              <div className="w-20 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full mb-8"></div>
             </div>
             
-            <div className="space-y-6 text-gray-300 text-lg leading-relaxed font-light">
+            <div className="space-y-6 text-gray-400 text-lg leading-relaxed">
               <p>
-                Hello! I'm Pragyan, a passionate <span className="text-cyan-400 font-semibold drop-shadow-[0_0_8px_rgba(6,182,212,0.5)]">Diploma CSE student</span> with a relentless drive towards becoming an <span className="text-purple-400 font-semibold drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]">AI/ML Engineer</span>.
+                I'm a B.Tech Computer Science student at <span className="text-white font-semibold">DRIEMS University</span> with a deep love for code. I don't just build websites; I build digital experiences.
               </p>
               <p>
-                My journey began with a profound curiosity about how machines can learn and solve complex real-world problems. Today, I'm constantly expanding my horizons by bridging the gap between cutting-edge Machine Learning models and robust full-stack web applications.
-              </p>
-              <p>
-                I thrive on building intelligent systems, whether it's an autonomous research agent or a dynamic frontend dashboard. My goal is to craft premium, high-performance software that feels both futuristic and highly intuitive.
+                My core strength lies in translating complex requirements into clean, efficient, and scalable code. Whether it's crafting a pixel-perfect frontend or architecting a robust backend, I thrive on challenges.
               </p>
             </div>
-            
-            {/* Signature / Code block effect */}
-            <div className="mt-8 p-4 rounded-xl bg-[#01010a] border border-white/5 font-mono text-sm text-gray-400 w-fit shadow-inner">
-              <span className="text-pink-500">const</span> <span className="text-cyan-400">vision</span> = <span className="text-yellow-300">"Build the Future"</span>;
+
+            {/* Stats Integrated */}
+            <div className="grid grid-cols-2 gap-8 pt-8 border-t border-white/5">
+              <div className="space-y-2">
+                <div className="text-4xl font-black text-purple-500">1+ Years</div>
+                <div className="text-xs font-bold text-gray-500 uppercase tracking-widest">Experience</div>
+              </div>
+              <div className="space-y-2">
+                <div className="text-4xl font-black text-cyan-400">10+</div>
+                <div className="text-xs font-bold text-gray-500 uppercase tracking-widest">Projects</div>
+              </div>
+            </div>
+
+            <div className="flex gap-4">
+               <div className="p-3 rounded-2xl bg-white/5 border border-white/10 text-purple-400">
+                  <HiOutlineLightBulb size={24} />
+               </div>
+               <div className="p-3 rounded-2xl bg-white/5 border border-white/10 text-cyan-400">
+                  <HiOutlineCode size={24} />
+               </div>
+               <div className="p-3 rounded-2xl bg-white/5 border border-white/10 text-blue-400">
+                  <HiOutlineAcademicCap size={24} />
+               </div>
             </div>
           </motion.div>
 
+          {/* Right Side: Portrait Image with Premium Frame */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, scale: 0.9, rotate: 2 }}
+            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="grid grid-cols-2 gap-4 relative"
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="relative"
           >
-            {/* Center glowing orb */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-cyan-500/20 rounded-full blur-[80px] pointer-events-none"></div>
+            {/* Main Image Frame */}
+            <div className="relative z-10 rounded-[2.5rem] overflow-hidden aspect-[4/5] border border-white/10 shadow-2xl group">
+              <img 
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop" 
+                alt="Portrait" 
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              {/* Overlay Glassmorphism */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
+              
+              <div className="absolute bottom-8 left-8 right-8 p-6 glass-card border-white/20">
+                 <div className="text-white font-bold text-lg mb-1">The Developer</div>
+                 <div className="text-gray-400 text-sm">Building the future, one line at a time.</div>
+              </div>
+            </div>
 
-            {[
-              { num: "10+", label: "Projects Built", color: "from-cyan-400 to-blue-500" },
-              { num: "100%", label: "Dedication", color: "from-purple-400 to-pink-500" },
-              { num: "AI/ML", label: "Focus Area", color: "from-green-400 to-cyan-500" },
-              { num: "CSE", label: "Diploma", color: "from-orange-400 to-red-500" },
-            ].map((stat, idx) => (
-              <motion.div
-                key={idx}
-                whileHover={{ y: -10, scale: 1.05 }}
-                className="glass-card p-8 flex flex-col items-center justify-center text-center gap-3 relative overflow-hidden group interactive"
-              >
-                {/* Hover gradient sweep */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
-                
-                <div className={`text-4xl lg:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-br ${stat.color} drop-shadow-lg`}>
-                  {stat.num}
-                </div>
-                <div className="text-xs font-bold text-gray-400 uppercase tracking-widest z-10">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
+            {/* Floating Decorative Elements */}
+            <motion.div 
+              animate={{ y: [0, -20, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute -top-10 -right-10 w-32 h-32 bg-purple-500/20 rounded-full blur-[50px] -z-10"
+            ></motion.div>
+            <motion.div 
+              animate={{ y: [0, 20, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              className="absolute -bottom-10 -left-10 w-40 h-40 bg-cyan-500/20 rounded-full blur-[60px] -z-10"
+            ></motion.div>
           </motion.div>
 
         </div>
