@@ -6,6 +6,7 @@ import About from './sections/About';
 import Skills from './sections/Skills';
 import Projects from './sections/Projects';
 import Experience from './sections/Experience';
+import Activity from './sections/Activity';
 import Contact from './sections/Contact';
 import Footer from './sections/Footer';
 import ParticlesBackground from './components/ParticlesBackground';
@@ -39,6 +40,7 @@ function App() {
               <Hero />
               <About />
               <Skills />
+              <Activity />
               <Projects />
               <Experience />
               <Contact />
