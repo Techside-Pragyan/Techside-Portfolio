@@ -49,7 +49,7 @@ const Footer = () => {
 
         <div className="text-center border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-500 text-sm font-medium">
-            &copy; {new Date().getFullYear()} Pragyan. All rights reserved.
+            &copy; {new Date().getFullYear()} Pragyan Paramita Moharana. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm font-medium text-gray-500">
             <span className="hover:text-cyan-400 cursor-pointer transition-colors">Privacy Policy</span>
