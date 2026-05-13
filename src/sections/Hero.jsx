@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, HiOutlineDownload, HiOutlineArrowRight } from 'react-icons/hi';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { HiOutlineDownload, HiOutlineArrowRight } from 'react-icons/hi';
 import { SiX, SiInstagram } from 'react-icons/si';
 
 const Hero = () => {
