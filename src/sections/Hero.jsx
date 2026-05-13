@@ -59,9 +59,10 @@ const Hero = () => {
         >
           <div className="space-y-2">
             <span className="text-purple-400 font-bold tracking-widest uppercase text-xs">Hello! I'm</span>
-            <h1 className="text-6xl md:text-8xl font-black text-white leading-none tracking-tighter">
+            <h1 className="text-5xl md:text-7xl font-black text-white leading-[0.9] tracking-tighter">
               PRAGYAN <br/>
-              <span className="text-gradient-animated uppercase">SAHOO</span>
+              PARAMITA <br/>
+              <span className="text-gradient-animated uppercase">MOHARANA</span>
             </h1>
           </div>
           
