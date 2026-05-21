@@ -36,7 +36,7 @@ src/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/pragyan/techside-portfolio.git
+   git clone https://github.com/Techside-Pragyan/Techside-Portfolio.git
    cd techside-portfolio
    ```
 
