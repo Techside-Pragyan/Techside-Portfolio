@@ -70,20 +70,20 @@ const Hero = () => {
   const formattedTime = time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden bg-[#030014] perspective-lg">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden bg-[#FAF6F0] perspective-lg">
       {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.05),transparent_70%)] pointer-events-none"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(169,113,91,0.04),transparent_70%)] pointer-events-none"></div>
 
       {/* Navigation Metadata (Top) */}
-      <div className="absolute top-8 left-8 lg:left-12 font-bold text-white tracking-tighter text-xl z-20">
+      <div className="absolute top-8 left-8 lg:left-12 font-bold text-[#2C2621] tracking-tighter text-xl z-20">
         pragyan.me
       </div>
       
-      <div className="absolute top-8 right-8 lg:right-12 font-mono text-gray-500 text-sm tracking-widest z-20">
+      <div className="absolute top-8 right-8 lg:right-12 font-mono text-[#7C7267] text-sm tracking-widest z-20">
         {formattedTime}
       </div>
 
-      <div className="absolute top-8 left-1/2 -translate-x-1/2 hidden md:block text-gray-500 text-xs font-bold tracking-[0.3em] uppercase z-20">
+      <div className="absolute top-8 left-1/2 -translate-x-1/2 hidden md:block text-[#7C7267] text-xs font-bold tracking-[0.3em] uppercase z-20">
         connect@pragyan.me
       </div>
 
@@ -106,8 +106,8 @@ const Hero = () => {
           className="space-y-6 text-left"
         >
           <div className="space-y-2">
-            <span className="text-purple-400 font-bold tracking-widest uppercase text-xs">Hello! I'm</span>
-            <h1 className="text-5xl md:text-7xl font-black text-white leading-[0.9] tracking-tighter">
+            <span className="text-[#A9715B] font-bold tracking-widest uppercase text-xs">Hello! I'm</span>
+            <h1 className="text-5xl md:text-7xl font-black text-[#2C2621] leading-[0.9] tracking-tighter">
               PRAGYAN <br/>
               PARAMITA <br/>
               <span className="text-gradient-animated uppercase">MOHARANA</span>
@@ -115,7 +115,7 @@ const Hero = () => {
           </div>
           
           <div className="flex flex-col gap-4">
-            <p className="text-gray-400 text-lg max-w-md font-light leading-relaxed">
+            <p className="text-[#7C7267] text-lg max-w-md font-light leading-relaxed">
               A Creative Developer & Designer with a passion for blending technical expertise with creative edge.
             </p>
             
@@ -123,12 +123,12 @@ const Hero = () => {
               <motion.button 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-white text-black font-black text-sm uppercase tracking-widest rounded-full hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] transition-all"
+                className="px-8 py-4 bg-[#2C2621] text-[#FAF6F0] font-black text-sm uppercase tracking-widest rounded-full hover:shadow-[0_10px_30px_rgba(44,38,33,0.15)] transition-all"
               >
                 Welcome
               </motion.button>
-              <a href="#work" className="text-white font-bold text-sm uppercase tracking-widest flex items-center gap-2 group">
-                Works <HiOutlineArrowRight className="group-hover:translate-x-2 transition-transform" />
+              <a href="#work" className="text-[#2C2621] font-bold text-sm uppercase tracking-widest flex items-center gap-2 group">
+                Works <HiOutlineArrowRight className="group-hover:translate-x-2 transition-transform text-[#A9715B]" />
               </a>
             </div>
           </div>
@@ -138,7 +138,7 @@ const Hero = () => {
         <div className="relative h-[550px] lg:h-[750px] w-full flex items-center justify-center">
           
           {/* Glowing Ambient Ring behind the Portrait */}
-          <div className="absolute w-[450px] h-[450px] rounded-full border border-purple-500/10 bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.03),transparent_70%)] pointer-events-none z-0"></div>
+          <div className="absolute w-[450px] h-[450px] rounded-full border border-[#A9715B]/10 bg-[radial-gradient(circle_at_center,rgba(169,113,91,0.02),transparent_70%)] pointer-events-none z-0"></div>
 
           {/* Holographic Text Overlay with opposite tilt direction for 3D parallax depth */}
           <motion.div 
@@ -148,7 +148,7 @@ const Hero = () => {
             }}
             className="absolute right-0 top-1/2 -translate-y-1/2 hidden xl:block text-right pointer-events-none z-10"
           >
-             <h2 className="text-7xl font-black text-white/[0.03] tracking-tighter leading-none select-none">
+             <h2 className="text-7xl font-black text-[#2C2621]/[0.02] tracking-tighter leading-none select-none">
                 CREATIVE <br/>
                 DESIGNER <br/>
                 DEVELOPER
@@ -165,21 +165,21 @@ const Hero = () => {
             className="w-full h-full relative z-20 flex items-center justify-center"
           >
             {/* Ambient Glowing Backdrop Behind the Card */}
-            <div className="absolute w-[360px] h-[480px] bg-gradient-to-tr from-purple-500/10 via-pink-500/10 to-cyan-500/10 blur-3xl pointer-events-none"></div>
+            <div className="absolute w-[360px] h-[480px] bg-gradient-to-tr from-[#A9715B]/10 via-[#E8D5C4]/10 to-[#7C7267]/10 blur-3xl pointer-events-none"></div>
 
             {/* Futuristic Cyber Bracket HUD Overlays */}
-            <div className="absolute -top-3 -left-3 w-8 h-8 border-t-2 border-l-2 border-cyan-400 pointer-events-none z-30 opacity-70 animate-pulse"></div>
-            <div className="absolute -top-3 -right-3 w-8 h-8 border-t-2 border-r-2 border-cyan-400 pointer-events-none z-30 opacity-70 animate-pulse"></div>
-            <div className="absolute -bottom-3 -left-3 w-8 h-8 border-b-2 border-l-2 border-purple-500 pointer-events-none z-30 opacity-70 animate-pulse"></div>
-            <div className="absolute -bottom-3 -right-3 w-8 h-8 border-b-2 border-r-2 border-purple-500 pointer-events-none z-30 opacity-70 animate-pulse"></div>
+            <div className="absolute -top-3 -left-3 w-8 h-8 border-t-2 border-l-2 border-[#A9715B] pointer-events-none z-30 opacity-70 animate-pulse"></div>
+            <div className="absolute -top-3 -right-3 w-8 h-8 border-t-2 border-r-2 border-[#A9715B] pointer-events-none z-30 opacity-70 animate-pulse"></div>
+            <div className="absolute -bottom-3 -left-3 w-8 h-8 border-b-2 border-l-2 border-[#7C7267] pointer-events-none z-30 opacity-70 animate-pulse"></div>
+            <div className="absolute -bottom-3 -right-3 w-8 h-8 border-b-2 border-r-2 border-[#7C7267] pointer-events-none z-30 opacity-70 animate-pulse"></div>
 
-            {/* Profile Picture Card with Premium Gradient Edge (Aspect ratio is set to fit standard portrait photos fully) */}
+            {/* Profile Picture Card (Aspect ratio is set to fit standard portrait photos fully) */}
             <button
               onClick={handleNextPhoto}
               title="Click to see next photo"
-              className="relative w-[320px] h-[440px] md:w-[360px] md:h-[480px] rounded-3xl p-[3px] bg-gradient-to-tr from-purple-500 via-pink-500 to-cyan-400 shadow-[0_0_50px_rgba(168,85,247,0.2)] select-none cursor-pointer focus:outline-none"
+              className="relative w-[320px] h-[440px] md:w-[360px] md:h-[480px] rounded-3xl p-[3px] bg-gradient-to-tr from-[#A9715B] via-[#E8D5C4] to-[#7C7267] shadow-[0_15px_40px_rgba(44,38,33,0.06)] select-none cursor-pointer focus:outline-none"
             >
-              <div className="w-full h-full rounded-[20px] overflow-hidden bg-[#030014] border-4 border-[#030014] relative group">
+              <div className="w-full h-full rounded-[20px] overflow-hidden bg-[#FAF6F0] border-4 border-[#FAF6F0] relative group">
                 
                 {/* Crossfade Slideshow Images - Displaying the FULL picture without cutting any parts! */}
                 <AnimatePresence mode="wait">
@@ -199,10 +199,10 @@ const Hero = () => {
                 </AnimatePresence>
                 
                 {/* Cyber HUD Grid Overlay */}
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[size:100%_4px,6px_100%] opacity-20 pointer-events-none"></div>
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(169,113,91,0.03),rgba(227,203,179,0.02),rgba(140,120,100,0.03))] bg-[size:100%_4px,6px_100%] opacity-20 pointer-events-none"></div>
 
                 {/* Subtle dark bottom gradient cover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-50 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-40 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none"></div>
               </div>
             </button>
           </Tilt>
@@ -213,9 +213,9 @@ const Hero = () => {
       <motion.div 
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 w-6 h-10 border-2 border-white/20 rounded-full flex justify-center p-1"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 w-6 h-10 border-2 border-black/[0.08] rounded-full flex justify-center p-1"
       >
-        <div className="w-1 h-2 bg-purple-500 rounded-full"></div>
+        <div className="w-1 h-2 bg-[#A9715B] rounded-full"></div>
       </motion.div>
     </section>
   );
@@ -224,8 +224,8 @@ const Hero = () => {
 const SocialIcon = ({ href, icon }) => (
   <motion.a
     href={href}
-    whileHover={{ scale: 1.2, color: '#a855f7' }}
-    className="text-gray-500 text-2xl transition-colors cursor-pointer"
+    whileHover={{ scale: 1.2, color: '#A9715B' }}
+    className="text-[#7C7267] text-2xl transition-colors cursor-pointer"
   >
     {icon}
   </motion.a>
