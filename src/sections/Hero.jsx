@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
 import { FaGithub, FaLinkedin, FaInstagram, FaTwitter } from 'react-icons/fa';
-import { HiOutlineArrowRight } from 'react-icons/hi';
+import { HiOutlineArrowRight, HiOutlineMail } from 'react-icons/hi';
 
 // Import local profile assets
 import profile1 from '../assets/profile1.jpg';
@@ -320,13 +320,17 @@ const Hero = () => {
   );
 };
 
-const SocialIcon = ({ href, icon }) => (
+const SocialPill = ({ href, icon, label }) => (
   <motion.a
     href={href}
-    whileHover={{ scale: 1.2, color: '#A9715B' }}
-    className="text-[#7C7267] text-2xl transition-colors cursor-pointer"
+    target="_blank"
+    rel="noopener noreferrer"
+    whileHover={{ scale: 1.05, y: -2 }}
+    whileTap={{ scale: 0.97 }}
+    className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-black/[0.08] bg-white/40 backdrop-blur-sm text-[#2C2621] text-xs font-bold tracking-wide hover:border-[#A9715B]/50 hover:bg-white/60 hover:shadow-[0_4px_15px_rgba(169,113,91,0.1)] transition-all duration-300 cursor-pointer"
   >
-    {icon}
+    <span className="text-[#A9715B] text-sm">{icon}</span>
+    {label}
   </motion.a>
 );
 
