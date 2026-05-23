@@ -138,26 +138,31 @@ const Hero = () => {
             </div>
           </motion.div>
 
-          <div className="flex items-center gap-10">
-             <div className="flex gap-4">
-                <SocialIcon href="#" icon={<FaGithub />} />
-                <SocialIcon href="#" icon={<FaLinkedin />} />
-                <SocialIcon href="#" icon={<FaInstagram />} />
-                <SocialIcon href="#" icon={<FaTwitter />} />
-             </div>
-             
-             <div className="h-8 w-[1px] bg-black/[0.08]"></div>
+          {/* Social Link Pills (Reference Style) */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.5 }}
+            className="flex flex-wrap items-center gap-3"
+          >
+            <SocialPill href="https://github.com/Techside-Pragyan" icon={<FaGithub />} label="GitHub" />
+            <SocialPill href="https://linkedin.com/in/pragyan-paramita-moharana" icon={<FaLinkedin />} label="LinkedIn" />
+            <SocialPill href="mailto:pragyanparamita@gmail.com" icon={<HiOutlineMail />} label="Gmail" />
+            <SocialPill href="https://instagram.com/" icon={<FaInstagram />} label="Instagram" />
+            <SocialPill href="https://twitter.com/" icon={<FaTwitter />} label="Twitter" />
+          </motion.div>
 
-             <div className="flex items-center gap-6 pt-0">
-               <motion.button 
-                 whileHover={{ scale: 1.05 }}
-                 whileTap={{ scale: 0.95 }}
-                 className="px-8 py-4 bg-[#2C2621] text-[#EAD8C3] font-black text-sm uppercase tracking-widest rounded-full hover:shadow-[0_10px_30px_rgba(44,38,33,0.15)] transition-all"
-               >
-                 Welcome
-               </motion.button>
-               <a href="#work" className="text-[#2C2621] font-bold text-sm uppercase tracking-widest flex items-center gap-2 group">
-                 Works <HiOutlineArrowRight className="group-hover:translate-x-2 transition-transform text-[#A9715B]" />
+          {/* CTA Buttons */}
+          <div className="flex items-center gap-6">
+              <motion.button 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-[#2C2621] text-[#EAD8C3] font-black text-sm uppercase tracking-widest rounded-full hover:shadow-[0_10px_30px_rgba(44,38,33,0.15)] transition-all"
+              >
+                Welcome
+              </motion.button>
+              <a href="#work" className="text-[#2C2621] font-bold text-sm uppercase tracking-widest flex items-center gap-2 group">
+                Works <HiOutlineArrowRight className="group-hover:translate-x-2 transition-transform text-[#A9715B]" />
                </a>
              </div>
           </div>
