@@ -13,13 +13,13 @@ import profile5 from '../assets/profile5.jpg';
 
 const images = [profile1, profile2, profile3, profile4, profile5];
 
-// Custom framing calibration for each photo to ensure they are consistently sized and head-centered in the circle
+// Custom headshot framing calibration for each photo to ensure faces are maximum-size, centered, and perfectly visible
 const imageSettings = [
-  { objectPosition: 'center 25%', scale: 1.0 },  // profile1 (close-up)
-  { objectPosition: 'center 12%', scale: 1.25 }, // profile2 (zoomed in & shifted up to perfectly center face)
-  { objectPosition: 'center 25%', scale: 1.05 }, // profile3 (portrait angle)
-  { objectPosition: 'center 20%', scale: 1.0 },  // profile4 (look-away angle)
-  { objectPosition: 'center 18%', scale: 1.15 }  // profile5 (smiling close-up)
+  { objectPosition: 'center 26%', scale: 1.25 }, // profile1 (B&W branches: close-up headshot zoom)
+  { objectPosition: 'center 12%', scale: 1.45 }, // profile2 (Outdoor glass: major zoom & shifted high to frame face)
+  { objectPosition: 'center 18%', scale: 1.42 }, // profile3 (Beach look-back: zoomed deep to focus on smile)
+  { objectPosition: 'center 18%', scale: 1.38 }, // profile4 (B&W side-look: zoomed in for head focus)
+  { objectPosition: 'center 15%', scale: 1.40 }  // profile5 (Wall look-back: perfect vertical close-up)
 ];
 
 const Hero = () => {
