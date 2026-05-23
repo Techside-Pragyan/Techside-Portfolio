@@ -113,10 +113,15 @@ const Hero = () => {
               <span className="block text-[#5C4A3D]">PARAMITA</span>
               <span className="block text-[#A9715B]">MOHARANA</span>
             </h1>
+            <h2 className="text-lg md:text-xl font-medium text-[#7C7267] tracking-wide mt-3">
+              <span className="text-[#A9715B]">AI/ML Engineer</span>
+              <span className="mx-2 text-[#C4B5A5]">|</span>
+              <span className="text-[#5C4A3D]">Computer Science Student</span>
+            </h2>
           </div>
 
           <p className="text-[#7C7267] font-light max-w-lg leading-relaxed text-sm md:text-base">
-            Crafting elegant code architectures and premium editorial design interfaces. Specializing in AI/ML engineering, interactive 3D physics, and luxury branding.
+            I'm into building intelligent systems, optimizing predictive models, and engineering creative AI solutions. Always exploring the intersection of data, mathematical logic, and deep learning to build the future. 🧠💻📊
           </p>
 
           <div className="flex items-center gap-10">
