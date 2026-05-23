@@ -145,12 +145,12 @@ const Hero = () => {
 
         {/* Right: Premium Interactive 3D Polaroid Card Deck */}
         <div 
-          className="relative h-[550px] lg:h-[650px] w-full flex flex-col items-center justify-center pointer-events-auto"
+          className="relative h-[650px] lg:h-[750px] w-full flex flex-col items-center justify-center pointer-events-auto"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
           {/* Glowing Ambient Ring behind the Portrait Stack */}
-          <div className="absolute w-[450px] h-[450px] rounded-full border border-[#A9715B]/10 bg-[radial-gradient(circle_at_center,rgba(169,113,91,0.02),transparent_70%)] pointer-events-none z-0"></div>
+          <div className="absolute w-[500px] h-[500px] rounded-full border border-[#A9715B]/10 bg-[radial-gradient(circle_at_center,rgba(169,113,91,0.02),transparent_70%)] pointer-events-none z-0"></div>
 
           {/* Holographic Text Overlay with opposite tilt direction for 3D parallax depth */}
           <motion.div 
@@ -160,7 +160,7 @@ const Hero = () => {
             }}
             className="absolute right-0 top-1/2 -translate-y-1/2 hidden xl:block text-right pointer-events-none z-10"
           >
-             <h2 className="text-7xl font-black text-[#2C2621]/[0.02] tracking-tighter leading-none select-none">
+             <h2 className="text-8xl font-black text-[#2C2621]/[0.02] tracking-tighter leading-none select-none">
                 CREATIVE <br/>
                 DESIGNER <br/>
                 DEVELOPER
@@ -174,24 +174,24 @@ const Hero = () => {
             perspective={1200}
             scale={1.01}
             transitionSpeed={1200}
-            className="relative w-full h-[450px] z-20 flex items-center justify-center"
+            className="relative w-full h-[520px] z-20 flex items-center justify-center"
           >
             {/* Ambient Glowing Backdrop Behind the Cards */}
-            <div className="absolute w-[360px] h-[480px] bg-gradient-to-tr from-[#A9715B]/10 via-[#E8D5C4]/10 to-[#7C7267]/10 blur-3xl pointer-events-none"></div>
+            <div className="absolute w-[400px] h-[520px] bg-gradient-to-tr from-[#A9715B]/10 via-[#E8D5C4]/10 to-[#7C7267]/10 blur-3xl pointer-events-none"></div>
 
             {/* Polaroid Cards Stack */}
-            <div className="relative w-[300px] h-[400px] flex items-center justify-center">
+            <div className="relative w-[380px] h-[500px] flex items-center justify-center">
               {cards.map((cardId) => {
                 const indexInStack = cards.indexOf(cardId);
                 const isFront = indexInStack === cards.length - 1;
                 
                 // Fan offsets & rotations
-                const rot = isHovered ? (indexInStack - 2) * 10 : (indexInStack - 2) * 3;
-                const xOffset = isHovered ? (indexInStack - 2) * 45 : (indexInStack - 2) * 6;
+                const rot = isHovered ? (indexInStack - 2) * 11 : (indexInStack - 2) * 3;
+                const xOffset = isHovered ? (indexInStack - 2) * 65 : (indexInStack - 2) * 8;
                 const yOffset = isHovered 
-                  ? Math.abs(indexInStack - 2) * 8 - 15 
-                  : (cards.length - 1 - indexInStack) * -12;
-                const scaleVal = indexInStack * 0.04 + 0.84;
+                  ? Math.abs(indexInStack - 2) * 10 - 25 
+                  : (cards.length - 1 - indexInStack) * -15;
+                const scaleVal = indexInStack * 0.03 + 0.88;
 
                 return (
                   <motion.div
@@ -221,12 +221,12 @@ const Hero = () => {
                         cycleForward();
                       }
                     }}
-                    className={`absolute w-[290px] h-[395px] rounded-3xl bg-white border border-[#EAD8C3] shadow-[0_15px_40px_rgba(44,38,33,0.08)] flex flex-col p-4 cursor-grab active:cursor-grabbing interactive transition-shadow duration-300 ${
-                      isFront ? 'hover:shadow-[0_20px_50px_rgba(169,113,91,0.12)]' : ''
+                    className={`absolute w-[300px] h-[410px] sm:w-[350px] sm:h-[480px] md:w-[380px] md:h-[510px] rounded-3xl bg-white border border-[#EAD8C3] shadow-[0_15px_40px_rgba(44,38,33,0.08)] flex flex-col p-4 sm:p-5 cursor-grab active:cursor-grabbing interactive transition-shadow duration-300 ${
+                      isFront ? 'hover:shadow-[0_25px_50px_rgba(169,113,91,0.15)]' : ''
                     }`}
                   >
                     {/* Image Box */}
-                    <div className="relative w-full h-[310px] rounded-2xl overflow-hidden border border-black/[0.04] bg-[#EAD8C3]">
+                    <div className="relative w-full h-[320px] sm:h-[380px] md:h-[415px] rounded-2xl overflow-hidden border border-black/[0.04] bg-[#EAD8C3]">
                       <img
                         src={images[cardId]}
                         alt={captions[cardId]}
@@ -238,7 +238,7 @@ const Hero = () => {
                     </div>
 
                     {/* Caption */}
-                    <span className="font-sans text-[10px] font-black text-[#7C7267] tracking-[0.25em] mt-3 block text-center uppercase select-none">
+                    <span className="font-sans text-[10px] sm:text-xs font-black text-[#7C7267] tracking-[0.25em] mt-3 sm:mt-4 block text-center uppercase select-none">
                       {captions[cardId]}
                     </span>
                   </motion.div>
@@ -248,7 +248,7 @@ const Hero = () => {
           </Tilt>
 
           {/* Elegant Deck Controls & Swipe Indicators */}
-          <div className="flex items-center gap-6 mt-8 z-30">
+          <div className="flex items-center gap-6 mt-12 z-30">
             <button
               onClick={cycleBackward}
               className="w-10 h-10 rounded-full border border-black/[0.08] flex items-center justify-center text-[#7C7267] hover:text-[#2C2621] hover:border-[#A9715B]/50 hover:bg-white transition-all duration-300 interactive shadow-sm"
