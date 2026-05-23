@@ -169,7 +169,20 @@ const Hero = () => {
               className="relative w-[330px] h-[330px] md:w-[360px] md:h-[360px] rounded-full p-[3px] bg-gradient-to-tr from-purple-500 via-pink-500 to-cyan-400 shadow-[0_0_50px_rgba(168,85,247,0.25)] select-none cursor-pointer focus:outline-none"
             >
               <div className="w-full h-full rounded-full overflow-hidden bg-[#030014] border-4 border-[#030014] relative group">
-                />
+                
+                {/* Crossfade Slideshow Images */}
+                <AnimatePresence mode="wait">
+                  <motion.img 
+                    key={currentImgIndex}
+                    src={images[currentImgIndex]} 
+                    alt="Pragyan Paramita Moharana" 
+                    initial={{ opacity: 0, scale: 1.15 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                </AnimatePresence>
                 
                 {/* Cyber HUD Grid Overlay */}
                 <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[size:100%_4px,6px_100%] opacity-20 pointer-events-none"></div>
@@ -177,7 +190,7 @@ const Hero = () => {
                 {/* Subtle dark bottom gradient cover */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60 group-hover:opacity-25 transition-opacity duration-500 pointer-events-none"></div>
               </div>
-            </div>
+            </button>
           </Tilt>
         </div>
       </div>
