@@ -16,13 +16,13 @@ const ParticlesBackground = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none bg-[#030014]">
-      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.25),rgba(255,255,255,0))]"></div>
+    <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none bg-transparent">
+      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(169,113,91,0.06),rgba(255,255,255,0))]"></div>
       
       {particles.map((p) => (
         <div
           key={p.id}
-          className="absolute rounded-full bg-purple-500/30 blur-[0.5px] animate-particle-gpu"
+          className="absolute rounded-full bg-[#A9715B]/20 blur-[0.5px] animate-particle-gpu"
           style={{
             width: `${p.size}px`,
             height: `${p.size}px`,

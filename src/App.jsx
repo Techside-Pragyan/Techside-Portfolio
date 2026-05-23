@@ -27,7 +27,7 @@ function App() {
 
       {!loading && (
         <ReactLenis root options={{ lerp: 0.05, smoothWheel: true }}>
-          <div className="relative min-h-screen bg-[#030014] text-white selection:bg-cyan-500/30 overflow-hidden font-sans">
+          <div className="relative min-h-screen bg-[#FAF6F0] text-[#2C2621] overflow-hidden font-sans">
             <CustomCursor />
             <ParticlesBackground />
             
