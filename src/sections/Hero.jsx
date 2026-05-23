@@ -13,6 +13,15 @@ import profile5 from '../assets/profile5.jpg';
 
 const images = [profile1, profile2, profile3, profile4, profile5];
 
+// Custom framing calibration for each photo to ensure they are consistently sized and head-centered in the circle
+const imageSettings = [
+  { objectPosition: 'center 25%', scale: 1.0 },  // profile1 (close-up)
+  { objectPosition: 'center 12%', scale: 1.25 }, // profile2 (zoomed in & shifted up to perfectly center face)
+  { objectPosition: 'center 25%', scale: 1.05 }, // profile3 (portrait angle)
+  { objectPosition: 'center 20%', scale: 1.0 },  // profile4 (look-away angle)
+  { objectPosition: 'center 18%', scale: 1.15 }  // profile5 (smiling close-up)
+];
+
 const Hero = () => {
   const [time, setTime] = useState(new Date());
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
@@ -170,16 +179,19 @@ const Hero = () => {
             >
               <div className="w-full h-full rounded-full overflow-hidden bg-[#030014] border-4 border-[#030014] relative group">
                 
-                {/* Crossfade Slideshow Images */}
+                {/* Crossfade Slideshow Images with Custom Frame Calibration */}
                 <AnimatePresence mode="wait">
                   <motion.img 
                     key={currentImgIndex}
                     src={images[currentImgIndex]} 
                     alt="Pragyan Paramita Moharana" 
-                    initial={{ opacity: 0, scale: 1.15 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
+                    initial={{ opacity: 0, scale: (imageSettings[currentImgIndex]?.scale ?? 1) * 1.15 }}
+                    animate={{ opacity: 1, scale: imageSettings[currentImgIndex]?.scale ?? 1 }}
+                    exit={{ opacity: 0, scale: (imageSettings[currentImgIndex]?.scale ?? 1) * 0.95 }}
                     transition={{ duration: 0.8, ease: "easeInOut" }}
+                    style={{ 
+                      objectPosition: imageSettings[currentImgIndex]?.objectPosition ?? 'center',
+                    }}
                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
                 </AnimatePresence>
