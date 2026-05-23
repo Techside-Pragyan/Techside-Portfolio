@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import Tilt from 'react-parallax-tilt';
 import { FaGithub, FaLinkedin, FaInstagram, FaTwitter } from 'react-icons/fa';
 import { HiOutlineDownload, HiOutlineArrowRight } from 'react-icons/hi';
 
 const Hero = () => {
   const [time, setTime] = useState(new Date());
 
-  // Framer motion values for tracking mouse position natively without trigger re-renders
+  // Framer motion values for background depth parallax tracking
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -14,25 +15,11 @@ const Hero = () => {
   const springX = useSpring(mouseX, { stiffness: 80, damping: 25 });
   const springY = useSpring(mouseY, { stiffness: 80, damping: 25 });
 
-  // Map mouse positions to 3D rotation angles (perspective tilt)
-  const rotateX = useTransform(springY, [-0.5, 0.5], [12, -12]);
-  const rotateY = useTransform(springX, [-0.5, 0.5], [-12, 12]);
-
-  // Map to smaller angles for background text to create depth (parallax)
-  const textRotateX = useTransform(springY, [-0.5, 0.5], [4, -4]);
-  const textRotateY = useTransform(springX, [-0.5, 0.5], [-4, 4]);
-  const textX = useTransform(springX, [-0.5, 0.5], [-20, 20]);
-  const textY = useTransform(springY, [-0.5, 0.5], [-20, 20]);
+  // Map to smaller coordinates for background text to create depth (parallax)
+  const textX = useTransform(springX, [-0.5, 0.5], [-30, 30]);
+  const textY = useTransform(springY, [-0.5, 0.5], [-30, 30]);
 
   useEffect(() => {
-    // Inject Spline Viewer Script
-    if (!document.querySelector('script[src="https://unpkg.com/@splinetool/viewer@1.0.51/build/spline-viewer.js"]')) {
-      const script = document.createElement('script');
-      script.type = 'module';
-      script.src = 'https://unpkg.com/@splinetool/viewer@1.0.51/build/spline-viewer.js';
-      document.body.appendChild(script);
-    }
-
     const handleMouseMove = (e) => {
       const { clientX, clientY } = e;
       const { innerWidth, innerHeight } = window;
@@ -53,7 +40,7 @@ const Hero = () => {
   const formattedTime = time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden bg-[#030014] perspective-[1500px]">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden bg-[#030014] perspective-lg">
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.05),transparent_70%)] pointer-events-none"></div>
 
@@ -118,34 +105,18 @@ const Hero = () => {
         </motion.div>
 
         {/* Right: Large 3D Female Character with Interactive Mouse Tilt Parallax */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-          style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-          className="relative h-[600px] lg:h-[800px] w-full flex items-center justify-center pointer-events-auto cursor-grab active:cursor-grabbing"
-        >
-          {/* Glowing Ring around the 3D Character */}
-          <div className="absolute w-[450px] h-[450px] rounded-full border border-purple-500/10 bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.03),transparent_70%)] pointer-events-none transform translate-z-[-50px]"></div>
-
-          <div className="w-full h-full scale-125 transform translate-z-[50px] select-none">
-            <spline-viewer 
-              url="https://prod.spline.design/ATpf8S9X9o9y4z-m/scene.splinecode" 
-              className="w-full h-full"
-            ></spline-viewer>
-          </div>
+        <div className="relative h-[550px] lg:h-[750px] w-full flex items-center justify-center">
           
-          {/* Floating Holographic Text Overlay with opposite tilt direction for 3D parallax depth */}
+          {/* Glowing Ring behind the 3D Character */}
+          <div className="absolute w-[450px] h-[450px] rounded-full border border-purple-500/10 bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.03),transparent_70%)] pointer-events-none z-0"></div>
+
+          {/* Holographic Text Overlay with opposite tilt direction for 3D parallax depth */}
           <motion.div 
             style={{ 
-              rotateX: textRotateX, 
-              rotateY: textRotateY,
               x: textX,
-              y: textY,
-              transformStyle: "preserve-3d",
-              translateZ: "-100px" 
+              y: textY
             }}
-            className="absolute right-0 top-1/2 -translate-y-1/2 hidden xl:block text-right pointer-events-none"
+            className="absolute right-0 top-1/2 -translate-y-1/2 hidden xl:block text-right pointer-events-none z-10"
           >
              <h2 className="text-7xl font-black text-white/[0.03] tracking-tighter leading-none select-none">
                 CREATIVE <br/>
@@ -153,7 +124,24 @@ const Hero = () => {
                 DEVELOPER
              </h2>
           </motion.div>
-        </motion.div>
+
+          {/* Premium Hardware-Accelerated 3D Tilt Wrapper */}
+          <Tilt
+            tiltMaxAngleX={12}
+            tiltMaxAngleY={12}
+            perspective={1200}
+            scale={1.05}
+            transitionSpeed={1200}
+            className="w-full h-full relative z-20 cursor-grab active:cursor-grabbing flex items-center justify-center"
+          >
+            <div className="w-[125%] h-[125%] select-none pointer-events-none">
+              <spline-viewer 
+                url="https://prod.spline.design/ATpf8S9X9o9y4z-m/scene.splinecode" 
+                className="w-full h-full"
+              ></spline-viewer>
+            </div>
+          </Tilt>
+        </div>
       </div>
 
       {/* Scroll Indicator */}
