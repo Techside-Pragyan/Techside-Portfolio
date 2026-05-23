@@ -21,7 +21,7 @@ const LoadingScreen = ({ onComplete }) => {
 
   return (
     <motion.div
-      className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-[#FAF6F0]"
+      className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-[#EAD8C3]"
       exit={{ opacity: 0, y: -50, filter: 'blur(10px)' }}
       transition={{ duration: 0.8, ease: 'easeInOut' }}
     >
