@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
-import { FaGithub, FaLinkedin, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { HiOutlineArrowRight, HiOutlineMail } from 'react-icons/hi';
 
 // Import local profile assets
@@ -146,10 +146,9 @@ const Hero = () => {
             className="flex flex-wrap items-center gap-3"
           >
             <SocialPill href="https://github.com/Techside-Pragyan" icon={<FaGithub />} label="GitHub" />
-            <SocialPill href="https://linkedin.com/in/pragyan-paramita-moharana" icon={<FaLinkedin />} label="LinkedIn" />
-            <SocialPill href="mailto:pragyanparamita@gmail.com" icon={<HiOutlineMail />} label="Gmail" />
-            <SocialPill href="https://instagram.com/" icon={<FaInstagram />} label="Instagram" />
-            <SocialPill href="https://twitter.com/" icon={<FaTwitter />} label="Twitter" />
+            <SocialPill href="https://www.linkedin.com/in/pragyan-paramita-moharana" icon={<FaLinkedin />} label="LinkedIn" />
+            <SocialPill href="mailto:pragyanpramitamoharana@gmail.com" icon={<HiOutlineMail />} label="Gmail" />
+
           </motion.div>
 
           {/* CTA Buttons */}
@@ -165,7 +164,6 @@ const Hero = () => {
                 Works <HiOutlineArrowRight className="group-hover:translate-x-2 transition-transform text-[#A9715B]" />
                </a>
              </div>
-          </div>
         </motion.div>
 
         {/* Right: Premium Interactive 3D Polaroid Card Deck */}
