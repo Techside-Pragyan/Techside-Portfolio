@@ -1,8 +1,12 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { HiOutlineCode, HiOutlinePencilAlt, HiOutlineSparkles } from 'react-icons/hi';
 
 const WhatIDo = () => {
+  const containerRef = useRef(null);
+  // Lazy load 3D workstation scene only when visible (at least 15% inside screen viewport)
+  const isInView = useInView(containerRef, { once: false, amount: 0.15 });
+
   return (
     <section id="work" className="py-24 px-6 relative z-10 overflow-hidden bg-[#030014]">
       <div className="container mx-auto max-w-7xl">
@@ -37,18 +41,24 @@ const WhatIDo = () => {
             </div>
           </motion.div>
 
-          {/* Right Side: Immersive 3D Workstation Scene */}
+          {/* Right Side: Immersive 3D Workstation Scene (Lazy Loaded) */}
           <motion.div
+            ref={containerRef}
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="relative h-[600px] pointer-events-auto order-1 lg:order-2 cursor-grab active:cursor-grabbing"
+            className="relative h-[600px] pointer-events-auto order-1 lg:order-2 cursor-grab active:cursor-grabbing flex items-center justify-center"
           >
-            <spline-viewer 
-              url="https://prod.spline.design/Kz77MhlO0h94hVp5/scene.splinecode" 
-              className="w-full h-full"
-            ></spline-viewer>
+            {isInView ? (
+              <spline-viewer 
+                url="https://prod.spline.design/Kz77MhlO0h94hVp5/scene.splinecode" 
+                className="w-full h-full"
+              ></spline-viewer>
+            ) : (
+              // Light glowing ambient backdrop to represent desk workspace lighting when offscreen
+              <div className="w-[350px] h-[350px] rounded-full bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.15),transparent_70%)] blur-3xl animate-pulse pointer-events-none"></div>
+            )}
             
             {/* Overlay Gradient to blend desk with background */}
             <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-[#030014] to-transparent pointer-events-none"></div>
