@@ -1,24 +1,34 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 
 const About = () => {
+  const containerRef = useRef(null);
+  // Track if the section is inside the viewport (amount: 0.1 means at least 10% visible)
+  const isInView = useInView(containerRef, { once: false, amount: 0.15 });
+
   return (
     <section id="about" className="py-24 px-6 relative z-10 overflow-hidden bg-[#030014]">
       <div className="container mx-auto max-w-7xl">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           
-          {/* Left Side: Interactive 3D Portal Crystal */}
+          {/* Left Side: Interactive 3D Portal Crystal (Lazy Loaded) */}
           <motion.div
+            ref={containerRef}
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="relative h-[500px] lg:h-[700px] pointer-events-auto cursor-grab active:cursor-grabbing"
+            className="relative h-[500px] lg:h-[700px] pointer-events-auto cursor-grab active:cursor-grabbing flex items-center justify-center"
           >
-            <spline-viewer 
-              url="https://prod.spline.design/6Wq1Q7YGyM2G5qth/scene.splinecode" 
-              className="w-full h-full scale-110"
-            ></spline-viewer>
+            {isInView ? (
+              <spline-viewer 
+                url="https://prod.spline.design/6Wq1Q7YGyM2G5qth/scene.splinecode" 
+                className="w-full h-full scale-110"
+              ></spline-viewer>
+            ) : (
+              // High-performance beautiful glowing backing placeholder when off-screen
+              <div className="w-[300px] h-[300px] rounded-full bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.15),transparent_70%)] blur-3xl animate-pulse pointer-events-none"></div>
+            )}
             
             {/* Background Glow */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.1),transparent_70%)] -z-10 pointer-events-none"></div>
