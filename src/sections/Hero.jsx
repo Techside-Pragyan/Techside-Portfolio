@@ -13,13 +13,13 @@ import profile5 from '../assets/profile5.jpg';
 
 const images = [profile1, profile2, profile3, profile4, profile5];
 
-// Custom headshot framing calibration for each photo to ensure faces are maximum-size, centered, and perfectly visible
+// Standard framing settings to display the FULL portrait pictures in their entire aspect ratios without any cropping
 const imageSettings = [
-  { objectPosition: 'center 26%', scale: 1.25 }, // profile1 (B&W branches: close-up headshot zoom)
-  { objectPosition: 'center 12%', scale: 1.45 }, // profile2 (Outdoor glass: major zoom & shifted high to frame face)
-  { objectPosition: 'center 18%', scale: 1.42 }, // profile3 (Beach look-back: zoomed deep to focus on smile)
-  { objectPosition: 'center 18%', scale: 1.38 }, // profile4 (B&W side-look: zoomed in for head focus)
-  { objectPosition: 'center 15%', scale: 1.40 }  // profile5 (Wall look-back: perfect vertical close-up)
+  { objectPosition: 'center', scale: 1.0 },
+  { objectPosition: 'center', scale: 1.0 },
+  { objectPosition: 'center', scale: 1.0 },
+  { objectPosition: 'center', scale: 1.0 },
+  { objectPosition: 'center', scale: 1.0 }
 ];
 
 const Hero = () => {
@@ -134,7 +134,7 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        {/* Right: Premium Interactive 3D Cyber-Portrait (Circular Profile Pic) */}
+        {/* Right: Premium Interactive 3D Cyber-Portrait (Rounded Rectangular Card to fit FULL pictures) */}
         <div className="relative h-[550px] lg:h-[750px] w-full flex items-center justify-center">
           
           {/* Glowing Ambient Ring behind the Portrait */}
@@ -157,37 +157,39 @@ const Hero = () => {
 
           {/* Premium Hardware-Accelerated 3D Tilt Wrapper */}
           <Tilt
-            tiltMaxAngleX={15}
-            tiltMaxAngleY={15}
+            tiltMaxAngleX={10}
+            tiltMaxAngleY={10}
             perspective={1200}
-            scale={1.05}
+            scale={1.03}
             transitionSpeed={1200}
             className="w-full h-full relative z-20 flex items-center justify-center"
           >
-            {/* Outer Slow-Rotating Cyber HUD Rings */}
-            <div className="absolute w-[400px] h-[400px] rounded-full border-2 border-dashed border-cyan-500/20 animate-[spin_40s_linear_infinite] pointer-events-none"></div>
-            <div className="absolute w-[420px] h-[420px] rounded-full border border-purple-500/10 animate-[spin_25s_linear_infinite_reverse] pointer-events-none"></div>
+            {/* Ambient Glowing Backdrop Behind the Card */}
+            <div className="absolute w-[360px] h-[480px] bg-gradient-to-tr from-purple-500/10 via-pink-500/10 to-cyan-500/10 blur-3xl pointer-events-none"></div>
 
-            {/* Glowing Ambient Backdrop Color */}
-            <div className="absolute w-[340px] h-[340px] rounded-full bg-gradient-to-tr from-purple-500/20 via-pink-500/20 to-cyan-500/20 blur-2xl pointer-events-none"></div>
+            {/* Futuristic Cyber Bracket HUD Overlays */}
+            <div className="absolute -top-3 -left-3 w-8 h-8 border-t-2 border-l-2 border-cyan-400 pointer-events-none z-30 opacity-70 animate-pulse"></div>
+            <div className="absolute -top-3 -right-3 w-8 h-8 border-t-2 border-r-2 border-cyan-400 pointer-events-none z-30 opacity-70 animate-pulse"></div>
+            <div className="absolute -bottom-3 -left-3 w-8 h-8 border-b-2 border-l-2 border-purple-500 pointer-events-none z-30 opacity-70 animate-pulse"></div>
+            <div className="absolute -bottom-3 -right-3 w-8 h-8 border-b-2 border-r-2 border-purple-500 pointer-events-none z-30 opacity-70 animate-pulse"></div>
 
-            {/* Profile Picture Frame with Premium Gradient Edge */}
+            {/* Profile Picture Card with Premium Gradient Edge (Aspect ratio is set to fit standard portrait photos fully) */}
             <button
               onClick={handleNextPhoto}
               title="Click to see next photo"
-              className="relative w-[330px] h-[330px] md:w-[360px] md:h-[360px] rounded-full p-[3px] bg-gradient-to-tr from-purple-500 via-pink-500 to-cyan-400 shadow-[0_0_50px_rgba(168,85,247,0.25)] select-none cursor-pointer focus:outline-none"
+              className="relative w-[320px] h-[440px] md:w-[360px] md:h-[480px] rounded-3xl p-[3px] bg-gradient-to-tr from-purple-500 via-pink-500 to-cyan-400 shadow-[0_0_50px_rgba(168,85,247,0.2)] select-none cursor-pointer focus:outline-none"
             >
-              <div className="w-full h-full rounded-full overflow-hidden bg-[#030014] border-4 border-[#030014] relative group">
+              <div className="w-full h-full rounded-[20px] overflow-hidden bg-[#030014] border-4 border-[#030014] relative group">
                 
-                {/* Crossfade Slideshow Images with Custom Frame Calibration */}
+                {/* Crossfade Slideshow Images - Displaying the FULL picture without cutting any parts! */}
                 <AnimatePresence mode="wait">
                   <motion.img 
                     key={currentImgIndex}
                     src={images[currentImgIndex]} 
                     alt="Pragyan Paramita Moharana" 
-                    initial={{ opacity: 0, scale: (imageSettings[currentImgIndex]?.scale ?? 1) * 1.15 }}
-                    animate={{ opacity: 1, scale: imageSettings[currentImgIndex]?.scale ?? 1 }}
-                    exit={{ opacity: 0, scale: (imageSettings[currentImgIndex]?.scale ?? 1) * 0.95 }}
+                    initial={{ opacity: 0, scale: 1.05 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
                     transition={{ duration: 0.8, ease: "easeInOut" }}
                     style={{ 
                       objectPosition: imageSettings[currentImgIndex]?.objectPosition ?? 'center',
@@ -200,7 +202,7 @@ const Hero = () => {
                 <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[size:100%_4px,6px_100%] opacity-20 pointer-events-none"></div>
 
                 {/* Subtle dark bottom gradient cover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60 group-hover:opacity-25 transition-opacity duration-500 pointer-events-none"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-50 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none"></div>
               </div>
             </button>
           </Tilt>
