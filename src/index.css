@@ -4,15 +4,15 @@
 
 @layer base {
   :root {
-    --bg-primary: 252 56% 2%;
-    --bg-secondary: 252 56% 4%;
-    --accent-purple: 270 95% 60%;
-    --accent-cyan: 190 95% 50%;
-    --accent-pink: 330 95% 60%;
+    --bg-primary: 36 25% 97%; /* #FAF6F0 (Luxurious Linen Cream) */
+    --bg-secondary: 36 20% 93%; /* #EAE2D5 (Soft Warm Sand) */
+    --accent-purple: 18 43% 62%; /* #C88E75 (Earthy Terracotta Nude) */
+    --accent-cyan: 30 50% 80%; /* #E3CBB3 (Champagne Sand Glow) */
+    --accent-pink: 24 15% 46%; /* #8B7E74 (Warm Deep Taupe) */
   }
 
   body {
-    @apply bg-[#030014] text-gray-200 overflow-x-hidden font-sans cursor-none;
+    @apply bg-[#FAF6F0] text-[#2C2621] overflow-x-hidden font-sans cursor-none;
     background-color: hsl(var(--bg-primary));
   }
   
@@ -21,7 +21,7 @@
   }
   
   ::selection {
-    @apply bg-cyan-500/30 text-cyan-200;
+    @apply bg-[#E8D5C4] text-[#2C2621];
   }
 }
 
@@ -47,32 +47,32 @@
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-cyan-500;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#A9715B] to-[#7C7267];
   }
 
   .text-gradient-animated {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-cyan-400 to-pink-500 bg-[length:200%_auto] animate-gradient;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#A9715B] via-[#E8D5C4] to-[#7C7267] bg-[length:200%_auto] animate-gradient;
   }
 
   .glass-card {
-    @apply bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-3xl shadow-[0_8px_32px_rgba(0,0,0,0.4)] relative overflow-hidden preserve-3d;
+    @apply bg-white/40 backdrop-blur-xl border border-black/[0.06] rounded-3xl shadow-[0_8px_32px_rgba(44,38,33,0.04)] relative overflow-hidden preserve-3d;
   }
   
   .glass-card::before {
     content: '';
-    @apply absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent pointer-events-none;
+    @apply absolute inset-0 bg-gradient-to-br from-white/30 to-transparent pointer-events-none;
   }
 
   .floating-dock {
-    @apply fixed bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-1 p-2 rounded-full bg-black/40 backdrop-blur-2xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-[100];
+    @apply fixed bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-1 p-2 rounded-full bg-white/50 backdrop-blur-2xl border border-black/[0.06] shadow-[0_15px_40px_rgba(44,38,33,0.08)] z-[100];
   }
 
   .dock-item {
-    @apply relative w-12 h-12 flex items-center justify-center rounded-full text-gray-400 hover:text-white transition-all duration-300;
+    @apply relative w-12 h-12 flex items-center justify-center rounded-full text-[#7C7267] hover:text-[#2C2621] transition-all duration-300;
   }
 
   .glow-button {
-    @apply relative inline-flex items-center justify-center px-10 py-4 text-base font-bold text-white transition-all duration-300 bg-transparent border border-purple-500/50 rounded-full hover:bg-purple-500/20 hover:border-purple-500 hover:shadow-[0_0_30px_rgba(168,85,247,0.4)] focus:outline-none overflow-hidden;
+    @apply relative inline-flex items-center justify-center px-10 py-4 text-base font-bold text-white transition-all duration-300 bg-[#2C2621] border border-[#2C2621] rounded-full hover:bg-transparent hover:text-[#2C2621] hover:border-[#2C2621] hover:shadow-[0_10px_30px_rgba(44,38,33,0.15)] focus:outline-none overflow-hidden;
   }
 
   .glow-button::after {
@@ -86,12 +86,12 @@
 
   .noise-bg {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    opacity: 0.03;
+    opacity: 0.015;
     @apply pointer-events-none absolute inset-0 z-[-1];
   }
 
   .badge-tag {
-    @apply px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-400 text-[10px] font-bold uppercase tracking-widest hover:border-cyan-500/50 hover:text-cyan-400 transition-all cursor-default;
+    @apply px-3 py-1 rounded-full bg-black/[0.03] border border-black/[0.06] text-[#7C7267] text-[10px] font-bold uppercase tracking-widest hover:border-[#A9715B]/50 hover:text-[#A9715B] transition-all cursor-default;
   }
 
   .status-dot {
@@ -99,8 +99,8 @@
   }
 
   .mesh-gradient {
-    background: radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 100% 0%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
+    background: radial-gradient(circle at 50% 50%, rgba(169, 113, 91, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 100% 0%, rgba(227, 203, 179, 0.05) 0%, transparent 50%);
   }
 }
 
@@ -110,17 +110,17 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #030014;
+  background: #FAF6F0;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2a2a3e;
+  background: #E5DEC9;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a855f7;
-  box-shadow: 0 0 10px rgba(168,85,247,0.5);
+  background: #A9715B;
+  box-shadow: 0 0 10px rgba(169,113,91,0.3);
 }
 
 /* Animations */
