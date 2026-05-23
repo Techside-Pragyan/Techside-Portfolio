@@ -1,11 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
 import { FaGithub, FaLinkedin, FaInstagram, FaTwitter } from 'react-icons/fa';
-import { HiOutlineDownload, HiOutlineArrowRight } from 'react-icons/hi';
+import { HiOutlineArrowRight } from 'react-icons/hi';
+
+// Import local profile assets
+import profile1 from '../assets/profile1.jpg';
+import profile2 from '../assets/profile2.jpg';
+import profile3 from '../assets/profile3.jpg';
+import profile4 from '../assets/profile4.jpg';
+import profile5 from '../assets/profile5.jpg';
+
+const images = [profile1, profile2, profile3, profile4, profile5];
 
 const Hero = () => {
   const [time, setTime] = useState(new Date());
+  const [currentImgIndex, setCurrentImgIndex] = useState(0);
 
   // Framer motion values for background depth parallax tracking
   const mouseX = useMotionValue(0);
@@ -29,13 +39,24 @@ const Hero = () => {
     };
 
     window.addEventListener('mousemove', handleMouseMove);
+    
+    // Auto-cycle through the profile slideshow every 4.5 seconds
+    const slideTimer = setInterval(() => {
+      setCurrentImgIndex((prev) => (prev + 1) % images.length);
+    }, 4500);
+
     const timer = setInterval(() => setTime(new Date()), 1000);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
+      clearInterval(slideTimer);
       clearInterval(timer);
     };
   }, [mouseX, mouseY]);
+
+  const handleNextPhoto = () => {
+    setCurrentImgIndex((prev) => (prev + 1) % images.length);
+  };
 
   const formattedTime = time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
@@ -142,12 +163,12 @@ const Hero = () => {
             <div className="absolute w-[340px] h-[340px] rounded-full bg-gradient-to-tr from-purple-500/20 via-pink-500/20 to-cyan-500/20 blur-2xl pointer-events-none"></div>
 
             {/* Profile Picture Frame with Premium Gradient Edge */}
-            <div className="relative w-[330px] h-[330px] md:w-[360px] md:h-[360px] rounded-full p-[3px] bg-gradient-to-tr from-purple-500 via-pink-500 to-cyan-400 shadow-[0_0_50px_rgba(168,85,247,0.25)] select-none">
+            <button
+              onClick={handleNextPhoto}
+              title="Click to see next photo"
+              className="relative w-[330px] h-[330px] md:w-[360px] md:h-[360px] rounded-full p-[3px] bg-gradient-to-tr from-purple-500 via-pink-500 to-cyan-400 shadow-[0_0_50px_rgba(168,85,247,0.25)] select-none cursor-pointer focus:outline-none"
+            >
               <div className="w-full h-full rounded-full overflow-hidden bg-[#030014] border-4 border-[#030014] relative group">
-                <img 
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=1000" 
-                  alt="Pragyan Paramita Moharana" 
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                 />
                 
                 {/* Cyber HUD Grid Overlay */}
