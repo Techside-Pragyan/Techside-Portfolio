@@ -28,7 +28,7 @@ const ChatbotUI = () => {
   return (
     <>
       <motion.button
-        className="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-purple-600/80 backdrop-blur-md flex items-center justify-center text-white shadow-[0_0_20px_rgba(168,85,247,0.5)] z-[90] interactive hover:bg-cyan-500/80 hover:shadow-[0_0_20px_rgba(6,182,212,0.5)] transition-all duration-300"
+        className="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-[#A9715B]/90 backdrop-blur-md flex items-center justify-center text-white shadow-[0_4px_20px_rgba(169,113,91,0.3)] z-[90] interactive hover:bg-[#2C2621]/90 hover:shadow-[0_4px_20px_rgba(44,38,33,0.3)] transition-all duration-300"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(true)}
@@ -43,39 +43,39 @@ const ChatbotUI = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 50, scale: 0.9 }}
             transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-            className="fixed bottom-24 right-6 w-80 sm:w-96 glass-card border border-purple-500/30 z-[90] shadow-[0_10px_40px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden"
+            className="fixed bottom-24 right-6 w-80 sm:w-96 glass-card border border-black/[0.06] z-[90] shadow-[0_15px_50px_rgba(44,38,33,0.08)] flex flex-col overflow-hidden bg-white/60"
           >
             {/* Header */}
-            <div className="bg-purple-900/40 p-4 border-b border-purple-500/20 flex justify-between items-center backdrop-blur-md">
+            <div className="bg-[#FAF6F0]/80 p-4 border-b border-black/[0.06] flex justify-between items-center backdrop-blur-md">
               <div className="flex items-center gap-3">
                 <div className="relative">
-                  <div className="w-8 h-8 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 border border-cyan-500/50">
+                  <div className="w-8 h-8 rounded-full bg-[#A9715B]/10 flex items-center justify-center text-[#A9715B] border border-[#A9715B]/30">
                     <FaRobot />
                   </div>
-                  <div className="absolute top-0 right-0 w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+                  <div className="absolute top-0 right-0 w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
                 </div>
                 <div>
-                  <h3 className="font-bold text-white text-sm">AI Assistant</h3>
-                  <p className="text-xs text-cyan-400">Online</p>
+                  <h3 className="font-bold text-[#2C2621] text-sm">AI Assistant</h3>
+                  <p className="text-xs text-[#A9715B]">Online</p>
                 </div>
               </div>
               <button 
                 onClick={() => setIsOpen(false)}
-                className="text-gray-400 hover:text-white interactive"
+                className="text-[#7C7267] hover:text-[#2C2621] interactive"
               >
                 <FaTimes />
               </button>
             </div>
 
             {/* Chat Body */}
-            <div className="flex-1 h-64 overflow-y-auto p-4 flex flex-col gap-3 custom-scrollbar bg-[#030014]/60">
+            <div className="flex-1 h-64 overflow-y-auto p-4 flex flex-col gap-3 custom-scrollbar bg-[#FAF6F0]/95">
               {messages.map((msg, idx) => (
                 <div 
                   key={idx} 
-                  className={`max-w-[80%] rounded-2xl px-4 py-2 text-sm ${
+                  className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm font-medium ${
                     msg.sender === 'user' 
-                      ? 'bg-cyan-500/20 border border-cyan-500/30 text-white self-end rounded-tr-sm' 
-                      : 'bg-purple-500/20 border border-purple-500/30 text-gray-200 self-start rounded-tl-sm'
+                      ? 'bg-[#A9715B]/15 border border-[#A9715B]/20 text-[#2C2621] self-end rounded-tr-sm shadow-sm' 
+                      : 'bg-[#EAE2D5]/40 border border-black/[0.04] text-[#2C2621]/90 self-start rounded-tl-sm'
                   }`}
                 >
                   {msg.text}
@@ -84,17 +84,17 @@ const ChatbotUI = () => {
             </div>
 
             {/* Input */}
-            <form onSubmit={handleSend} className="p-3 border-t border-purple-500/20 bg-black/40 flex gap-2">
+            <form onSubmit={handleSend} className="p-3 border-t border-black/[0.06] bg-[#FAF6F0] flex gap-2">
               <input
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Ask me anything..."
-                className="flex-1 bg-transparent border-none outline-none text-white text-sm placeholder-gray-500"
+                className="flex-1 bg-transparent border-none outline-none text-[#2C2621] text-sm placeholder-gray-400 font-medium"
               />
               <button 
                 type="submit" 
-                className="w-8 h-8 rounded-full bg-purple-500/50 flex items-center justify-center text-white hover:bg-cyan-500/50 transition-colors interactive"
+                className="w-8 h-8 rounded-full bg-[#2C2621] flex items-center justify-center text-white hover:bg-[#A9715B] transition-colors interactive"
               >
                 <FaPaperPlane size={12} className="-ml-0.5" />
               </button>

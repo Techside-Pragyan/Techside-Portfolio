@@ -21,7 +21,7 @@ const LoadingScreen = ({ onComplete }) => {
 
   return (
     <motion.div
-      className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-[#030014]"
+      className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-[#FAF6F0]"
       exit={{ opacity: 0, y: -50, filter: 'blur(10px)' }}
       transition={{ duration: 0.8, ease: 'easeInOut' }}
     >
@@ -32,21 +32,21 @@ const LoadingScreen = ({ onComplete }) => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="text-4xl md:text-6xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 tracking-widest"
+          className="text-4xl md:text-6xl font-bold mb-8 tracking-widest text-gradient-animated"
         >
           INITIALIZING...
         </motion.div>
         
-        <div className="w-64 h-1 bg-gray-800 rounded-full overflow-hidden relative">
+        <div className="w-64 h-1 bg-[#EAE2D5] rounded-full overflow-hidden relative">
           <motion.div
-            className="h-full bg-gradient-to-r from-purple-500 to-cyan-400 shadow-[0_0_15px_rgba(6,182,212,0.8)]"
+            className="h-full bg-gradient-to-r from-[#A9715B] to-[#E3CBB3] shadow-[0_0_15px_rgba(169,113,91,0.4)]"
             initial={{ width: '0%' }}
             animate={{ width: `${progress}%` }}
             transition={{ ease: 'linear' }}
           />
         </div>
         
-        <div className="mt-4 text-cyan-400 font-mono text-sm tracking-widest">
+        <div className="mt-4 text-[#A9715B] font-mono text-sm tracking-widest">
           {Math.min(progress, 100)}%
         </div>
       </div>
