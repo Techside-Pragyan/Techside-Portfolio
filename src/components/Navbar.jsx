@@ -56,7 +56,7 @@ const Navbar = () => {
                   initial={{ opacity: 0, y: 10, scale: 0.8 }}
                   animate={{ opacity: 1, y: -45, scale: 1 }}
                   exit={{ opacity: 0, y: 10, scale: 0.8 }}
-                  className="absolute left-1/2 -translate-x-1/2 px-3 py-1 bg-[#2C2621]/95 backdrop-blur-md border border-black/[0.06] rounded-lg text-[10px] font-bold text-[#FAF6F0] uppercase tracking-widest whitespace-nowrap z-50 pointer-events-none"
+                  className="absolute left-1/2 -translate-x-1/2 px-3 py-1 bg-[#2C2621]/95 backdrop-blur-md border border-black/[0.06] rounded-lg text-[10px] font-bold text-[#EAD8C3] uppercase tracking-widest whitespace-nowrap z-50 pointer-events-none"
                 >
                   {item.name}
                 </motion.div>
