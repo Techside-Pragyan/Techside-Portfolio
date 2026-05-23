@@ -112,7 +112,7 @@ const Projects = () => {
                     {/* Floating Tech Badges on Image */}
                     <div className="absolute top-4 right-4 z-30 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-x-4 group-hover:translate-x-0">
                       {project.tags.slice(0, 2).map((tag, i) => (
-                        <span key={i} className="text-[10px] font-bold px-2 py-1 rounded-md bg-[#FAF6F0]/90 backdrop-blur-md text-[#2C2621] border border-black/[0.06] shadow-sm">
+                        <span key={i} className="text-[10px] font-bold px-2 py-1 rounded-md bg-[#EAD8C3]/90 backdrop-blur-md text-[#2C2621] border border-black/[0.06] shadow-sm">
                           {tag}
                         </span>
                       ))}

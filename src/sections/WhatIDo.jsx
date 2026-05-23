@@ -61,7 +61,7 @@ const WhatIDo = () => {
             )}
             
             {/* Overlay Gradient to blend desk with background */}
-            <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-[#FAF6F0] to-transparent pointer-events-none"></div>
+            <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-[#EAD8C3] to-transparent pointer-events-none"></div>
           </motion.div>
 
         </div>

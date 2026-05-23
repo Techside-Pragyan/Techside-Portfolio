@@ -91,7 +91,7 @@ const Experience = () => {
                   }`}
                 >
                   {/* Timeline Dot */}
-                  <div className="absolute left-0 md:left-1/2 top-0 md:top-1/2 w-4 h-4 rounded-full bg-[#A9715B] shadow-[0_0_15px_rgba(169,113,91,0.5)] md:-translate-x-1/2 md:-translate-y-1/2 z-10 border-4 border-[#FAF6F0]"></div>
+                  <div className="absolute left-0 md:left-1/2 top-0 md:top-1/2 w-4 h-4 rounded-full bg-[#A9715B] shadow-[0_0_15px_rgba(169,113,91,0.5)] md:-translate-x-1/2 md:-translate-y-1/2 z-10 border-4 border-[#EAD8C3]"></div>
 
                   {/* Content Card */}
                   <div className={`w-full md:w-[45%] pl-8 md:pl-0`}>
