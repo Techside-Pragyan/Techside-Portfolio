@@ -14,11 +14,11 @@ import profile5 from '../assets/profile5.jpg';
 const images = [profile1, profile2, profile3, profile4, profile5];
 
 const captions = [
-  "01 / CREATIVE VISION",
-  "02 / INTELLECT DESIGN",
-  "03 / CODE ENGINEERING",
-  "04 / DIGITAL ARCHITECT",
-  "05 / AESTHETIC SOUL"
+  "01 / CREATIVE CODE",
+  "02 / ALGORITHMIC VISION",
+  "03 / DATA INTELLIGENCE",
+  "04 / MACHINE LEARNING",
+  "05 / FUTURE AI ARCHITECT"
 ];
 
 const Hero = () => {
