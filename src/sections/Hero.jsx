@@ -221,12 +221,12 @@ const Hero = () => {
                         cycleForward();
                       }
                     }}
-                    className={`absolute w-[300px] h-[410px] sm:w-[350px] sm:h-[480px] md:w-[380px] md:h-[510px] rounded-3xl bg-white border border-[#EAD8C3] shadow-[0_15px_40px_rgba(44,38,33,0.08)] flex flex-col p-4 sm:p-5 cursor-grab active:cursor-grabbing interactive transition-shadow duration-300 ${
+                    className={`absolute w-[300px] h-[410px] sm:w-[350px] sm:h-[480px] md:w-[380px] md:h-[510px] rounded-3xl bg-[#FAF3EB] border border-[#E3CBB3] shadow-[0_15px_40px_rgba(44,38,33,0.08)] flex flex-col p-4 sm:p-5 cursor-grab active:cursor-grabbing interactive transition-shadow duration-300 ${
                       isFront ? 'hover:shadow-[0_25px_50px_rgba(169,113,91,0.15)]' : ''
                     }`}
                   >
                     {/* Image Box */}
-                    <div className="relative w-full h-[320px] sm:h-[380px] md:h-[415px] rounded-2xl overflow-hidden border border-black/[0.04] bg-[#EAD8C3]">
+                    <div className="relative w-full h-[320px] sm:h-[380px] md:h-[415px] rounded-2xl overflow-hidden border border-[#E3CBB3]/40 bg-[#EAD8C3]">
                       <img
                         src={images[cardId]}
                         alt={captions[cardId]}
