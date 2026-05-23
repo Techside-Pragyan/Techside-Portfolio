@@ -46,7 +46,7 @@ const ChatbotUI = () => {
             className="fixed bottom-24 right-6 w-80 sm:w-96 glass-card border border-black/[0.06] z-[90] shadow-[0_15px_50px_rgba(44,38,33,0.08)] flex flex-col overflow-hidden bg-white/60"
           >
             {/* Header */}
-            <div className="bg-[#FAF6F0]/80 p-4 border-b border-black/[0.06] flex justify-between items-center backdrop-blur-md">
+            <div className="bg-[#EAD8C3]/80 p-4 border-b border-black/[0.06] flex justify-between items-center backdrop-blur-md">
               <div className="flex items-center gap-3">
                 <div className="relative">
                   <div className="w-8 h-8 rounded-full bg-[#A9715B]/10 flex items-center justify-center text-[#A9715B] border border-[#A9715B]/30">
@@ -68,7 +68,7 @@ const ChatbotUI = () => {
             </div>
 
             {/* Chat Body */}
-            <div className="flex-1 h-64 overflow-y-auto p-4 flex flex-col gap-3 custom-scrollbar bg-[#FAF6F0]/95">
+            <div className="flex-1 h-64 overflow-y-auto p-4 flex flex-col gap-3 custom-scrollbar bg-[#EAD8C3]/95">
               {messages.map((msg, idx) => (
                 <div 
                   key={idx} 
@@ -84,7 +84,7 @@ const ChatbotUI = () => {
             </div>
 
             {/* Input */}
-            <form onSubmit={handleSend} className="p-3 border-t border-black/[0.06] bg-[#FAF6F0] flex gap-2">
+            <form onSubmit={handleSend} className="p-3 border-t border-black/[0.06] bg-[#EAD8C3] flex gap-2">
               <input
                 type="text"
                 value={input}
