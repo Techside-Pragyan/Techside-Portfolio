@@ -70,7 +70,7 @@ const Hero = () => {
   const formattedTime = time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden bg-[#FAF6F0] perspective-lg">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden bg-transparent perspective-lg">
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(169,113,91,0.04),transparent_70%)] pointer-events-none"></div>
 
@@ -123,7 +123,7 @@ const Hero = () => {
               <motion.button 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-[#2C2621] text-[#FAF6F0] font-black text-sm uppercase tracking-widest rounded-full hover:shadow-[0_10px_30px_rgba(44,38,33,0.15)] transition-all"
+                className="px-8 py-4 bg-[#2C2621] text-[#EAD8C3] font-black text-sm uppercase tracking-widest rounded-full hover:shadow-[0_10px_30px_rgba(44,38,33,0.15)] transition-all"
               >
                 Welcome
               </motion.button>
@@ -179,7 +179,7 @@ const Hero = () => {
               title="Click to see next photo"
               className="relative w-[320px] h-[440px] md:w-[360px] md:h-[480px] rounded-3xl p-[3px] bg-gradient-to-tr from-[#A9715B] via-[#E8D5C4] to-[#7C7267] shadow-[0_15px_40px_rgba(44,38,33,0.06)] select-none cursor-pointer focus:outline-none"
             >
-              <div className="w-full h-full rounded-[20px] overflow-hidden bg-[#FAF6F0] border-4 border-[#FAF6F0] relative group">
+              <div className="w-full h-full rounded-[20px] overflow-hidden bg-[#EAD8C3] border-4 border-[#EAD8C3] relative group">
                 
                 {/* Crossfade Slideshow Images - Displaying the FULL picture without cutting any parts! */}
                 <AnimatePresence mode="wait">

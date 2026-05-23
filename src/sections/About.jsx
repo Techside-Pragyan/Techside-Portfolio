@@ -7,7 +7,7 @@ const About = () => {
   const isInView = useInView(containerRef, { once: false, amount: 0.15 });
 
   return (
-    <section id="about" className="py-24 px-6 relative z-10 overflow-hidden bg-[#FAF6F0]">
+    <section id="about" className="py-24 px-6 relative z-10 overflow-hidden bg-transparent">
       <div className="container mx-auto max-w-7xl">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           
