@@ -109,9 +109,9 @@ const Hero = () => {
           <div className="flex flex-col gap-2">
             <span className="text-[10px] font-black text-[#A9715B] tracking-[0.3em] uppercase">Hello! I'm</span>
             <h1 className="text-5xl md:text-7xl font-black leading-[0.95] tracking-tighter select-none">
-              <span className="text-[#2C2621]">PRAGYAN</span> <br/>
-              <span className="text-[#A9715B]">PARAMITA</span> <br/>
-              <span className="text-gradient-animated uppercase">MOHARANA</span>
+              <span className="block text-[#2C2621]">PRAGYAN</span>
+              <span className="block text-[#5C4A3D]">PARAMITA</span>
+              <span className="block text-[#A9715B]">MOHARANA</span>
             </h1>
           </div>
 
