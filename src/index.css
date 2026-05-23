@@ -4,15 +4,15 @@
 
 @layer base {
   :root {
-    --bg-primary: 36 25% 97%; /* #FAF6F0 (Luxurious Linen Cream) */
-    --bg-secondary: 36 20% 93%; /* #EAE2D5 (Soft Warm Sand) */
+    --bg-primary: 35 37% 84%; /* #EAD8C3 (Luxurious Warm Nude Sand) */
+    --bg-secondary: 35 30% 78%; /* #DCC7AD (Soft Warm Biscuit) */
     --accent-purple: 18 43% 62%; /* #C88E75 (Earthy Terracotta Nude) */
     --accent-cyan: 30 50% 80%; /* #E3CBB3 (Champagne Sand Glow) */
     --accent-pink: 24 15% 46%; /* #8B7E74 (Warm Deep Taupe) */
   }
 
   body {
-    @apply bg-[#FAF6F0] text-[#2C2621] overflow-x-hidden font-sans cursor-none;
+    @apply bg-[#EAD8C3] text-[#2C2621] overflow-x-hidden font-sans cursor-none;
     background-color: hsl(var(--bg-primary));
   }
   
@@ -110,7 +110,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #FAF6F0;
+  background: #EAD8C3;
 }
 
 ::-webkit-scrollbar-thumb {
