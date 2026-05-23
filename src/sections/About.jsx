@@ -7,21 +7,21 @@ const About = () => {
       <div className="container mx-auto max-w-7xl">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           
-          {/* Left Side: 3D Female Character */}
+          {/* Left Side: Interactive 3D Portal Crystal */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="relative h-[500px] lg:h-[700px] pointer-events-none"
+            className="relative h-[500px] lg:h-[700px] pointer-events-auto cursor-grab active:cursor-grabbing"
           >
             <spline-viewer 
-              url="https://prod.spline.design/ATpf8S9X9o9y4z-m/scene.splinecode" 
+              url="https://prod.spline.design/6Wq1Q7YGyM2G5qth/scene.splinecode" 
               className="w-full h-full scale-110"
             ></spline-viewer>
             
             {/* Background Glow */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.1),transparent_70%)] -z-10"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.1),transparent_70%)] -z-10 pointer-events-none"></div>
           </motion.div>
 
           {/* Right Side: About Content */}

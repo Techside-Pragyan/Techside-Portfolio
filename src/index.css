@@ -26,6 +26,26 @@
 }
 
 @layer utilities {
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .perspective-lg {
+    perspective: 1500px;
+  }
+  
+  .translate-z-sm {
+    transform: translateZ(20px);
+  }
+  
+  .translate-z-md {
+    transform: translateZ(50px);
+  }
+  
+  .translate-z-lg {
+    transform: translateZ(80px);
+  }
+
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-cyan-500;
   }
@@ -35,7 +55,7 @@
   }
 
   .glass-card {
-    @apply bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-3xl shadow-[0_8px_32px_rgba(0,0,0,0.4)] relative overflow-hidden;
+    @apply bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-3xl shadow-[0_8px_32px_rgba(0,0,0,0.4)] relative overflow-hidden preserve-3d;
   }
   
   .glass-card::before {

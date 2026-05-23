@@ -37,21 +37,21 @@ const WhatIDo = () => {
             </div>
           </motion.div>
 
-          {/* Right Side: 3D Workspace Scene */}
+          {/* Right Side: Immersive 3D Workstation Scene */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="relative h-[600px] pointer-events-none order-1 lg:order-2"
+            className="relative h-[600px] pointer-events-auto order-1 lg:order-2 cursor-grab active:cursor-grabbing"
           >
             <spline-viewer 
-              url="https://prod.spline.design/ATpf8S9X9o9y4z-m/scene.splinecode" 
+              url="https://prod.spline.design/Kz77MhlO0h94hVp5/scene.splinecode" 
               className="w-full h-full"
             ></spline-viewer>
             
-            {/* Overlay Gradient to make it look like a desk scene */}
-            <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-[#030014] to-transparent"></div>
+            {/* Overlay Gradient to blend desk with background */}
+            <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-[#030014] to-transparent pointer-events-none"></div>
           </motion.div>
 
         </div>
