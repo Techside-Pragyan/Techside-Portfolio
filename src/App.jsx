@@ -26,7 +26,7 @@ function App() {
       </AnimatePresence>
 
       {!loading && (
-        <ReactLenis root options={{ lerp: 0.05, smoothWheel: true }}>
+        <ReactLenis root options={{ lerp: 0.1, smoothWheel: true, wheelMultiplier: 1.2, duration: 1.2 }}>
           <div className="relative min-h-screen bg-[#EAD8C3] text-[#2C2621] overflow-x-hidden font-sans">
             <CustomCursor />
             <ParticlesBackground />
