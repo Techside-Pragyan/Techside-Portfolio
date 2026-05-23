@@ -36,22 +36,22 @@ const CustomCursor = () => {
   return (
     <>
       <motion.div
-        className="fixed top-0 left-0 w-4 h-4 bg-cyan-400 rounded-full pointer-events-none z-[9999] mix-blend-screen shadow-[0_0_10px_#22d3ee]"
+        className="fixed top-0 left-0 w-3 h-3 bg-[#A9715B] rounded-full pointer-events-none z-[9999] shadow-[0_0_10px_rgba(169,113,91,0.3)]"
         animate={{
-          x: mousePosition.x - 8,
-          y: mousePosition.y - 8,
+          x: mousePosition.x - 6,
+          y: mousePosition.y - 6,
           scale: isHovering ? 0 : 1,
         }}
         transition={{ type: 'tween', ease: 'backOut', duration: 0.1 }}
       />
       <motion.div
-        className="fixed top-0 left-0 w-12 h-12 border-2 border-purple-500 rounded-full pointer-events-none z-[9998] mix-blend-screen"
+        className="fixed top-0 left-0 w-10 h-10 border border-[#A9715B]/40 rounded-full pointer-events-none z-[9998]"
         animate={{
-          x: mousePosition.x - 24,
-          y: mousePosition.y - 24,
+          x: mousePosition.x - 20,
+          y: mousePosition.y - 20,
           scale: isHovering ? 1.5 : 1,
-          backgroundColor: isHovering ? 'rgba(168, 85, 247, 0.2)' : 'transparent',
-          borderColor: isHovering ? '#22d3ee' : '#a855f7',
+          backgroundColor: isHovering ? 'rgba(169, 113, 91, 0.1)' : 'transparent',
+          borderColor: isHovering ? '#A9715B' : 'rgba(169, 113, 91, 0.4)',
         }}
         transition={{ type: 'tween', ease: 'easeOut', duration: 0.2 }}
       />

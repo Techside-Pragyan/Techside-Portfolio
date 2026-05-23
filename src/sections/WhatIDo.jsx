@@ -8,7 +8,7 @@ const WhatIDo = () => {
   const isInView = useInView(containerRef, { once: false, amount: 0.15 });
 
   return (
-    <section id="work" className="py-24 px-6 relative z-10 overflow-hidden bg-[#030014]">
+    <section id="work" className="py-24 px-6 relative z-10 overflow-hidden bg-transparent">
       <div className="container mx-auto max-w-7xl">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           
@@ -20,7 +20,7 @@ const WhatIDo = () => {
             transition={{ duration: 0.8 }}
             className="order-2 lg:order-1"
           >
-            <h2 className="text-6xl md:text-8xl font-black text-white leading-none tracking-tighter mb-12">
+            <h2 className="text-6xl md:text-8xl font-black text-[#2C2621] leading-none tracking-tighter mb-12">
                WHAT <br/>
                <span className="text-gradient-animated">I DO</span>
             </h2>
@@ -57,11 +57,11 @@ const WhatIDo = () => {
               ></spline-viewer>
             ) : (
               // Light glowing ambient backdrop to represent desk workspace lighting when offscreen
-              <div className="w-[350px] h-[350px] rounded-full bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.15),transparent_70%)] blur-3xl animate-pulse pointer-events-none"></div>
+              <div className="w-[350px] h-[350px] rounded-full bg-[radial-gradient(circle_at_center,rgba(169,113,91,0.15),transparent_70%)] blur-3xl animate-pulse pointer-events-none"></div>
             )}
             
             {/* Overlay Gradient to blend desk with background */}
-            <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-[#030014] to-transparent pointer-events-none"></div>
+            <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-[#FAF6F0] to-transparent pointer-events-none"></div>
           </motion.div>
 
         </div>
@@ -71,19 +71,19 @@ const WhatIDo = () => {
 };
 
 const CompetencyCard = ({ title, description, icon, skills }) => (
-  <div className="glass-card p-8 border-white/5 hover:border-purple-500/30 transition-all group">
+  <div className="glass-card p-8 hover:border-[#A9715B]/30 hover:shadow-[0_15px_40px_rgba(169,113,91,0.06)] transition-all duration-300 group">
     <div className="flex items-start gap-6">
-      <div className="text-3xl text-purple-400 group-hover:text-purple-300 transition-colors">
+      <div className="text-3xl text-[#A9715B] group-hover:text-[#A9715B]/80 transition-colors">
         {icon}
       </div>
       <div className="space-y-4">
-        <h3 className="text-2xl font-black text-white tracking-tighter">{title}</h3>
-        <p className="text-gray-400 font-light text-sm leading-relaxed max-w-sm">
+        <h3 className="text-2xl font-black text-[#2C2621] tracking-tighter">{title}</h3>
+        <p className="text-[#7C7267] font-light text-sm leading-relaxed max-w-sm">
           {description}
         </p>
         <div className="flex flex-wrap gap-2 pt-2">
            {skills.map(skill => (
-             <span key={skill} className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-3 py-1 rounded-full border border-white/5">
+             <span key={skill} className="badge-tag">
                 {skill}
              </span>
            ))}

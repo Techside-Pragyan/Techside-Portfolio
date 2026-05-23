@@ -14,13 +14,13 @@ const skills = [
   { icon: <SiNodedotjs />, color: "#339933", radius: 240, speed: 12, delay: 2 },
   { icon: <SiTensorflow />, color: "#FF6F00", radius: 300, speed: 22, delay: 8 },
   { icon: <SiMongodb />, color: "#47A248", radius: 210, speed: 17, delay: 3 },
-  { icon: <SiGithub />, color: "#FFFFFF", radius: 270, speed: 14, delay: 6 },
+  { icon: <SiGithub />, color: "#2C2621", radius: 270, speed: 14, delay: 6 },
 ];
 
 const OrbitingIcon = ({ icon, color, radius, speed, delay = 0 }) => {
   return (
     <motion.div
-      className="absolute flex items-center justify-center p-4 rounded-full bg-black/40 backdrop-blur-md border border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.5)] cursor-pointer group"
+      className="absolute flex items-center justify-center p-4 rounded-full bg-white/40 backdrop-blur-md border border-black/[0.06] shadow-[0_4px_20px_rgba(44,38,33,0.04)] cursor-pointer group"
       animate={{
         rotate: 360
       }}
@@ -71,10 +71,10 @@ const Skills = () => {
         viewport={{ once: true }}
         className="text-center mb-20 relative z-20"
       >
-        <h2 className="text-4xl md:text-6xl font-black mb-4 tracking-tighter text-white">
+        <h2 className="text-4xl md:text-6xl font-black mb-4 tracking-tighter text-[#2C2621]">
           Skills & <span className="text-gradient-animated">Technology</span>
         </h2>
-        <p className="text-gray-400 max-w-2xl mx-auto">
+        <p className="text-[#7C7267] max-w-2xl mx-auto">
           Interactive 3D Universe. Exploring the vast space of modern technologies.
         </p>
       </motion.div>
@@ -86,7 +86,7 @@ const Skills = () => {
         <motion.div 
           animate={{ scale: [1, 1.05, 1], rotate: 360 }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="relative w-32 h-32 rounded-full bg-gradient-to-tr from-purple-600 to-cyan-400 flex items-center justify-center text-white text-5xl font-black shadow-[0_0_80px_rgba(168,85,247,0.4)] z-10"
+          className="relative w-32 h-32 rounded-full bg-gradient-to-tr from-[#A9715B] to-[#E3CBB3] flex items-center justify-center text-white text-5xl font-black shadow-[0_0_80px_rgba(169,113,91,0.25)] z-10"
         >
           <div className="absolute inset-0 rounded-full bg-white/20 blur-xl animate-pulse"></div>
           🚀
@@ -96,7 +96,7 @@ const Skills = () => {
         {[180, 210, 240, 270, 300].map((radius) => (
           <div 
             key={radius}
-            className="absolute rounded-full border border-white/5 pointer-events-none"
+            className="absolute rounded-full border border-black/[0.06] pointer-events-none"
             style={{ width: radius * 2, height: radius * 2 }}
           ></div>
         ))}
@@ -115,7 +115,7 @@ const Skills = () => {
       </div>
 
       {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-900/10 rounded-full blur-[150px] pointer-events-none -z-10"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#A9715B]/5 rounded-full blur-[150px] pointer-events-none -z-10"></div>
     </section>
   );
 };
