@@ -104,10 +104,10 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        {/* Right: Large 3D Female Character with Interactive Mouse Tilt Parallax */}
+        {/* Right: Premium Interactive 3D Cyber-Portrait (Circular Profile Pic) */}
         <div className="relative h-[550px] lg:h-[750px] w-full flex items-center justify-center">
           
-          {/* Glowing Ring behind the 3D Character */}
+          {/* Glowing Ambient Ring behind the Portrait */}
           <div className="absolute w-[450px] h-[450px] rounded-full border border-purple-500/10 bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.03),transparent_70%)] pointer-events-none z-0"></div>
 
           {/* Holographic Text Overlay with opposite tilt direction for 3D parallax depth */}
@@ -127,18 +127,35 @@ const Hero = () => {
 
           {/* Premium Hardware-Accelerated 3D Tilt Wrapper */}
           <Tilt
-            tiltMaxAngleX={12}
-            tiltMaxAngleY={12}
+            tiltMaxAngleX={15}
+            tiltMaxAngleY={15}
             perspective={1200}
             scale={1.05}
             transitionSpeed={1200}
-            className="w-full h-full relative z-20 cursor-grab active:cursor-grabbing flex items-center justify-center"
+            className="w-full h-full relative z-20 flex items-center justify-center"
           >
-            <div className="w-[125%] h-[125%] select-none pointer-events-none">
-              <spline-viewer 
-                url="https://prod.spline.design/ATpf8S9X9o9y4z-m/scene.splinecode" 
-                className="w-full h-full"
-              ></spline-viewer>
+            {/* Outer Slow-Rotating Cyber HUD Rings */}
+            <div className="absolute w-[400px] h-[400px] rounded-full border-2 border-dashed border-cyan-500/20 animate-[spin_40s_linear_infinite] pointer-events-none"></div>
+            <div className="absolute w-[420px] h-[420px] rounded-full border border-purple-500/10 animate-[spin_25s_linear_infinite_reverse] pointer-events-none"></div>
+
+            {/* Glowing Ambient Backdrop Color */}
+            <div className="absolute w-[340px] h-[340px] rounded-full bg-gradient-to-tr from-purple-500/20 via-pink-500/20 to-cyan-500/20 blur-2xl pointer-events-none"></div>
+
+            {/* Profile Picture Frame with Premium Gradient Edge */}
+            <div className="relative w-[330px] h-[330px] md:w-[360px] md:h-[360px] rounded-full p-[3px] bg-gradient-to-tr from-purple-500 via-pink-500 to-cyan-400 shadow-[0_0_50px_rgba(168,85,247,0.25)] select-none">
+              <div className="w-full h-full rounded-full overflow-hidden bg-[#030014] border-4 border-[#030014] relative group">
+                <img 
+                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=1000" 
+                  alt="Pragyan Paramita Moharana" 
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                />
+                
+                {/* Cyber HUD Grid Overlay */}
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[size:100%_4px,6px_100%] opacity-20 pointer-events-none"></div>
+
+                {/* Subtle dark bottom gradient cover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60 group-hover:opacity-25 transition-opacity duration-500 pointer-events-none"></div>
+              </div>
             </div>
           </Tilt>
         </div>
