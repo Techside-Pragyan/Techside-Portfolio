@@ -26,7 +26,7 @@ const Contact = () => {
   return (
     <section id="contact" className="py-24 px-6 relative z-10 overflow-hidden">
       {/* Background elements */}
-      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-purple-500/50 to-transparent"></div>
+      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#A9715B]/30 to-transparent"></div>
       
       <div className="container mx-auto max-w-6xl relative z-10">
         <motion.div
@@ -36,11 +36,11 @@ const Contact = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-           <div className="inline-flex items-center gap-2 py-1 px-3 rounded-full bg-pink-500/10 text-pink-400 text-xs font-bold mb-4 border border-pink-500/20 uppercase tracking-widest">
+           <div className="inline-flex items-center gap-2 py-1 px-3 rounded-full bg-[#A9715B]/10 text-[#A9715B] text-xs font-bold mb-4 border border-[#A9715B]/20 uppercase tracking-widest">
             Transmission
           </div>
-          <h2 className="text-4xl md:text-6xl font-black mb-4 tracking-tighter">
-            Initialize <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-500">Contact</span>
+          <h2 className="text-4xl md:text-6xl font-black mb-4 tracking-tighter text-[#2C2621]">
+            Initialize <span className="text-gradient-animated">Contact</span>
           </h2>
         </motion.div>
 
@@ -54,32 +54,32 @@ const Contact = () => {
             className="md:col-span-2 flex flex-col justify-center space-y-10"
           >
             <div>
-              <h3 className="text-3xl font-bold mb-4 text-white">Establish Connection</h3>
-              <p className="text-gray-400 leading-relaxed font-light">
+              <h3 className="text-3xl font-bold mb-4 text-[#2C2621]">Establish Connection</h3>
+              <p className="text-[#7C7267] leading-relaxed font-light">
                 Seeking new challenges, collaborations, and opportunities. Deploy a message below and I will intercept it shortly.
               </p>
             </div>
 
             <div className="space-y-8">
               <div className="flex items-center gap-6 group cursor-pointer interactive">
-                <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-pink-400 group-hover:bg-pink-500/20 group-hover:border-pink-500/50 group-hover:shadow-[0_0_20px_rgba(236,72,153,0.3)] transition-all duration-300">
+                <div className="w-14 h-14 rounded-2xl bg-white/40 border border-black/[0.06] flex items-center justify-center text-[#A9715B] group-hover:bg-[#A9715B]/10 group-hover:border-[#A9715B]/40 group-hover:shadow-[0_0_20px_rgba(169,113,91,0.15)] transition-all duration-300">
                   <FaEnvelope size={24} className="group-hover:scale-110 transition-transform" />
                 </div>
                 <div>
-                  <h4 className="text-xs text-gray-500 font-bold uppercase tracking-widest mb-1">Secure Email</h4>
-                  <a href="mailto:example@gmail.com" className="text-lg text-white group-hover:text-pink-400 transition-colors font-medium">
+                  <h4 className="text-xs text-[#7C7267] font-bold uppercase tracking-widest mb-1">Secure Email</h4>
+                  <a href="mailto:example@gmail.com" className="text-lg text-[#2C2621] group-hover:text-[#A9715B] transition-colors font-medium">
                     example@gmail.com
                   </a>
                 </div>
               </div>
 
               <div className="flex items-center gap-6 group cursor-pointer interactive">
-                <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-purple-400 group-hover:bg-purple-500/20 group-hover:border-purple-500/50 group-hover:shadow-[0_0_20px_rgba(168,85,247,0.3)] transition-all duration-300">
+                <div className="w-14 h-14 rounded-2xl bg-white/40 border border-black/[0.06] flex items-center justify-center text-[#A9715B] group-hover:bg-[#A9715B]/10 group-hover:border-[#A9715B]/40 group-hover:shadow-[0_0_20px_rgba(169,113,91,0.15)] transition-all duration-300">
                   <FaMapMarkerAlt size={24} className="group-hover:scale-110 transition-transform" />
                 </div>
                 <div>
-                  <h4 className="text-xs text-gray-500 font-bold uppercase tracking-widest mb-1">Base Coordinates</h4>
-                  <p className="text-lg text-white font-medium">India</p>
+                  <h4 className="text-xs text-[#7C7267] font-bold uppercase tracking-widest mb-1">Base Coordinates</h4>
+                  <p className="text-lg text-[#2C2621] font-medium">India</p>
                 </div>
               </div>
             </div>
@@ -93,38 +93,38 @@ const Contact = () => {
             transition={{ duration: 0.8 }}
             className="md:col-span-3"
           >
-            <form ref={formRef} onSubmit={handleSubmit} className="glass-card p-8 md:p-10 flex flex-col gap-6 relative group border border-white/10 hover:border-pink-500/30 transition-colors">
-              <div className="absolute inset-0 bg-gradient-to-br from-pink-500/5 to-purple-500/5 pointer-events-none z-0"></div>
+            <form ref={formRef} onSubmit={handleSubmit} className="glass-card p-8 md:p-10 flex flex-col gap-6 relative group border border-black/[0.06] hover:border-[#A9715B]/30 transition-all duration-300 bg-white/40">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#A9715B]/3 to-[#E3CBB3]/3 pointer-events-none z-0"></div>
               
               <div className="relative z-10 flex flex-col gap-2">
-                <label className="text-xs font-bold text-gray-400 uppercase tracking-widest">Identifier (Name)</label>
+                <label className="text-xs font-bold text-[#7C7267] uppercase tracking-widest">Identifier (Name)</label>
                 <input 
                   type="text" 
                   name="user_name"
                   required
-                  className="bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-pink-500 focus:bg-pink-500/5 transition-all duration-300 placeholder-gray-600 interactive"
+                  className="bg-white/50 border border-black/[0.06] rounded-xl px-5 py-4 text-[#2C2621] focus:outline-none focus:border-[#A9715B] focus:bg-[#A9715B]/3 transition-all duration-300 placeholder-gray-400 interactive"
                   placeholder="John Doe"
                 />
               </div>
 
               <div className="relative z-10 flex flex-col gap-2">
-                <label className="text-xs font-bold text-gray-400 uppercase tracking-widest">Return Address (Email)</label>
+                <label className="text-xs font-bold text-[#7C7267] uppercase tracking-widest">Return Address (Email)</label>
                 <input 
                   type="email" 
                   name="user_email"
                   required
-                  className="bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-purple-500 focus:bg-purple-500/5 transition-all duration-300 placeholder-gray-600 interactive"
+                  className="bg-white/50 border border-black/[0.06] rounded-xl px-5 py-4 text-[#2C2621] focus:outline-none focus:border-[#A9715B] focus:bg-[#A9715B]/3 transition-all duration-300 placeholder-gray-400 interactive"
                   placeholder="john@protocol.com"
                 />
               </div>
 
               <div className="relative z-10 flex flex-col gap-2">
-                <label className="text-xs font-bold text-gray-400 uppercase tracking-widest">Payload (Message)</label>
+                <label className="text-xs font-bold text-[#7C7267] uppercase tracking-widest">Payload (Message)</label>
                 <textarea 
                   name="message"
                   required
                   rows="5"
-                  className="bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-cyan-500 focus:bg-cyan-500/5 transition-all duration-300 resize-none placeholder-gray-600 custom-scrollbar interactive"
+                  className="bg-white/50 border border-black/[0.06] rounded-xl px-5 py-4 text-[#2C2621] focus:outline-none focus:border-[#A9715B] focus:bg-[#A9715B]/3 transition-all duration-300 resize-none placeholder-gray-400 custom-scrollbar interactive"
                   placeholder="Initiate communication protocol..."
                 ></textarea>
               </div>
@@ -132,12 +132,12 @@ const Contact = () => {
               <button 
                 type="submit" 
                 disabled={loading}
-                className="relative z-10 flex items-center justify-center gap-3 w-full py-4 mt-2 rounded-xl bg-white/5 border border-white/10 text-white font-bold tracking-widest uppercase hover:bg-gradient-to-r hover:from-pink-500 hover:to-purple-600 hover:border-transparent transition-all duration-300 interactive disabled:opacity-50 disabled:cursor-not-allowed group/btn overflow-hidden"
+                className="relative z-10 flex items-center justify-center gap-3 w-full py-4 mt-2 rounded-xl bg-[#2C2621] border border-[#2C2621] text-white font-bold tracking-widest uppercase hover:bg-transparent hover:text-[#2C2621] transition-all duration-300 interactive disabled:opacity-50 disabled:cursor-not-allowed group/btn overflow-hidden"
               >
                 <span className="relative z-10">{loading ? 'Transmitting...' : 'Transmit Data'}</span>
                 {!loading && <FaPaperPlane className="relative z-10 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />}
                 
-                <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-600 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-[#A9715B] opacity-0 group-hover/btn:opacity-10 transition-opacity duration-300"></div>
               </button>
 
               {success && (

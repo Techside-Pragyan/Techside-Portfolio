@@ -48,22 +48,22 @@ const Experience = () => {
             viewport={{ once: true }}
             className="text-left"
           >
-            <h2 className="text-4xl md:text-6xl font-black mb-4 tracking-tighter text-white leading-none">
+            <h2 className="text-4xl md:text-6xl font-black mb-4 tracking-tighter text-[#2C2621] leading-none">
               The <br/> <span className="text-gradient-animated">Journey</span>
             </h2>
-            <p className="text-gray-400 max-w-md">
+            <p className="text-[#7C7267] max-w-md">
               A chronological perspective on academic excellence and professional growth.
             </p>
           </motion.div>
 
           {/* Filters */}
-          <div className="flex bg-white/5 p-1 rounded-full border border-white/10">
+          <div className="flex bg-black/[0.03] p-1 rounded-full border border-black/[0.06]">
              {['All', 'Academic', 'Professional'].map(cat => (
                <button
                  key={cat}
                  onClick={() => setFilter(cat)}
                  className={`px-6 py-2 rounded-full text-xs font-bold transition-all ${
-                   filter === cat ? 'bg-cyan-500 text-white shadow-lg shadow-cyan-500/30' : 'text-gray-500 hover:text-white'
+                   filter === cat ? 'bg-[#A9715B] text-white shadow-lg shadow-[#A9715B]/20' : 'text-[#7C7267] hover:text-[#2C2621]'
                  }`}
                >
                  {cat}
@@ -74,7 +74,7 @@ const Experience = () => {
 
         <div className="relative">
           {/* Vertical Line */}
-          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-purple-500 via-cyan-400 to-purple-500 md:-translate-x-1/2 opacity-30"></div>
+          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#A9715B] via-[#E3CBB3] to-[#8B7E74] md:-translate-x-1/2 opacity-30"></div>
 
           <div className="space-y-12">
             <AnimatePresence mode='popLayout'>
@@ -91,22 +91,22 @@ const Experience = () => {
                   }`}
                 >
                   {/* Timeline Dot */}
-                  <div className="absolute left-0 md:left-1/2 top-0 md:top-1/2 w-4 h-4 rounded-full bg-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.8)] md:-translate-x-1/2 md:-translate-y-1/2 z-10 border-4 border-[#030014]"></div>
+                  <div className="absolute left-0 md:left-1/2 top-0 md:top-1/2 w-4 h-4 rounded-full bg-[#A9715B] shadow-[0_0_15px_rgba(169,113,91,0.5)] md:-translate-x-1/2 md:-translate-y-1/2 z-10 border-4 border-[#FAF6F0]"></div>
 
                   {/* Content Card */}
                   <div className={`w-full md:w-[45%] pl-8 md:pl-0`}>
-                    <div className="glass-card p-8 group hover:border-cyan-500/50 transition-all duration-500 relative overflow-hidden">
-                       <span className="inline-block py-1 px-3 rounded-full bg-white/5 border border-white/10 text-cyan-400 text-xs font-bold mb-4 tracking-widest uppercase">
+                    <div className="glass-card p-8 group hover:border-[#A9715B]/30 hover:shadow-[0_15px_40px_rgba(169,113,91,0.06)] transition-all duration-500 relative overflow-hidden bg-white/40">
+                       <span className="inline-block py-1 px-3 rounded-full bg-black/[0.03] border border-black/[0.06] text-[#A9715B] text-xs font-bold mb-4 tracking-widest uppercase">
                          {exp.year}
                        </span>
                        
-                       <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">
+                       <h3 className="text-2xl font-bold text-[#2C2621] mb-2 group-hover:text-[#A9715B] transition-colors">
                          {exp.title}
                        </h3>
-                       <h4 className="text-purple-400 font-semibold mb-4 text-sm uppercase tracking-wider">
+                       <h4 className="text-[#8B7E74] font-semibold mb-4 text-sm uppercase tracking-wider">
                          {exp.subtitle}
                        </h4>
-                       <p className="text-gray-400 leading-relaxed font-light text-sm">
+                       <p className="text-[#7C7267] leading-relaxed font-light text-sm">
                          {exp.description}
                        </p>
                     </div>
