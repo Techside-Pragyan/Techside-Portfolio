@@ -120,9 +120,23 @@ const Hero = () => {
             </h2>
           </div>
 
-          <p className="text-[#7C7267] font-light max-w-lg leading-relaxed text-sm md:text-base">
-            I'm into building intelligent systems, optimizing predictive models, and engineering creative AI solutions. Always exploring the intersection of data, mathematical logic, and deep learning to build the future. 🧠💻📊
-          </p>
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+            className="relative max-w-lg pl-5 py-4 pr-4 border-l-2 border-[#A9715B]/60 bg-gradient-to-r from-white/30 to-transparent backdrop-blur-sm rounded-r-xl group hover:from-white/50 transition-all duration-500"
+          >
+            <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#A9715B] via-[#C4956E] to-[#E8D5C4] rounded-full"></div>
+            <p className="text-[#5C4A3D] font-light leading-[1.8] text-sm md:text-[15px] tracking-wide">
+              I'm into building <span className="font-semibold text-[#2C2621]">intelligent systems</span>, optimizing <span className="font-semibold text-[#A9715B]">predictive models</span>, and engineering creative <span className="font-semibold text-[#2C2621]">AI solutions</span>. Always exploring the intersection of <span className="italic text-[#A9715B]">data</span>, <span className="italic text-[#A9715B]">mathematical logic</span>, and <span className="italic text-[#A9715B]">deep learning</span> to build the future.
+            </p>
+            <div className="flex items-center gap-2 mt-3">
+              <span className="text-base">🧠</span>
+              <span className="text-base">💻</span>
+              <span className="text-base">📊</span>
+              <span className="ml-2 h-[1px] flex-1 bg-gradient-to-r from-[#A9715B]/30 to-transparent"></span>
+            </div>
+          </motion.div>
 
           <div className="flex items-center gap-10">
              <div className="flex gap-4">
