@@ -124,6 +124,28 @@
 }
 
 /* Animations */
+@keyframes float-particle {
+  0% {
+    transform: translateY(105vh) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-10vh) translateX(30px);
+    opacity: 0;
+  }
+}
+
+.animate-particle-gpu {
+  animation: float-particle linear infinite;
+  will-change: transform, opacity;
+}
+
 @keyframes gradient {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
