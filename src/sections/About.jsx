@@ -262,7 +262,7 @@ const About = () => {
             </div>
             <div>
               <div className="flex items-baseline gap-1">
-                <span className="text-6xl md:text-7xl font-black text-white tracking-tighter drop-shadow-md">10</span>
+                <span className="text-6xl md:text-7xl font-black text-white tracking-tighter drop-shadow-md">50</span>
                 <span className="text-3xl font-bold text-white/80 animate-pulse">+</span>
               </div>
               <span className="text-white/90 text-[10px] font-mono uppercase tracking-[0.2em] mt-3 flex items-center gap-2">
