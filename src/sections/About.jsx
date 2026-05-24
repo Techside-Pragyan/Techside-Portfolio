@@ -107,7 +107,7 @@ const About = () => {
                   <motion.div
                     animate={{ y: [0, -10, 0] }}
                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    className="w-[115%] h-[115%] flex items-center justify-center"
+                    className="w-[115%] h-[115%] flex items-center justify-center overflow-hidden rounded-[30px]"
                   >
                     <video 
                       src={avatarVideo} 
@@ -115,7 +115,8 @@ const About = () => {
                       loop 
                       muted 
                       playsInline
-                      className="w-full h-full object-cover rounded-[30px] opacity-90 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                      className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                      style={{ objectPosition: 'left center', transform: 'scale(2.2) translateX(10%)' }}
                     />
                   </motion.div>
                 </Tilt>
