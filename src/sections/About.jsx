@@ -116,7 +116,10 @@ const About = () => {
                       muted 
                       playsInline
                       className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
-                      style={{ objectPosition: 'left center', transform: 'scale(2.2) translateX(10%)' }}
+                      style={{ 
+                        objectPosition: 'left center', 
+                        transform: 'scale(1.7) translateX(12%) translateY(5%)' 
+                      }}
                     />
                   </motion.div>
                 </Tilt>
