@@ -96,11 +96,11 @@ const About = () => {
                     <div className="absolute -bottom-2 right-0 w-4 h-4 bg-black/60 border-b border-r border-[#34d399]/50 transform rotate-45 translate-x-1 -translate-y-2"></div>
                   </motion.div>
 
-                  {/* True Live 3D Interactive Avatar */}
+                  {/* True Live 3D Interactive Female Avatar */}
                   <model-viewer
-                    src="https://modelviewer.dev/shared-assets/models/RobotExpressive.glb"
-                    alt="A 3D animated avatar waving"
-                    animation-name="Wave"
+                    src="https://assets.babylonjs.com/meshes/HVGirl.glb"
+                    alt="A 3D animated female avatar"
+                    animation-name="Samba"
                     autoplay
                     camera-controls
                     disable-zoom
