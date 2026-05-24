@@ -88,7 +88,7 @@ const About = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="md:col-span-12 lg:col-span-5 row-span-2 rounded-[2.5rem] bg-[#2C2621] overflow-hidden relative group flex flex-col shadow-[0_20px_40px_rgba(44,38,33,0.2)] border border-[#A9715B]/20 min-h-[450px]"
+            className="md:col-span-12 lg:col-span-6 row-span-2 rounded-[2.5rem] bg-[#2C2621] overflow-hidden relative group flex flex-col shadow-[0_20px_40px_rgba(44,38,33,0.2)] border border-[#A9715B]/20 min-h-[500px]"
           >
             {/* Cyberpunk UI Overlay Elements */}
             <div className="absolute top-6 left-6 z-30 flex items-center gap-3 backdrop-blur-md bg-black/40 px-4 py-2 rounded-full border border-white/10 shadow-lg">
@@ -215,7 +215,7 @@ const About = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="md:col-span-12 lg:col-span-7 rounded-[2.5rem] bg-white/40 backdrop-blur-3xl border border-white/60 p-8 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.06)] relative overflow-hidden group hover:bg-white/60 transition-colors duration-500 hover:shadow-[0_20px_50px_rgba(169,113,91,0.15)]"
+            className="md:col-span-12 lg:col-span-6 rounded-[2.5rem] bg-white/40 backdrop-blur-3xl border border-white/60 p-8 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.06)] relative overflow-hidden group hover:bg-white/60 transition-colors duration-500 hover:shadow-[0_20px_50px_rgba(169,113,91,0.15)]"
           >
             {/* Tech Dots Background inside the card */}
             <div className="absolute inset-0 bg-[radial-gradient(#A9715B_1px,transparent_1px)] [background-size:20px_20px] opacity-[0.05] pointer-events-none group-hover:opacity-[0.08] transition-opacity duration-500"></div>
