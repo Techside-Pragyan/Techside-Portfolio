@@ -114,11 +114,6 @@ const About = () => {
                     animate={{ y: [0, -10, 0] }}
                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                     className="w-[115%] h-[115%] flex items-center justify-center overflow-hidden rounded-[30px] relative group"
-                    style={{
-                      // This creates a soft fade-out around the edges, blending the video background into the card!
-                      WebkitMaskImage: 'radial-gradient(ellipse 60% 70% at 40% 50%, black 30%, transparent 80%)',
-                      maskImage: 'radial-gradient(ellipse 60% 70% at 40% 50%, black 30%, transparent 80%)'
-                    }}
                   >
                     <video 
                       src={avatarVideo} 
