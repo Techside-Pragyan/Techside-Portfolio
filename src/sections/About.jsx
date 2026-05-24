@@ -231,7 +231,7 @@ const About = () => {
               that bridge the gap between <span className="underline decoration-[#A9715B]/30 decoration-4 underline-offset-4">data</span> and <span className="underline decoration-[#A9715B]/30 decoration-4 underline-offset-4">action</span>.
             </h3>
             <p className="text-[#5C4A3D] text-lg md:text-[20px] leading-[1.8] font-light mb-10 max-w-2xl relative z-10">
-              I’m a Computer Science student at <b className="text-[#8C5A46] font-bold tracking-wide">DRIEMS University</b> with a deep love for data and algorithms. I don’t just build applications; I architect intelligent digital experiences. My core strength lies in translating complex requirements into clean, efficient, and scalable <b className="text-[#8C5A46] font-bold tracking-wide">AI solutions</b>.
+              I’m a Computer Science student at DRIEMS University with a deep love for data and algorithms. I don’t just build applications; I architect intelligent digital experiences. My core strength lies in translating complex requirements into clean, efficient, and scalable AI solutions.
             </p>
 
             <div className="flex flex-wrap gap-4 relative z-10">
