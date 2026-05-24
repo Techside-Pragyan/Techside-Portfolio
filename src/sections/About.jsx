@@ -52,19 +52,29 @@ const About = () => {
               <span className="text-white/50 text-[10px] font-mono uppercase tracking-widest">Live Anime Assistant</span>
             </div>
             
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(169,113,91,0.25),transparent_60%)] pointer-events-none transition-opacity duration-700 group-hover:opacity-60"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(169,113,91,0.25),transparent_60%)] pointer-events-none transition-opacity duration-700 group-hover:opacity-60 z-10"></div>
 
-            <div className="flex-1 w-full h-full relative pointer-events-auto flex items-center justify-center">
+            <div className="flex-1 w-full h-full relative pointer-events-auto flex items-center justify-center overflow-hidden">
               {isInView ? (
-                /* 
-                  TODO FOR USER: 
-                  To add your waving 3D Anime Girl, go to Spline (spline.design), find an anime girl model, 
-                  click "Export" -> "Public URL", and replace the URL below with your new scene.splinecode link!
-                */
-                <spline-viewer 
-                  url="https://prod.spline.design/6Wq1Q7YGyM2G5qth/scene.splinecode" 
-                  className="w-full h-full scale-[1.15]"
-                ></spline-viewer>
+                <>
+                  {/* Immediate Visual Feedback: Waving Anime Girl */}
+                  <img 
+                    src="https://media.tenor.com/X6oB9G3O3kUAAAAd/anime-wave.gif" 
+                    alt="Anime girl waving hello"
+                    className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500 scale-105"
+                    style={{ mixBlendMode: 'lighten' }}
+                  />
+                  
+                  {/* 
+                  TODO: If you want true 3D interactive Spline, uncomment the below 
+                  and replace the URL with your custom anime girl Spline link!
+                  
+                  <spline-viewer 
+                    url="YOUR_SPLINE_ANIME_GIRL_URL_HERE" 
+                    className="absolute inset-0 w-full h-full scale-[1.15]"
+                  ></spline-viewer>
+                  */}
+                </>
               ) : (
                 <div className="w-[200px] h-[200px] rounded-full bg-white/5 animate-pulse"></div>
               )}
