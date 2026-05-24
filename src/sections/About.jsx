@@ -222,12 +222,32 @@ const About = () => {
             
             <div className="absolute -right-20 -top-20 w-80 h-80 bg-gradient-to-br from-[#A9715B]/10 to-[#EAD8C3]/20 rounded-full blur-3xl group-hover:bg-[#A9715B]/25 transition-colors duration-700 pointer-events-none"></div>
             
-            <h3 className="text-3xl md:text-5xl font-black text-[#2C2621] mb-6 tracking-tight leading-[1.1] relative z-10">
-              I build <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#A9715B] to-[#2C2621] italic pr-2">intelligent</span> systems that bridge the gap between data and action.
-            </h3>
-            <p className="text-[#7C7267] text-lg leading-relaxed font-light mb-10 max-w-2xl relative z-10">
-              As an <b className="text-[#2C2621] font-bold">AI/ML Enthusiast</b>, I don’t just write code—I architect intelligence. Driven by continuous learning, I transform complex, unstructured data into elegant, high-performing solutions through predictive modeling and generative AI.
-            </p>
+            {/* Redesigned Stylish Headline */}
+            <div className="relative z-10 mb-8">
+              <span className="text-[#A9715B] font-mono text-sm tracking-[0.3em] uppercase mb-2 block flex items-center gap-2">
+                <span className="w-8 h-[1px] bg-[#A9715B]"></span> I build
+              </span>
+              <h3 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.9] mb-4">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2C2621] via-[#A9715B] to-[#D4A373]">INTELLIGENT</span><br/>
+                <span className="text-[#2C2621]">SYSTEMS</span>
+              </h3>
+              <p className="text-xl md:text-2xl text-[#5C4A3D] font-light tracking-tight border-b border-[#A9715B]/20 pb-4 inline-block">
+                that bridge the gap between <span className="font-semibold italic text-[#A9715B]">data</span> and <span className="font-semibold italic text-[#A9715B]">action</span>.
+              </p>
+            </div>
+
+            {/* Redesigned Stylish Body Paragraph */}
+            <motion.div 
+              whileHover={{ x: 5 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="relative z-10 mb-10 max-w-2xl bg-white/40 backdrop-blur-md p-6 md:p-8 rounded-3xl border-l-4 border-l-[#A9715B] border border-white/50 shadow-[0_15px_35px_rgba(44,38,33,0.05)]"
+            >
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-[#A9715B]/10 to-transparent rounded-bl-[40px] pointer-events-none"></div>
+              <FiTerminal className="absolute top-6 right-6 text-[#A9715B]/30 text-4xl" />
+              <p className="text-[#5C4A3D] text-[17px] leading-[1.8] font-light relative z-10">
+                As an <span className="inline-block px-3 py-1 bg-[#2C2621] text-[#EAD8C3] font-mono text-xs uppercase tracking-widest rounded-lg mx-1 shadow-md font-bold transform -translate-y-0.5">AI/ML Enthusiast</span>, I don’t just write code—<b className="text-[#2C2621] font-semibold">I architect intelligence</b>. Driven by continuous learning, I transform complex, unstructured data into elegant, high-performing solutions through predictive modeling and generative AI.
+              </p>
+            </motion.div>
 
             <div className="flex flex-wrap gap-4 relative z-10">
               <div className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-[#2C2621] text-white text-xs font-mono uppercase tracking-[0.15em] hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(44,38,33,0.3)] transition-all cursor-default border border-transparent hover:border-[#A9715B]/50">
