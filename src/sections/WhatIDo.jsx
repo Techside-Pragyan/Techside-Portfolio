@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { HiOutlineCode, HiOutlinePencilAlt, HiOutlineChip } from 'react-icons/hi';
+import { FiCpu } from 'react-icons/fi';
 
 const WhatIDo = () => {
   const containerRef = useRef(null);
