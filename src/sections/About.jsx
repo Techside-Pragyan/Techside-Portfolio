@@ -222,11 +222,16 @@ const About = () => {
             
             <div className="absolute -right-20 -top-20 w-80 h-80 bg-gradient-to-br from-[#A9715B]/10 to-[#EAD8C3]/20 rounded-full blur-3xl group-hover:bg-[#A9715B]/25 transition-colors duration-700 pointer-events-none"></div>
             
-            <h3 className="text-3xl md:text-5xl font-black text-[#2C2621] mb-6 tracking-tight leading-[1.1] relative z-10">
-              I build <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#A9715B] to-[#2C2621] italic pr-2">intelligent</span> systems that bridge the gap between data and action.
+            <h3 className="text-3xl md:text-5xl lg:text-6xl font-black text-[#2C2621] mb-8 tracking-tight leading-[1.15] relative z-10">
+              I build <br className="hidden md:block" />
+              <span className="relative inline-block md:mt-2 md:mb-1">
+                <span className="absolute -inset-2 bg-gradient-to-r from-[#A9715B] to-[#D4A373] blur-xl opacity-20 rounded-full"></span>
+                <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-[#A9715B] to-[#7A4F3C] italic pr-2">intelligent systems</span>
+              </span><br className="hidden md:block" />
+              that bridge the gap between <span className="underline decoration-[#A9715B]/30 decoration-4 underline-offset-4">data</span> and <span className="underline decoration-[#A9715B]/30 decoration-4 underline-offset-4">action</span>.
             </h3>
-            <p className="text-[#7C7267] text-lg leading-relaxed font-light mb-10 max-w-2xl relative z-10">
-              As an <b className="text-[#2C2621] font-bold">AI/ML Enthusiast</b>, I don’t just write code—I architect intelligence. Driven by continuous learning, I transform complex, unstructured data into elegant, high-performing solutions through predictive modeling and generative AI.
+            <p className="text-[#5C4A3D] text-lg md:text-[20px] leading-[1.8] font-light mb-10 max-w-2xl relative z-10">
+              As an <b className="text-[#8C5A46] font-bold tracking-wide">AI/ML Enthusiast</b>, I don’t just write code—I architect intelligence. Driven by continuous learning, I transform complex, unstructured data into elegant, high-performing solutions through predictive modeling and generative AI.
             </p>
 
             <div className="flex flex-wrap gap-4 relative z-10">
