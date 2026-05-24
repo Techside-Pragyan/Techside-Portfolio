@@ -61,23 +61,23 @@ const WhatIDo = () => {
                   title="AI & ML ENGINEERING"
                   description="Architecting intelligent systems, training predictive models, and integrating state-of-the-art AI into practical applications."
                   icon={<HiOutlineChip />}
-                  skills={['Python', 'TensorFlow', 'Computer Vision', 'Data Intelligence']}
+                  skills={['PYTHON', 'TENSORFLOW', 'SCIKIT-LEARN', 'COMPUTER VISION', 'GENAI']}
                 />
               </motion.div>
               <motion.div variants={itemVariants}>
                 <CompetencyCard 
-                  title="DEVELOPMENT"
-                  description="Building high-performance, scalable web applications with modern frameworks, ensuring robust architecture and seamless interactions."
+                  title="FULL STACK DEVELOPMENT"
+                  description="Building high-performance, scalable web applications with the MERN stack, ensuring robust architecture and seamless user experiences."
                   icon={<HiOutlineCode />}
-                  skills={['React', 'Next.js', 'Node.js', 'PostgreSQL']}
+                  skills={['REACT', 'NODE.JS', 'MONGODB', 'EXPRESS', 'API INTEGRATION']}
                 />
               </motion.div>
               <motion.div variants={itemVariants}>
                 <CompetencyCard 
-                  title="UI/UX DESIGN"
-                  description="Crafting visually stunning, intuitive interfaces with a focus on premium aesthetics, smooth motion, and exceptional user experiences."
+                  title="PRODUCT DESIGN"
+                  description="Crafting visually stunning, intuitive interfaces with a focus on premium aesthetics, smooth motion, and accessible design."
                   icon={<HiOutlinePencilAlt />}
-                  skills={['Figma', 'Prototyping', 'Motion Design', 'Branding']}
+                  skills={['FIGMA', 'PROTOTYPING', 'MOTION DESIGN', 'BRANDING']}
                 />
               </motion.div>
             </div>
