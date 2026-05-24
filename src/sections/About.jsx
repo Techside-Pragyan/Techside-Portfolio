@@ -250,7 +250,7 @@ const About = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="md:col-span-6 lg:col-span-4 rounded-[2.5rem] bg-[#A9715B] p-8 md:p-10 relative overflow-hidden group hover:scale-[1.03] transition-transform duration-500 shadow-[0_15px_30px_rgba(169,113,91,0.3)] flex flex-col justify-between border border-[#A9715B]"
+            className="md:col-span-6 lg:col-span-3 rounded-[2.5rem] bg-[#A9715B] p-8 md:p-10 relative overflow-hidden group hover:scale-[1.03] transition-transform duration-500 shadow-[0_15px_30px_rgba(169,113,91,0.3)] flex flex-col justify-between border border-[#A9715B]"
           >
             {/* Tech line */}
             <div className="absolute top-0 left-0 w-1.5 h-full bg-white/20 group-hover:bg-white/40 transition-colors"></div>
