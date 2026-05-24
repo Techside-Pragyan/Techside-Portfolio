@@ -223,10 +223,10 @@ const About = () => {
             <div className="absolute -right-20 -top-20 w-80 h-80 bg-gradient-to-br from-[#A9715B]/10 to-[#EAD8C3]/20 rounded-full blur-3xl group-hover:bg-[#A9715B]/25 transition-colors duration-700 pointer-events-none"></div>
             
             <h3 className="text-3xl md:text-5xl font-black text-[#2C2621] mb-6 tracking-tight leading-[1.1] relative z-10">
-              I build <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#A9715B] to-[#2C2621] italic pr-2">intelligent</span> applications that leave a lasting impact.
+              I build <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#A9715B] to-[#2C2621] italic pr-2">intelligent</span> systems that bridge the gap between data and action.
             </h3>
             <p className="text-[#7C7267] text-lg leading-relaxed font-light mb-10 max-w-2xl relative z-10">
-              As a <b className="text-[#2C2621] font-bold">Creative Developer & AI Enthusiast</b>, I don't just write code—I engineer digital experiences. Driven by continuous learning, I transform complex problems into elegant, highly-performant solutions.
+              As an <b className="text-[#2C2621] font-bold">AI/ML Enthusiast</b>, I don’t just write code—I architect intelligence. Driven by continuous learning, I transform complex, unstructured data into elegant, high-performing solutions through predictive modeling and generative AI.
             </p>
 
             <div className="flex flex-wrap gap-4 relative z-10">
