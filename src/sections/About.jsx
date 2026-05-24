@@ -161,8 +161,9 @@ const About = () => {
                       loop 
                       muted 
                       playsInline
-                      className="w-full h-full object-contain pointer-events-none"
+                      className="w-full h-full object-cover pointer-events-none"
                       style={{ 
+                        objectPosition: 'center top',
                         transformOrigin: `${posX}% ${posY}%`, 
                         transform: `scale(${zoom})`,
                         mixBlendMode: blendMode,
