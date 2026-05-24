@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { FiCode, FiLayout, FiArrowUpRight, FiCoffee } from 'react-icons/fi';
 import Tilt from 'react-parallax-tilt';
+import animeAssistant from '../assets/anime_assistant.png';
 
 const About = () => {
   const containerRef = useRef(null);
@@ -65,12 +66,13 @@ const About = () => {
                   transitionSpeed={1500}
                   className="w-full h-full flex items-center justify-center cursor-crosshair"
                 >
-                  {/* Immediate Visual Feedback: Waving Anime Girl with 3D Physics */}
-                  <img 
-                    src="https://media.tenor.com/X6oB9G3O3kUAAAAd/anime-wave.gif" 
-                    alt="Anime girl waving hello"
+                  {/* Immediate Visual Feedback: Waving Anime Girl with 3D Physics & Floating Animation */}
+                  <motion.img 
+                    src={animeAssistant} 
+                    alt="Anime girl saying Hii to everyone"
+                    animate={{ y: [0, -12, 0] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                     className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
-                    style={{ mixBlendMode: 'lighten' }}
                   />
                   
                   {/* 
