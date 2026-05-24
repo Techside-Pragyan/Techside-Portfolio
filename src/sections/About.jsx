@@ -236,10 +236,10 @@ const About = () => {
 
             <div className="flex flex-wrap gap-4 relative z-10">
               <div className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-[#2C2621] text-white text-xs font-mono uppercase tracking-[0.15em] hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(44,38,33,0.3)] transition-all cursor-default border border-transparent hover:border-[#A9715B]/50">
-                <FiCode className="text-lg text-[#A9715B]" /> Frontend Eng
+                <FiCpu className="text-lg text-[#A9715B]" /> AI/ML DEVELOPMENT
               </div>
               <div className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-white/60 backdrop-blur-md border border-white text-[#2C2621] text-xs font-mono uppercase tracking-[0.15em] hover:-translate-y-1 hover:shadow-lg transition-all cursor-default hover:bg-white">
-                <FiLayout className="text-[#A9715B] text-lg" /> UI/UX Design
+                <FiTerminal className="text-[#A9715B] text-lg" /> GEN-AI RESEARCH
               </div>
             </div>
           </motion.div>
