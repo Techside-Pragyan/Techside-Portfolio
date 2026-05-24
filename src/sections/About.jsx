@@ -3,6 +3,7 @@ import { motion, useInView } from 'framer-motion';
 import { FiCode, FiLayout, FiArrowUpRight, FiCoffee, FiTerminal, FiCpu } from 'react-icons/fi';
 import Tilt from 'react-parallax-tilt';
 import animeAssistantAdvanced from '../assets/anime_assistant_advanced.png';
+import professionalAvatar from '../assets/professional_avatar.png';
 import '@google/model-viewer';
 
 const About = () => {
@@ -84,30 +85,33 @@ const About = () => {
 
             <div className="flex-1 w-full h-full relative pointer-events-auto flex items-center justify-center overflow-hidden">
               {isInView ? (
-                <div className="w-full h-full relative z-20">
+                <Tilt 
+                  tiltMaxAngleX={12} 
+                  tiltMaxAngleY={12} 
+                  perspective={1000} 
+                  scale={1.05} 
+                  transitionSpeed={2000}
+                  className="w-full h-full flex items-center justify-center cursor-crosshair relative"
+                >
                   {/* Holographic Speech Bubble */}
                   <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1, y: [0, -5, 0] }}
                     transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute top-[10%] right-[10%] z-40 bg-black/60 backdrop-blur-md border border-[#34d399]/50 text-white px-4 py-2 rounded-2xl rounded-br-none shadow-[0_0_15px_rgba(52,211,153,0.3)] pointer-events-none"
+                    className="absolute top-[10%] right-[10%] z-40 bg-black/60 backdrop-blur-md border border-[#A9715B]/50 text-white px-4 py-2 rounded-2xl rounded-br-none shadow-[0_0_15px_rgba(169,113,91,0.3)] pointer-events-none"
                   >
-                    <span className="font-mono text-sm tracking-widest text-[#34d399] font-bold">Hii to everyone!</span>
-                    <div className="absolute -bottom-2 right-0 w-4 h-4 bg-black/60 border-b border-r border-[#34d399]/50 transform rotate-45 translate-x-1 -translate-y-2"></div>
+                    <span className="font-mono text-sm tracking-widest text-[#A9715B] font-bold">Hii to everyone!</span>
+                    <div className="absolute -bottom-2 right-0 w-4 h-4 bg-black/60 border-b border-r border-[#A9715B]/50 transform rotate-45 translate-x-1 -translate-y-2"></div>
                   </motion.div>
 
-                  {/* True Live 3D Interactive Female Avatar */}
-                  <model-viewer
-                    src="https://assets.babylonjs.com/meshes/HVGirl.glb"
-                    alt="A 3D animated female avatar"
-                    animation-name="Idle"
-                    autoplay
-                    camera-controls
-                    disable-zoom
-                    shadow-intensity="1"
-                    style={{ width: '100%', height: '110%', backgroundColor: 'transparent', outline: 'none' }}
-                  ></model-viewer>
-                </div>
+                  <motion.img 
+                    src={professionalAvatar} 
+                    alt="Professional 3D Avatar saying Hii to everyone"
+                    animate={{ y: [0, -10, 0] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                    className="w-[115%] h-[115%] object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-700"
+                  />
+                </Tilt>
               ) : (
                 <div className="w-[200px] h-[200px] rounded-full bg-white/5 animate-pulse border border-[#A9715B]/20"></div>
               )}
