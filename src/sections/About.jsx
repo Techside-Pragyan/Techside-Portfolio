@@ -167,7 +167,10 @@ const About = () => {
                         transformOrigin: `${posX}% ${posY}%`, 
                         transform: `scale(${zoom})`,
                         mixBlendMode: blendMode,
-                        filter: 'contrast(1.15) saturate(1.2) brightness(1.05)'
+                        filter: 'contrast(1.2) saturate(1.15) brightness(1.02)',
+                        imageRendering: 'high-quality',
+                        transformStyle: 'preserve-3d',
+                        WebkitBackfaceVisibility: 'hidden'
                       }}
                     />
                     
