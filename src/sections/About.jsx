@@ -15,6 +15,34 @@ const About = () => {
   const [posY, setPosY] = useState(50);
   const [blendMode, setBlendMode] = useState('normal');
 
+  const videoRef = useRef(null);
+
+  React.useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Fast forward the initial load to skip the intro flash
+    const handleLoadedMetadata = () => {
+      video.currentTime = 0.2;
+    };
+
+    // Trim the end and loop back to 0.2s to skip intro and outro flashes
+    const handleTimeUpdate = () => {
+      if (video.duration && video.currentTime >= video.duration - 0.1) {
+        video.currentTime = 0.2;
+        video.play().catch(() => {});
+      }
+    };
+
+    video.addEventListener('loadedmetadata', handleLoadedMetadata);
+    video.addEventListener('timeupdate', handleTimeUpdate);
+
+    return () => {
+      video.removeEventListener('loadedmetadata', handleLoadedMetadata);
+      video.removeEventListener('timeupdate', handleTimeUpdate);
+    };
+  }, []);
+
   const bentoVariants = {
     hidden: { opacity: 0, scale: 0.95, y: 20 },
     visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
