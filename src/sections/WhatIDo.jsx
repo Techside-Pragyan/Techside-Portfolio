@@ -55,8 +55,8 @@ const WhatIDo = () => {
               </h2>
             </motion.div>
 
-            <div className="space-y-6">
-              <motion.div variants={itemVariants}>
+            <div className="flex flex-col relative group/deck pt-4">
+              <motion.div variants={itemVariants} className="relative z-30 transition-all duration-500 hover:-translate-y-8 hover:scale-[1.02] hover:z-50 origin-bottom cursor-pointer">
                 <CompetencyCard 
                   title="AI & ML ENGINEERING"
                   description="Architecting intelligent systems, training predictive models, and integrating state-of-the-art AI into practical applications."
@@ -64,7 +64,7 @@ const WhatIDo = () => {
                   skills={['PYTHON', 'TENSORFLOW', 'SCIKIT-LEARN', 'COMPUTER VISION', 'GENAI']}
                 />
               </motion.div>
-              <motion.div variants={itemVariants}>
+              <motion.div variants={itemVariants} className="relative z-20 -mt-12 md:-mt-16 transition-all duration-500 hover:-translate-y-8 hover:scale-[1.02] hover:z-50 origin-bottom cursor-pointer group-hover/deck:translate-y-2">
                 <CompetencyCard 
                   title="FULL STACK DEVELOPMENT"
                   description="Building high-performance, scalable web applications with the MERN stack, ensuring robust architecture and seamless user experiences."
@@ -72,7 +72,7 @@ const WhatIDo = () => {
                   skills={['REACT', 'NODE.JS', 'MONGODB', 'EXPRESS', 'API INTEGRATION']}
                 />
               </motion.div>
-              <motion.div variants={itemVariants}>
+              <motion.div variants={itemVariants} className="relative z-10 -mt-12 md:-mt-16 transition-all duration-500 hover:-translate-y-8 hover:scale-[1.02] hover:z-50 origin-bottom cursor-pointer group-hover/deck:translate-y-4">
                 <CompetencyCard 
                   title="PRODUCT DESIGN"
                   description="Crafting visually stunning, intuitive interfaces with a focus on premium aesthetics, smooth motion, and accessible design."
@@ -115,22 +115,22 @@ const WhatIDo = () => {
 };
 
 const CompetencyCard = ({ title, description, icon, skills }) => (
-  <div className="relative overflow-hidden p-8 rounded-3xl bg-white/60 border border-white/80 shadow-[0_8px_30px_rgb(0,0,0,0.04)] backdrop-blur-xl hover:shadow-[0_20px_40px_rgba(169,113,91,0.12)] hover:-translate-y-1 hover:bg-white/80 transition-all duration-500 group cursor-default">
-    {/* Subtle gradient hover reveal */}
-    <div className="absolute inset-0 bg-gradient-to-r from-[#A9715B]/0 via-[#A9715B]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+  <div className="relative overflow-hidden p-8 md:p-10 rounded-[2.5rem] bg-gradient-to-br from-white/90 to-white/40 border border-white shadow-[0_15px_35px_rgba(0,0,0,0.05)] backdrop-blur-2xl transition-all duration-500 group">
+    {/* Subtle glowing orb inside card */}
+    <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#A9715B]/10 rounded-full blur-3xl group-hover:bg-[#A9715B]/20 transition-colors duration-500 pointer-events-none" />
 
     <div className="flex flex-col sm:flex-row items-start gap-6 relative z-10">
-      <div className="w-16 h-16 shrink-0 rounded-2xl bg-gradient-to-br from-white to-[#f5ede6] border border-white shadow-sm flex items-center justify-center text-3xl text-[#A9715B] group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
+      <div className="w-16 h-16 shrink-0 rounded-2xl bg-gradient-to-br from-[#2C2621] to-[#4A3F35] shadow-[0_10px_20px_rgba(44,38,33,0.2)] flex items-center justify-center text-3xl text-[#EAD8C3] group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
         {icon}
       </div>
-      <div className="space-y-4">
-        <h3 className="text-2xl font-black text-[#2C2621] tracking-tighter group-hover:text-[#A9715B] transition-colors">{title}</h3>
-        <p className="text-[#7C7267] font-light text-[15px] leading-relaxed max-w-sm">
+      <div className="space-y-4 w-full">
+        <h3 className="text-2xl md:text-3xl font-black text-[#2C2621] tracking-tighter">{title}</h3>
+        <p className="text-[#5C4A3D] font-light text-[16px] leading-[1.8] max-w-sm">
           {description}
         </p>
-        <div className="flex flex-wrap gap-2 pt-2">
+        <div className="flex flex-wrap gap-2 pt-3">
            {skills.map(skill => (
-             <span key={skill} className="px-3 py-1 text-xs font-bold tracking-widest uppercase rounded-full bg-[#A9715B]/10 text-[#A9715B] border border-[#A9715B]/20">
+             <span key={skill} className="px-3 py-1.5 text-[10px] font-bold tracking-widest uppercase rounded-xl bg-white/60 text-[#8C5A46] border border-[#A9715B]/15 shadow-sm group-hover:bg-white transition-colors duration-300">
                 {skill}
              </span>
            ))}
