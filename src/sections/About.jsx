@@ -126,11 +126,12 @@ const About = () => {
                       loop 
                       muted 
                       playsInline
-                      className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                      className="w-full h-full object-cover pointer-events-none"
                       style={{ 
                         transformOrigin: `${posX}% ${posY}%`, 
                         transform: `scale(${zoom})`,
-                        mixBlendMode: blendMode
+                        mixBlendMode: blendMode,
+                        filter: 'contrast(1.15) saturate(1.2) brightness(1.05)'
                       }}
                     />
                     
