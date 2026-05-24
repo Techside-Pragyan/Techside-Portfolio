@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { FiCode, FiLayout, FiArrowUpRight, FiCoffee, FiTerminal, FiCpu } from 'react-icons/fi';
 import Tilt from 'react-parallax-tilt';
@@ -8,6 +8,11 @@ import '@google/model-viewer';
 const About = () => {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.15 });
+
+  // Temporary state for the user to control the video camera angle!
+  const [zoom, setZoom] = useState(2.2);
+  const [posX, setPosX] = useState(20);
+  const [posY, setPosY] = useState(30);
 
   const bentoVariants = {
     hidden: { opacity: 0, scale: 0.95, y: 20 },
@@ -107,7 +112,7 @@ const About = () => {
                   <motion.div
                     animate={{ y: [0, -10, 0] }}
                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    className="w-[115%] h-[115%] flex items-center justify-center overflow-hidden rounded-[30px]"
+                    className="w-[115%] h-[115%] flex items-center justify-center overflow-hidden rounded-[30px] relative group"
                   >
                     <video 
                       src={avatarVideo} 
@@ -117,10 +122,36 @@ const About = () => {
                       playsInline
                       className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
                       style={{ 
-                        transformOrigin: '20% 30%', 
-                        transform: 'scale(2.2)' 
+                        transformOrigin: `${posX}% ${posY}%`, 
+                        transform: `scale(${zoom})` 
                       }}
                     />
+                    
+                    {/* Temporary Camera Controls For The User! */}
+                    <div className="absolute bottom-4 left-4 z-50 flex flex-col gap-2 bg-black/90 p-4 rounded-xl border border-[#A9715B]/50 shadow-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <p className="text-white text-[10px] font-mono uppercase tracking-widest border-b border-white/20 pb-1 mb-1">Fix The Size</p>
+                      
+                      <div className="flex gap-2 justify-between">
+                        <button onClick={() => setZoom(z => z + 0.1)} className="text-white text-xs px-3 py-1.5 bg-[#A9715B] hover:bg-white hover:text-black rounded transition-colors">+ Zoom In</button>
+                        <button onClick={() => setZoom(z => z - 0.1)} className="text-white text-xs px-3 py-1.5 bg-gray-700 hover:bg-white hover:text-black rounded transition-colors">- Zoom Out</button>
+                      </div>
+                      
+                      <div className="grid grid-cols-3 gap-1 mt-1">
+                        <div></div>
+                        <button onClick={() => setPosY(y => y - 5)} className="text-white text-xs py-1 bg-gray-700 hover:bg-[#A9715B] rounded">Up</button>
+                        <div></div>
+                        <button onClick={() => setPosX(x => x - 5)} className="text-white text-xs py-1 bg-gray-700 hover:bg-[#A9715B] rounded">Left</button>
+                        <div className="flex items-center justify-center"><FiTerminal className="text-[#A9715B]" /></div>
+                        <button onClick={() => setPosX(x => x + 5)} className="text-white text-xs py-1 bg-gray-700 hover:bg-[#A9715B] rounded">Right</button>
+                        <div></div>
+                        <button onClick={() => setPosY(y => y + 5)} className="text-white text-xs py-1 bg-gray-700 hover:bg-[#A9715B] rounded">Down</button>
+                        <div></div>
+                      </div>
+                      
+                      <div className="text-white/50 text-[10px] font-mono mt-1 text-center bg-black/50 py-1 rounded">
+                        Zoom: {zoom.toFixed(1)} | X: {posX}% | Y: {posY}%
+                      </div>
+                    </div>
                   </motion.div>
                 </Tilt>
               ) : (
