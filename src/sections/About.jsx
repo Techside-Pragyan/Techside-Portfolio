@@ -144,6 +144,7 @@ const About = () => {
                     className="w-full h-full flex items-center justify-center overflow-hidden rounded-[30px] relative group"
                   >
                     <video 
+                      ref={videoRef}
                       src={avatarVideo} 
                       autoPlay 
                       loop 
