@@ -100,7 +100,7 @@ const About = () => {
                   <model-viewer
                     src="https://assets.babylonjs.com/meshes/HVGirl.glb"
                     alt="A 3D animated female avatar"
-                    animation-name="Samba"
+                    animation-name="Idle"
                     autoplay
                     camera-controls
                     disable-zoom
