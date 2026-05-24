@@ -1,34 +1,55 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { FiBriefcase, FiBookOpen, FiAward, FiCpu } from 'react-icons/fi';
 
 const experiences = [
   {
-    year: "Present",
+    id: 1,
+    year: "2024 - Present",
     title: "AI/ML Learning Roadmap",
     subtitle: "Self-Paced Exploration",
     description: "Deep diving into Neural Networks, Deep Learning, NLP, and Computer Vision using TensorFlow and PyTorch. Building intelligent systems and agents.",
-    category: "Professional"
+    category: "Professional",
+    icon: <FiCpu className="text-2xl" />,
+    color: "bg-[#2C2621]",
+    textColor: "text-white",
+    subText: "text-white/60"
   },
   {
+    id: 2,
     year: "Upcoming",
     title: "B.Tech in Computer Science",
     subtitle: "Future Journey",
     description: "Aiming to further solidify my foundation in engineering, algorithms, and advanced software development principles.",
-    category: "Academic"
+    category: "Academic",
+    icon: <FiBookOpen className="text-2xl" />,
+    color: "bg-white/60",
+    textColor: "text-[#2C2621]",
+    subText: "text-[#7C7267]"
   },
   {
+    id: 3,
     year: "Current",
-    title: "Diploma in Computer Science & Engineering",
+    title: "Diploma in CS & Engineering",
     subtitle: "Academic Foundation",
     description: "Building strong fundamentals in programming, data structures, and computer architecture. Consistently maintaining high academic performance.",
-    category: "Academic"
+    category: "Academic",
+    icon: <FiAward className="text-2xl" />,
+    color: "bg-[#A9715B]",
+    textColor: "text-white",
+    subText: "text-white/80"
   },
   {
+    id: 4,
     year: "Continuous",
     title: "Hackathons & Workshops",
     subtitle: "Active Participation",
     description: "Engaging in various coding challenges, technical workshops, and hackathons to apply skills to real-world problems and collaborate with peers.",
-    category: "Professional"
+    category: "Professional",
+    icon: <FiBriefcase className="text-2xl" />,
+    color: "bg-gradient-to-br from-[#E6D5C3] to-[#D4A373]",
+    textColor: "text-[#2C2621]",
+    subText: "text-[#5C4A3D]"
   }
 ];
 
@@ -38,87 +59,87 @@ const Experience = () => {
   const filteredExp = experiences.filter(exp => filter === 'All' || exp.category === filter);
 
   return (
-    <section id="experience" className="py-24 px-6 relative z-10">
-      <div className="container mx-auto max-w-5xl">
+    <section id="experience" className="py-32 px-6 relative z-10 overflow-hidden">
+      <div className="container mx-auto max-w-7xl">
+        
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="text-left"
-          >
-            <h2 className="text-4xl md:text-6xl font-black mb-4 tracking-tighter text-[#2C2621] leading-none">
-              The <br/> <span className="text-gradient-animated">Journey</span>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8"
+        >
+          <div>
+            <div className="flex items-center gap-4 mb-4">
+              <div className="h-[2px] w-12 bg-[#A9715B]"></div>
+              <span className="text-[#A9715B] font-bold tracking-[0.3em] uppercase text-xs">Timeline</span>
+            </div>
+            <h2 className="text-5xl md:text-7xl font-black text-[#2C2621] tracking-tighter leading-none">
+              THE <span className="italic font-light text-[#A9715B]">JOURNEY</span>
             </h2>
-            <p className="text-[#7C7267] max-w-md">
-              A chronological perspective on academic excellence and professional growth.
-            </p>
-          </motion.div>
-
+          </div>
+          
           {/* Filters */}
-          <div className="flex bg-black/[0.03] p-1 rounded-full border border-black/[0.06]">
+          <div className="flex bg-white/50 backdrop-blur-md p-1.5 rounded-full border border-black/[0.06] shadow-sm">
              {['All', 'Academic', 'Professional'].map(cat => (
                <button
                  key={cat}
                  onClick={() => setFilter(cat)}
-                 className={`px-6 py-2 rounded-full text-xs font-bold transition-all ${
-                   filter === cat ? 'bg-[#A9715B] text-white shadow-lg shadow-[#A9715B]/20' : 'text-[#7C7267] hover:text-[#2C2621]'
+                 className={`px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 ${
+                   filter === cat 
+                   ? 'bg-[#2C2621] text-white shadow-md' 
+                   : 'text-[#7C7267] hover:bg-white/60'
                  }`}
                >
                  {cat}
                </button>
              ))}
           </div>
-        </div>
+        </motion.div>
 
-        <div className="relative">
-          {/* Vertical Line */}
-          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#A9715B] via-[#E3CBB3] to-[#8B7E74] md:-translate-x-1/2 opacity-30"></div>
-
-          <div className="space-y-12">
-            <AnimatePresence mode='popLayout'>
-              {filteredExp.map((exp, idx) => (
-                <motion.div
-                  key={exp.title}
-                  layout
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.5 }}
-                  className={`relative flex flex-col md:flex-row items-center justify-between w-full ${
-                    idx % 2 === 0 ? 'md:flex-row-reverse' : ''
-                  }`}
-                >
-                  {/* Timeline Dot */}
-                  <div className="absolute left-0 md:left-1/2 top-0 md:top-1/2 w-4 h-4 rounded-full bg-[#A9715B] shadow-[0_0_15px_rgba(169,113,91,0.5)] md:-translate-x-1/2 md:-translate-y-1/2 z-10 border-4 border-[#EAD8C3]"></div>
-
-                  {/* Content Card */}
-                  <div className={`w-full md:w-[45%] pl-8 md:pl-0`}>
-                    <div className="glass-card p-8 group hover:border-[#A9715B]/30 hover:shadow-[0_15px_40px_rgba(169,113,91,0.06)] transition-all duration-500 relative overflow-hidden bg-white/40">
-                       <span className="inline-block py-1 px-3 rounded-full bg-black/[0.03] border border-black/[0.06] text-[#A9715B] text-xs font-bold mb-4 tracking-widest uppercase">
-                         {exp.year}
-                       </span>
-                       
-                       <h3 className="text-2xl font-bold text-[#2C2621] mb-2 group-hover:text-[#A9715B] transition-colors">
-                         {exp.title}
-                       </h3>
-                       <h4 className="text-[#8B7E74] font-semibold mb-4 text-sm uppercase tracking-wider">
-                         {exp.subtitle}
-                       </h4>
-                       <p className="text-[#7C7267] leading-relaxed font-light text-sm">
-                         {exp.description}
-                       </p>
+        {/* Bento List Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <AnimatePresence mode='popLayout'>
+            {filteredExp.map((exp) => (
+              <motion.div
+                key={exp.id}
+                layout
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, y: -20 }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                className={`p-8 md:p-10 rounded-[2.5rem] relative overflow-hidden group hover:-translate-y-2 transition-transform duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.05)] border border-white/40 ${exp.color} backdrop-blur-xl`}
+              >
+                {/* Decorative background circle */}
+                <div className="absolute -right-10 -top-10 w-40 h-40 bg-white/10 rounded-full blur-2xl group-hover:bg-white/20 transition-colors duration-500 pointer-events-none"></div>
+                
+                <div className="flex flex-col h-full justify-between gap-8 relative z-10">
+                  <div className="flex justify-between items-start">
+                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/20 ${exp.textColor} shadow-sm group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500`}>
+                      {exp.icon}
                     </div>
+                    <span className={`px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-black tracking-widest uppercase ${exp.textColor} border border-white/20`}>
+                      {exp.year}
+                    </span>
                   </div>
-
-                  {/* Spacer */}
-                  <div className="hidden md:block w-[45%]"></div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </div>
+                  
+                  <div>
+                    <h3 className={`text-3xl font-black mb-2 tracking-tight ${exp.textColor}`}>
+                      {exp.title}
+                    </h3>
+                    <h4 className={`text-xs font-bold uppercase tracking-widest mb-6 ${exp.subText}`}>
+                      {exp.subtitle}
+                    </h4>
+                    <p className={`text-sm leading-relaxed font-medium max-w-md ${exp.subText}`}>
+                      {exp.description}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
+        
       </div>
     </section>
   );
