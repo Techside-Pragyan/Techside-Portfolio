@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { FiCode, FiLayout, FiArrowUpRight, FiCoffee } from 'react-icons/fi';
+import Tilt from 'react-parallax-tilt';
 
 const About = () => {
   const containerRef = useRef(null);
@@ -39,7 +40,7 @@ const About = () => {
         {/* Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[minmax(180px,auto)]" ref={containerRef}>
           
-          {/* Bento 1: 3D Scene (Large Left) */}
+          {/* Bento 1: Interactive 2.5D Scene (Large Left) */}
           <motion.div 
             variants={bentoVariants}
             initial="hidden"
@@ -56,12 +57,19 @@ const About = () => {
 
             <div className="flex-1 w-full h-full relative pointer-events-auto flex items-center justify-center overflow-hidden">
               {isInView ? (
-                <>
-                  {/* Immediate Visual Feedback: Waving Anime Girl */}
+                <Tilt 
+                  tiltMaxAngleX={15} 
+                  tiltMaxAngleY={15} 
+                  perspective={800} 
+                  scale={1.1} 
+                  transitionSpeed={1500}
+                  className="w-full h-full flex items-center justify-center cursor-crosshair"
+                >
+                  {/* Immediate Visual Feedback: Waving Anime Girl with 3D Physics */}
                   <img 
                     src="https://media.tenor.com/X6oB9G3O3kUAAAAd/anime-wave.gif" 
                     alt="Anime girl waving hello"
-                    className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500 scale-105"
+                    className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
                     style={{ mixBlendMode: 'lighten' }}
                   />
                   
@@ -74,7 +82,7 @@ const About = () => {
                     className="absolute inset-0 w-full h-full scale-[1.15]"
                   ></spline-viewer>
                   */}
-                </>
+                </Tilt>
               ) : (
                 <div className="w-[200px] h-[200px] rounded-full bg-white/5 animate-pulse"></div>
               )}
