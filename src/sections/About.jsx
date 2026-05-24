@@ -2,8 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { FiCode, FiLayout, FiArrowUpRight, FiCoffee, FiTerminal, FiCpu } from 'react-icons/fi';
 import Tilt from 'react-parallax-tilt';
-import animeAssistantAdvanced from '../assets/anime_assistant_advanced.png';
-import professionalAvatar from '../assets/professional_avatar.png';
+import avatarVideo from '../assets/avatar_video.mp4';
 import '@google/model-viewer';
 
 const About = () => {
@@ -104,13 +103,21 @@ const About = () => {
                     <div className="absolute -bottom-2 right-0 w-4 h-4 bg-black/60 border-b border-r border-[#A9715B]/50 transform rotate-45 translate-x-1 -translate-y-2"></div>
                   </motion.div>
 
-                  <motion.img 
-                    src={professionalAvatar} 
-                    alt="Professional 3D Avatar saying Hii to everyone"
+                  {/* True Live Avatar Video */}
+                  <motion.div
                     animate={{ y: [0, -10, 0] }}
                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    className="w-[115%] h-[115%] object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-700"
-                  />
+                    className="w-[115%] h-[115%] flex items-center justify-center"
+                  >
+                    <video 
+                      src={avatarVideo} 
+                      autoPlay 
+                      loop 
+                      muted 
+                      playsInline
+                      className="w-full h-full object-cover rounded-[30px] opacity-90 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                    />
+                  </motion.div>
                 </Tilt>
               ) : (
                 <div className="w-[200px] h-[200px] rounded-full bg-white/5 animate-pulse border border-[#A9715B]/20"></div>
