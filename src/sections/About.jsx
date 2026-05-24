@@ -89,14 +89,25 @@ const About = () => {
                   perspective={1000} 
                   scale={1.08} 
                   transitionSpeed={2000}
-                  className="w-full h-full flex items-center justify-center cursor-crosshair"
+                  className="w-full h-full flex items-center justify-center cursor-crosshair relative"
                 >
+                  {/* Holographic Speech Bubble */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1, y: [0, -5, 0] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute top-[10%] right-[10%] z-40 bg-black/60 backdrop-blur-md border border-[#34d399]/50 text-white px-4 py-2 rounded-2xl rounded-br-none shadow-[0_0_15px_rgba(52,211,153,0.3)]"
+                  >
+                    <span className="font-mono text-sm tracking-widest text-[#34d399] font-bold">Hii to everyone!</span>
+                    {/* Speech bubble tail */}
+                    <div className="absolute -bottom-2 right-0 w-4 h-4 bg-black/60 border-b border-r border-[#34d399]/50 transform rotate-45 translate-x-1 -translate-y-2"></div>
+                  </motion.div>
+
                   <motion.img 
-                    src={animeAssistantAdvanced} 
-                    alt="Cyberpunk Anime girl saying Hii to everyone"
-                    animate={{ y: [0, -12, 0] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                    src="https://media.tenor.com/X6oB9G3O3kUAAAAd/anime-wave.gif" 
+                    alt="Animated Cyberpunk Anime girl saying Hii to everyone"
                     className="w-[115%] h-[115%] object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-700"
+                    style={{ mixBlendMode: 'lighten' }}
                   />
                 </Tilt>
               ) : (
