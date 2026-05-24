@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { FiCode, FiLayout, FiArrowUpRight, FiCoffee, FiTerminal, FiCpu } from 'react-icons/fi';
 import Tilt from 'react-parallax-tilt';
-import avatarVideo from '../assets/avatar_video.mp4';
+import avatarVideo from '../assets/avatar_video2.mp4';
 import '@google/model-viewer';
 
 const About = () => {
@@ -10,9 +10,9 @@ const About = () => {
   const isInView = useInView(containerRef, { once: false, amount: 0.15 });
 
   // Temporary state for the user to control the video camera angle!
-  const [zoom, setZoom] = useState(2.2);
-  const [posX, setPosX] = useState(20);
-  const [posY, setPosY] = useState(30);
+  const [zoom, setZoom] = useState(1.0);
+  const [posX, setPosX] = useState(50);
+  const [posY, setPosY] = useState(50);
   const [blendMode, setBlendMode] = useState('normal');
 
   const bentoVariants = {
