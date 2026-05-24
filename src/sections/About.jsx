@@ -126,16 +126,27 @@ const About = () => {
                   transitionSpeed={2000}
                   className="w-full h-full flex items-center justify-center cursor-crosshair relative"
                 >
-                  {/* Holographic Speech Bubble */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1, y: [0, -5, 0] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute top-[10%] right-[10%] z-40 bg-black/60 backdrop-blur-md border border-[#A9715B]/50 text-white px-4 py-2 rounded-2xl rounded-br-none shadow-[0_0_15px_rgba(169,113,91,0.3)] pointer-events-none"
-                  >
-                    <span className="font-mono text-sm tracking-widest text-[#A9715B] font-bold">Hii to everyone!</span>
-                    <div className="absolute -bottom-2 right-0 w-4 h-4 bg-black/60 border-b border-r border-[#A9715B]/50 transform rotate-45 translate-x-1 -translate-y-2"></div>
-                  </motion.div>
+                  {/* Fancy Floating Greeting (Moved to bottom) */}
+                  <div className="absolute bottom-[15%] w-full flex justify-center z-40 pointer-events-none">
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1, y: [0, -8, 0] }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                      className="bg-black/40 backdrop-blur-xl border border-[#A9715B]/40 px-6 py-3 rounded-full shadow-[0_15px_30px_rgba(0,0,0,0.5)] flex items-center gap-3 relative overflow-hidden"
+                    >
+                      <span className="w-2 h-2 rounded-full bg-[#34d399] shadow-[0_0_10px_#34d399] animate-pulse"></span>
+                      <span className="font-mono text-xs tracking-[0.2em] text-white/90 font-bold uppercase drop-shadow-lg">
+                        Hii to everyone!
+                      </span>
+                      
+                      {/* Premium Shine Effect */}
+                      <motion.div 
+                        animate={{ x: ["-100%", "300%"] }}
+                        transition={{ duration: 4, repeat: Infinity, ease: "linear", repeatDelay: 1 }}
+                        className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12"
+                      />
+                    </motion.div>
+                  </div>
 
                   {/* True Live Avatar Video */}
                   <motion.div
