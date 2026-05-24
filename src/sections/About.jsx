@@ -10,7 +10,7 @@ const About = () => {
   const isInView = useInView(containerRef, { once: false, amount: 0.15 });
 
   // Temporary state for the user to control the video camera angle!
-  const [zoom, setZoom] = useState(0.7);
+  const [zoom, setZoom] = useState(1.0);
   const [posX, setPosX] = useState(50);
   const [posY, setPosY] = useState(50);
   const [blendMode, setBlendMode] = useState('normal');
