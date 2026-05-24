@@ -113,7 +113,7 @@ const About = () => {
                   <motion.div
                     animate={{ y: [0, -10, 0] }}
                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    className="w-[115%] h-[115%] flex items-center justify-center overflow-hidden rounded-[30px] relative group"
+                    className="w-full h-full flex items-center justify-center overflow-hidden rounded-[30px] relative group"
                   >
                     <video 
                       src={avatarVideo} 
@@ -121,7 +121,7 @@ const About = () => {
                       loop 
                       muted 
                       playsInline
-                      className="w-full h-full object-cover pointer-events-none"
+                      className="w-full h-full object-contain pointer-events-none"
                       style={{ 
                         transformOrigin: `${posX}% ${posY}%`, 
                         transform: `scale(${zoom})`,
