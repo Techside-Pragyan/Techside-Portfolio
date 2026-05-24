@@ -117,8 +117,8 @@ const About = () => {
                       playsInline
                       className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
                       style={{ 
-                        objectPosition: 'left center', 
-                        transform: 'scale(1.7) translateX(12%) translateY(5%)' 
+                        transformOrigin: '20% 30%', 
+                        transform: 'scale(2.2)' 
                       }}
                     />
                   </motion.div>
