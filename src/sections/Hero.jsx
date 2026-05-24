@@ -114,7 +114,7 @@ const Hero = () => {
               <span className="block text-[#A9715B]">MOHARANA</span>
             </h1>
             <h2 className="text-lg md:text-xl font-medium text-[#7C7267] tracking-wide mt-3">
-              <span className="text-[#A9715B]">AI/ML Engineer</span>
+              <span className="text-[#A9715B]">AI/ML Enthusiast</span>
               <span className="mx-2 text-[#C4B5A5]">|</span>
               <span className="text-[#5C4A3D]">Computer Science Student</span>
             </h2>
