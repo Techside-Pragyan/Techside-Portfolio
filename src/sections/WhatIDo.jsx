@@ -84,72 +84,60 @@ const WhatIDo = () => {
             </div>
           </motion.div>
 
-          {/* Right Side: AI Neural Terminal Scene */}
+          {/* Right Side: Premium AI Glass Core Visual */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="relative h-[500px] lg:h-[700px] w-full flex items-center justify-center order-1 lg:order-2"
+            transition={{ duration: 1.5 }}
+            className="relative h-[400px] md:h-[500px] lg:h-[700px] w-full flex items-center justify-center order-1 lg:order-2"
           >
-            {/* Background glowing data rings */}
-            <div className="absolute w-[80%] h-[80%] max-w-[500px] max-h-[500px] rounded-full border-[1px] border-dashed border-[#A9715B]/20 animate-[spin_40s_linear_infinite]" />
-            <div className="absolute w-[60%] h-[60%] max-w-[350px] max-h-[350px] rounded-full border-[1px] border-[#A9715B]/30 animate-[spin_25s_linear_infinite_reverse]" />
-            
-            {/* Floating Terminal Window */}
-            <motion.div 
-              animate={{ y: [-10, 10, -10] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute right-0 md:right-[5%] top-[10%] w-[280px] md:w-[320px] bg-[#1a1614] backdrop-blur-xl border border-[#A9715B]/30 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.3)] z-30"
-            >
-              <div className="flex items-center gap-2 px-4 py-3 border-b border-[#A9715B]/20 bg-white/5">
-                <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-                <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
-                <span className="text-[#A9715B]/70 text-[10px] font-mono ml-2 uppercase tracking-widest">train_model.py</span>
-              </div>
-              <div className="p-5 font-mono text-[10px] md:text-[11px] text-[#34d399] leading-loose opacity-90">
-                <p>import tensorflow as tf</p>
-                <p>model = tf.keras.Sequential([</p>
-                <p className="pl-4">tf.keras.layers.Dense(512),</p>
-                <p className="pl-4">tf.keras.layers.Dropout(0.2),</p>
-                <p className="pl-4">tf.keras.layers.Dense(10)</p>
-                <p>])</p>
-                <p className="text-[#A9715B] mt-3">> Epoch 1/50... [Running]</p>
-                <p className="text-white/60">> Loss: 0.234 | Acc: 0.94</p>
-              </div>
-            </motion.div>
+            {/* Ambient Background Glow */}
+            <div className="absolute w-[80%] h-[80%] bg-gradient-to-tr from-[#A9715B]/20 to-[#EAD8C3]/10 rounded-full blur-[100px] animate-pulse"></div>
 
-            {/* Floating Glass Stats Card */}
+            {/* Central Glass Sphere */}
             <motion.div 
-              animate={{ y: [10, -10, 10] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute left-0 md:left-[5%] bottom-[10%] w-[220px] md:w-[260px] bg-white/40 backdrop-blur-2xl border border-white/60 rounded-3xl p-6 shadow-[0_30px_60px_rgba(169,113,91,0.15)] z-40 flex flex-col items-center gap-4"
-            >
-              <div className="relative flex items-center justify-center w-20 h-20 md:w-24 md:h-24">
-                <svg className="w-full h-full transform -rotate-90">
-                  <circle cx="50%" cy="50%" r="40%" stroke="rgba(169,113,91,0.1)" strokeWidth="8" fill="none" />
-                  <circle cx="50%" cy="50%" r="40%" stroke="#A9715B" strokeWidth="8" fill="none" strokeDasharray="250" strokeDashoffset="40" className="animate-[spin_3s_ease-in-out_infinite]" />
-                </svg>
-                <div className="absolute text-xl md:text-2xl font-black text-[#2C2621]">98<span className="text-sm font-bold">%</span></div>
-              </div>
-              <div className="text-center">
-                <h4 className="text-[#2C2621] font-black text-sm tracking-tight">Model Accuracy</h4>
-                <p className="text-[#A9715B] text-[9px] font-mono uppercase tracking-widest mt-1">Live Optimization</p>
-              </div>
-            </motion.div>
-
-            {/* Central glowing AI Core */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-gradient-to-br from-[#A9715B] to-[#2C2621] rounded-full blur-[60px] opacity-30 animate-pulse z-10"></div>
-            
-            <motion.div 
-              animate={{ scale: [1, 1.05, 1], rotate: [0, 5, -5, 0] }}
+              animate={{ y: [-15, 15, -15], rotateZ: [0, 5, -5, 0] }}
               transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-              className="relative z-20 w-48 h-48 md:w-64 md:h-64 border border-[#A9715B]/30 rounded-[3rem] bg-white/30 backdrop-blur-md flex items-center justify-center shadow-[0_0_50px_rgba(169,113,91,0.2)] overflow-hidden group/core"
+              className="relative z-20 w-[260px] h-[260px] md:w-[380px] md:h-[380px] rounded-full border-[1px] border-white/50 bg-white/20 backdrop-blur-2xl shadow-[0_30px_80px_rgba(169,113,91,0.15)] flex items-center justify-center overflow-hidden"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-white/50 to-transparent"></div>
-              <FiCpu className="text-6xl md:text-7xl text-[#2C2621] drop-shadow-lg relative z-10 group-hover/core:scale-110 transition-transform duration-500" />
+              {/* Inner glowing core */}
+              <div className="absolute w-[70%] h-[70%] rounded-full bg-gradient-to-br from-[#A9715B] to-[#2C2621] blur-[50px] opacity-50 animate-[pulse_4s_ease-in-out_infinite]"></div>
+              
+              {/* Abstract Data Mesh */}
+              <svg className="absolute inset-0 w-full h-full opacity-40 scale-110" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="40" stroke="#2C2621" strokeWidth="0.2" fill="none" strokeDasharray="2 4" className="animate-[spin_20s_linear_infinite]" />
+                <circle cx="50" cy="50" r="25" stroke="#A9715B" strokeWidth="0.5" fill="none" strokeDasharray="1 6" className="animate-[spin_15s_linear_infinite_reverse]" />
+                <path d="M25,50 L50,25 L75,50 L50,75 Z" stroke="#2C2621" strokeWidth="0.3" fill="none" />
+              </svg>
+              
+              <FiCpu className="text-6xl md:text-8xl text-[#2C2621] relative z-10 drop-shadow-2xl" />
             </motion.div>
+
+            {/* Orbiting Ring 1 */}
+            <motion.div 
+              animate={{ rotate: 360 }}
+              transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+              className="absolute w-[300px] h-[300px] md:w-[460px] md:h-[460px] rounded-full border border-dashed border-[#A9715B]/30"
+            >
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 bg-gradient-to-r from-[#A9715B] to-[#D4A373] rounded-full shadow-[0_0_20px_#A9715B]"></div>
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-2 h-2 md:w-3 md:h-3 bg-[#2C2621] rounded-full shadow-[0_0_15px_#2C2621]"></div>
+            </motion.div>
+
+            {/* Orbiting Ring 2 with Data Tag */}
+            <motion.div 
+              animate={{ rotate: -360 }}
+              transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+              className="absolute w-[360px] h-[360px] md:w-[560px] md:h-[560px] rounded-full border border-[#A9715B]/10"
+            >
+              <div className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 px-4 py-2 bg-white/70 backdrop-blur-xl rounded-full border border-white/80 text-[9px] md:text-[11px] font-black text-[#A9715B] tracking-[0.2em] shadow-xl">
+                DATA SYNC
+              </div>
+              <div className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 px-4 py-2 bg-[#2C2621]/80 backdrop-blur-xl rounded-full border border-[#2C2621] text-[9px] md:text-[11px] font-black text-[#EAD8C3] tracking-[0.2em] shadow-xl">
+                MODEL ACTIVE
+              </div>
+            </motion.div>
+
           </motion.div>
 
         </div>
