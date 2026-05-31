@@ -4,7 +4,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { RoundedBox, Html, PresentationControls, Environment, ContactShadows } from '@react-three/drei';
 import * as THREE from 'three';
 import { 
-  SiJavascript, SiTypescript, SiHtml5, SiCss3, SiReact, SiVuedotjs,
+  SiJavascript, SiTypescript, SiHtml5, SiCss, SiReact, SiVuedotjs,
   SiNextdotjs, SiNodedotjs, SiExpress, SiTailwindcss, SiSass, SiWordpress,
   SiPython, SiDjango, SiPostgresql, SiMongodb, SiRedis, SiPrisma,
   SiGit, SiDocker, SiVercel, SiFigma, SiLinux, SiVite
@@ -15,7 +15,7 @@ const techs = [
   { icon: <SiJavascript size={22} />, name: 'JavaScript', color: '#F7DF1E' },
   { icon: <SiTypescript size={22} />, name: 'TypeScript', color: '#3178C6' },
   { icon: <SiHtml5 size={22} />, name: 'HTML5', color: '#E34F26' },
-  { icon: <SiCss3 size={22} />, name: 'CSS3', color: '#1572B6' },
+  { icon: <SiCss size={22} />, name: 'CSS3', color: '#1572B6' },
   { icon: <SiReact size={22} />, name: 'React', color: '#61DAFB' },
   { icon: <SiVuedotjs size={22} />, name: 'Vue', color: '#4FC08D' },
   // Row 2
