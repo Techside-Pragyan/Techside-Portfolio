@@ -1,4 +1,4 @@
-"use client";
+"use client"; // Force Fast Refresh
 import React, { useRef, useMemo, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Html, Sphere, Line, Stars, Float, Icosahedron } from '@react-three/drei';
