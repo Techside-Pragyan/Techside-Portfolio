@@ -85,8 +85,8 @@ export default function Contact() {
               <a href="https://www.linkedin.com/in/pragyan-paramita-moharana" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full glass flex items-center justify-center text-foreground hover:text-secondary hover:scale-110 transition-all">
                 <FaLinkedin size={20} />
               </a>
-              <a href="#" className="w-12 h-12 rounded-full glass flex items-center justify-center text-foreground hover:text-accent hover:scale-110 transition-all">
-                <FaTwitter size={20} />
+              <a href="mailto:pragyanpramitamoharana@gmail.com" className="w-12 h-12 rounded-full glass flex items-center justify-center text-foreground hover:text-accent hover:scale-110 transition-all">
+                <FaEnvelope size={20} />
               </a>
             </div>
           </motion.div>
