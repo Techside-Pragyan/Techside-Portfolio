@@ -34,7 +34,7 @@ const securityHeaders = [
       "script-src 'self' 'unsafe-eval' 'unsafe-inline'", // unsafe-eval needed for Next.js dev
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
-      "img-src 'self' data: blob: https://avatars.githubusercontent.com https://ghchart.rshah.org https://github-readme-activity-graph.vercel.app",
+      "img-src 'self' data: blob: https://avatars.githubusercontent.com https://ghchart.rshah.org https://github-readme-activity-graph.vercel.app https://github-readme-stats.vercel.app https://github-readme-streak-stats.herokuapp.com",
       "connect-src 'self' https://api.github.com",
       "frame-src 'none'",
     ].join("; "),

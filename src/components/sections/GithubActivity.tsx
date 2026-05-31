@@ -59,10 +59,9 @@ export default function GithubActivity() {
             <div className="relative w-full max-w-5xl flex justify-center">
               <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full opacity-0 group-hover:opacity-50 transition-opacity duration-700 pointer-events-none"></div>
               <img 
-                src="https://raw.githubusercontent.com/Techside-Pragyan/Techside-Pragyan/main/profile-3d-contrib/profile-night-view.svg" 
+                src="https://github-readme-stats.vercel.app/api?username=Techside-Pragyan&show_icons=true&theme=tokyonight&hide_border=true&bg_color=00000000&title_color=60a5fa&icon_color=818cf8&text_color=e2e8f0&ring_color=6366f1&include_all_commits=true&count_private=true" 
                 alt="GitHub 3D Contribution Graph" 
-                className="w-full h-auto object-contain opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 drop-shadow-[0_0_30px_rgba(59,130,246,0.3)] relative z-10 mix-blend-screen"
-                style={{ filter: "hue-rotate(-10deg) saturate(1.5)" }} // Enhance the colors to match portfolio
+                className="w-full max-w-2xl h-auto object-contain opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 drop-shadow-[0_0_30px_rgba(59,130,246,0.3)] relative z-10"
               />
             </div>
           </motion.div>
@@ -82,15 +81,20 @@ export default function GithubActivity() {
               <span className="font-bold">Contribution Calendar</span>
             </div>
             
-            <div className="relative w-full overflow-x-auto pb-4 custom-scrollbar flex justify-center">
+            <div className="relative w-full overflow-x-auto pb-4 custom-scrollbar flex flex-col items-center gap-6">
               <div className="absolute inset-0 bg-secondary/20 blur-[100px] rounded-full opacity-0 group-hover:opacity-50 transition-opacity duration-700 pointer-events-none"></div>
+              {/* Contribution streak stats */}
               <img 
-                src="https://raw.githubusercontent.com/Techside-Pragyan/Techside-Pragyan/output/galaga-contribution-graph-dark.svg" 
+                src="https://github-readme-streak-stats.herokuapp.com/?user=Techside-Pragyan&theme=tokyonight&hide_border=true&background=00000000&ring=6366f1&fire=f59e0b&currStreakLabel=60a5fa" 
+                alt="GitHub Contribution Streak" 
+                className="w-full max-w-2xl h-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-500 relative z-10"
+              />
+              {/* Contribution heatmap calendar */}
+              <img 
+                src="https://ghchart.rshah.org/6366f1/Techside-Pragyan" 
                 alt="GitHub Contribution Calendar" 
-                className="min-w-[800px] h-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-500 relative z-10 mix-blend-screen"
-                onError={(e) => {
-                  e.currentTarget.src = "https://ghchart.rshah.org/010103/Techside-Pragyan";
-                }}
+                className="w-full max-w-3xl h-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-500 relative z-10"
+                style={{ filter: "brightness(1.2) saturate(1.5)" }}
               />
             </div>
           </motion.div>
