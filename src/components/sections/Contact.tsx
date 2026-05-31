@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Send } from 'lucide-react';
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
 export default function Contact() {
   const [loading, setLoading] = useState(false);
