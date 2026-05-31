@@ -7,7 +7,7 @@ import {
   SiReact, SiNextdotjs, SiTailwindcss, SiNodedotjs, 
   SiMongodb, SiPytorch, SiScikitlearn, SiDocker,
   SiPython, SiTensorflow, SiOpencv, SiPostgresql,
-  SiGit, SiAmazonaws, SiLinux, SiVite
+  SiGit, SiVercel, SiLinux, SiVite
 } from 'react-icons/si';
 
 const techs = [
@@ -27,7 +27,7 @@ const techs = [
   { icon: <SiDocker size={24} />, name: 'Docker', color: '#2496ED' },
   
   { icon: <SiGit size={24} />, name: 'Git', color: '#F05032' },
-  { icon: <SiAmazonaws size={24} />, name: 'AWS', color: '#232F3E' },
+  { icon: <SiVercel size={24} />, name: 'Vercel', color: '#000000' },
   { icon: <SiLinux size={24} />, name: 'Linux', color: '#FCC624' },
   { icon: <SiVite size={24} />, name: 'Vite', color: '#646CFF' },
 ];
