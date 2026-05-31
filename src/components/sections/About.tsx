@@ -183,7 +183,7 @@ export default function About() {
               
               {/* Location */}
               <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5}>
-                <SpotlightCard className="h-48 p-6 relative">
+                <SpotlightCard className="h-40 p-6 relative">
                   <div className="relative z-20">
                     <div className="flex items-center gap-2 text-white/80 font-mono text-xs uppercase tracking-widest mb-2">
                       <MapPin size={16} className="text-primary" /> Location
@@ -202,20 +202,38 @@ export default function About() {
 
               {/* Core Focus */}
               <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5}>
-                <SpotlightCard className="h-48 p-6 flex flex-col justify-between bg-gradient-to-br from-secondary/5 to-transparent">
+                <SpotlightCard className="h-40 p-5 flex flex-col justify-between bg-gradient-to-br from-secondary/5 to-transparent">
                   <div className="flex items-center gap-2 text-white/80 font-mono text-xs uppercase tracking-widest">
                       <BrainCircuit size={16} className="text-secondary" /> Core Focus
                   </div>
-                  <div className="flex flex-col gap-3">
-                    <div className="glass px-4 py-3 rounded-xl text-xs font-semibold text-white flex items-center justify-between border border-white/5">
+                  <div className="flex flex-col gap-2">
+                    <div className="glass px-3 py-2 rounded-lg text-xs font-semibold text-white flex items-center justify-between border border-white/5">
                       <span>AI / ML Dev</span>
                       <Cpu size={14} className="text-secondary" />
                     </div>
-                    <div className="glass px-4 py-3 rounded-xl text-xs font-semibold text-white flex items-center justify-between border border-white/5">
+                    <div className="glass px-3 py-2 rounded-lg text-xs font-semibold text-white flex items-center justify-between border border-white/5">
                       <span>Gen-AI Research</span>
                       <Code2 size={14} className="text-primary" />
                     </div>
                   </div>
+                </SpotlightCard>
+              </Tilt>
+
+              {/* Experience */}
+              <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5}>
+                <SpotlightCard className="h-40 p-6 flex flex-col justify-center items-center text-center group/stat">
+                  <div className="absolute inset-0 bg-primary/5 group-hover/stat:bg-primary/10 transition-colors"></div>
+                  <div className="relative z-10 text-5xl font-black text-white mb-2 tracking-tighter drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">1+</div>
+                  <div className="relative z-10 text-white/60 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em]">Years Experience</div>
+                </SpotlightCard>
+              </Tilt>
+
+              {/* Projects */}
+              <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5}>
+                <SpotlightCard className="h-40 p-6 flex flex-col justify-center items-center text-center group/stat">
+                  <div className="absolute inset-0 bg-secondary/5 group-hover/stat:bg-secondary/10 transition-colors"></div>
+                  <div className="relative z-10 text-5xl font-black text-transparent bg-clip-text bg-gradient-to-br from-primary to-secondary mb-2 tracking-tighter drop-shadow-[0_0_15px_rgba(59,130,246,0.3)]">60+</div>
+                  <div className="relative z-10 text-white/60 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em]">Projects Built</div>
                 </SpotlightCard>
               </Tilt>
             </div>
