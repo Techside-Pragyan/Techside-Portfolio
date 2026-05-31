@@ -1,10 +1,7 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Activity } from 'lucide-react';
-import { FaGithub } from 'react-icons/fa';
-
-const GITHUB_USER = "Techside-Pragyan";
+import { Github, Activity } from 'lucide-react';
 
 export default function GithubActivity() {
   return (
@@ -24,7 +21,7 @@ export default function GithubActivity() {
           <div className="flex items-center justify-center gap-4 mb-6">
             <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-primary"></div>
             <div className="flex items-center gap-2 text-primary font-mono text-sm uppercase tracking-[0.3em]">
-              <FaGithub size={16} />
+              <Github size={16} />
               <span>Open Source</span>
             </div>
             <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-primary"></div>
@@ -61,9 +58,10 @@ export default function GithubActivity() {
             <div className="relative w-full max-w-5xl flex justify-center">
               <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full opacity-0 group-hover:opacity-50 transition-opacity duration-700 pointer-events-none"></div>
               <img 
-                src={`https://github-readme-stats.vercel.app/api?username=${GITHUB_USER}&show_icons=true&theme=tokyonight&hide_border=true&bg_color=00000000&title_color=60a5fa&icon_color=818cf8&text_color=e2e8f0&ring_color=6366f1&include_all_commits=true&count_private=true`}
-                alt="GitHub Stats" 
-                className="w-full max-w-2xl h-auto object-contain opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 drop-shadow-[0_0_30px_rgba(59,130,246,0.3)] relative z-10"
+                src="https://raw.githubusercontent.com/Techside-Pragyan/Techside-Pragyan/main/profile-3d-contrib/profile-night-view.svg" 
+                alt="GitHub 3D Contribution Graph" 
+                className="w-full h-auto object-contain opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 drop-shadow-[0_0_30px_rgba(59,130,246,0.3)] relative z-10 mix-blend-screen"
+                style={{ filter: "hue-rotate(-10deg) saturate(1.5)" }} // Enhance the colors to match portfolio
               />
             </div>
           </motion.div>
@@ -80,21 +78,18 @@ export default function GithubActivity() {
               <div className="p-2 bg-secondary/20 rounded-lg group-hover:bg-secondary group-hover:text-white text-secondary transition-colors">
                 <Activity size={18} />
               </div>
-              <span className="font-bold">📈 Contribution Calendar</span>
+              <span className="font-bold">Contribution Calendar</span>
             </div>
             
-            <div className="relative w-full overflow-x-auto pb-4 custom-scrollbar flex flex-col items-center gap-8">
+            <div className="relative w-full overflow-x-auto pb-4 custom-scrollbar flex justify-center">
               <div className="absolute inset-0 bg-secondary/20 blur-[100px] rounded-full opacity-0 group-hover:opacity-50 transition-opacity duration-700 pointer-events-none"></div>
               <img 
-                src={`https://github-readme-streak-stats.herokuapp.com/?user=${GITHUB_USER}&theme=tokyonight&hide_border=true&background=00000000&ring=6366f1&fire=f59e0b&currStreakLabel=60a5fa`}
-                alt="GitHub Contribution Streak" 
-                className="w-full max-w-2xl h-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-500 relative z-10"
-              />
-              <img 
-                src={`https://ghchart.rshah.org/6366f1/${GITHUB_USER}`}
+                src="https://raw.githubusercontent.com/Techside-Pragyan/Techside-Pragyan/output/galaga-contribution-graph-dark.svg" 
                 alt="GitHub Contribution Calendar" 
-                className="w-full max-w-4xl h-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-500 relative z-10"
-                style={{ filter: "brightness(1.2) saturate(1.5)" }}
+                className="min-w-[800px] h-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-500 relative z-10 mix-blend-screen"
+                onError={(e) => {
+                  e.currentTarget.src = "https://ghchart.rshah.org/010103/Techside-Pragyan";
+                }}
               />
             </div>
           </motion.div>
