@@ -4,6 +4,7 @@ import "./globals.css";
 import SmoothScroll from "@/components/ui/SmoothScroll";
 import Navbar from "@/components/ui/Navbar";
 import CustomCursor from "@/components/ui/CustomCursor";
+import SecurityProvider from "@/components/SecurityProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,13 +31,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-[#050505] text-[#f0f0f0]`}
       >
-        <SmoothScroll>
-          <CustomCursor />
-          <Navbar />
-          <div className="flex-grow">
-            {children}
-          </div>
-        </SmoothScroll>
+        <SecurityProvider>
+          <SmoothScroll>
+            <CustomCursor />
+            <Navbar />
+            <div className="flex-grow">
+              {children}
+            </div>
+          </SmoothScroll>
+        </SecurityProvider>
       </body>
     </html>
   );
