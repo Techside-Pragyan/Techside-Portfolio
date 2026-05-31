@@ -1,7 +1,8 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Activity } from 'lucide-react';
+import { Activity } from 'lucide-react';
+import { FaGithub } from 'react-icons/fa';
 
 export default function GithubActivity() {
   return (
@@ -21,7 +22,7 @@ export default function GithubActivity() {
           <div className="flex items-center justify-center gap-4 mb-6">
             <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-primary"></div>
             <div className="flex items-center gap-2 text-primary font-mono text-sm uppercase tracking-[0.3em]">
-              <Github size={16} />
+              <FaGithub size={16} />
               <span>Open Source</span>
             </div>
             <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-primary"></div>
