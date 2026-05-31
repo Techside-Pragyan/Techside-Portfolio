@@ -155,7 +155,7 @@ export default function Keyboard() {
         <PresentationControls
           global
           config={{ mass: 2, tension: 500 }}
-          snap={{ mass: 4, tension: 1500 }}
+          snap={true}
           rotation={[-Math.PI / 6, Math.PI / 4, 0]}
           polar={[-Math.PI / 4, Math.PI / 6]}
           azimuth={[-Math.PI / 4, Math.PI / 4]}
