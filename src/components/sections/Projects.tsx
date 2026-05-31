@@ -9,7 +9,7 @@ const projects = [
   {
     title: "Autonomous News Researcher",
     description: "An intelligent agent that autonomously searches, reads, and summarizes news using AI, providing a concise briefing on current events.",
-    image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80&w=800",
+    image: "https://picsum.photos/seed/news/800/600",
     tags: ["Python", "AI/ML", "NLP"],
     github: "#",
     live: "#"
@@ -17,7 +17,7 @@ const projects = [
   {
     title: "Multi-Document QA System",
     description: "A sophisticated AI-powered system that can read multiple documents and answer complex user queries contextually using LLMs.",
-    image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&q=80&w=800",
+    image: "https://picsum.photos/seed/qa/800/600",
     tags: ["React", "Python", "LLMs", "LangChain"],
     github: "#",
     live: "#"
@@ -25,7 +25,7 @@ const projects = [
   {
     title: "Personal Health Dashboard",
     description: "A full-stack fitness tracking application with real-time analytics and predictive health insights.",
-    image: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&q=80&w=800",
+    image: "https://picsum.photos/seed/health/800/600",
     tags: ["React", "FastAPI", "MongoDB"],
     github: "#",
     live: "#"
@@ -33,7 +33,7 @@ const projects = [
   {
     title: "Language Translator",
     description: "A real-time language translation web app supporting multiple languages with high accuracy using state-of-the-art models.",
-    image: "https://images.unsplash.com/photo-1451226428352-cf66bf8a0317?auto=format&fit=crop&q=80&w=800",
+    image: "https://picsum.photos/seed/lang/800/600",
     tags: ["React", "Flask", "HuggingFace"],
     github: "#",
     live: "#"
@@ -41,7 +41,7 @@ const projects = [
   {
     title: "Movie Recommendation System",
     description: "A hybrid recommendation engine utilizing content-based and collaborative filtering to suggest personalized movies.",
-    image: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80&w=800",
+    image: "https://picsum.photos/seed/movie/800/600",
     tags: ["Python", "React", "Scikit-Learn"],
     github: "#",
     live: "#"
@@ -49,7 +49,7 @@ const projects = [
   {
     title: "Plant Disease Identifier",
     description: "A deep learning model integrated into a web interface that identifies plant diseases from uploaded images with high confidence.",
-    image: "https://images.unsplash.com/photo-1490750967868-88cb44cb2722?auto=format&fit=crop&q=80&w=800",
+    image: "https://picsum.photos/seed/plant/800/600",
     tags: ["TensorFlow", "FastAPI", "React"],
     github: "#",
     live: "#"
