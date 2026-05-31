@@ -1,7 +1,8 @@
 "use client";
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Send, Github, Linkedin, Twitter } from 'lucide-react';
+import { Mail, MapPin, Send } from 'lucide-react';
+import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 export default function Contact() {
   const [loading, setLoading] = useState(false);
@@ -79,13 +80,13 @@ export default function Contact() {
 
             <div className="flex items-center gap-4 mt-4">
               <a href="https://github.com/Techside-Pragyan" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full glass flex items-center justify-center text-foreground hover:text-primary hover:scale-110 transition-all">
-                <Github size={20} />
+                <FaGithub size={20} />
               </a>
               <a href="https://www.linkedin.com/in/pragyan-paramita-moharana" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full glass flex items-center justify-center text-foreground hover:text-secondary hover:scale-110 transition-all">
-                <Linkedin size={20} />
+                <FaLinkedin size={20} />
               </a>
               <a href="#" className="w-12 h-12 rounded-full glass flex items-center justify-center text-foreground hover:text-accent hover:scale-110 transition-all">
-                <Twitter size={20} />
+                <FaTwitter size={20} />
               </a>
             </div>
           </motion.div>

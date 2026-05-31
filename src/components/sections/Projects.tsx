@@ -2,7 +2,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
-import { Github, ExternalLink } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
+import { FaGithub } from 'react-icons/fa';
 
 const projects = [
   {
@@ -130,7 +131,7 @@ export default function Projects() {
                         href={project.github} 
                         className="flex items-center gap-2 text-xs font-bold text-foreground/70 hover:text-foreground transition-colors uppercase tracking-widest"
                       >
-                        <Github size={16} /> Code
+                        <FaGithub size={16} /> Code
                       </a>
                       <a 
                         href={project.live} 

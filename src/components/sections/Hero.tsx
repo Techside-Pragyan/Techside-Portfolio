@@ -1,7 +1,8 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, ArrowRight } from 'lucide-react';
+import { Mail, ArrowRight } from 'lucide-react';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import ParticlesBackground from '../ui/ParticlesBackground';
 import HeroObject from '../canvas/HeroObject';
 
@@ -58,10 +59,10 @@ export default function Hero() {
             className="flex flex-wrap items-center gap-4 pt-4"
           >
             <a href="https://github.com/Techside-Pragyan" target="_blank" rel="noreferrer" className="glass p-3 rounded-full hover:bg-surface-hover hover:scale-110 transition-all text-primary">
-              <Github size={20} />
+              <FaGithub size={20} />
             </a>
             <a href="https://www.linkedin.com/in/pragyan-paramita-moharana" target="_blank" rel="noreferrer" className="glass p-3 rounded-full hover:bg-surface-hover hover:scale-110 transition-all text-primary">
-              <Linkedin size={20} />
+              <FaLinkedin size={20} />
             </a>
             <a href="mailto:pragyanpramitamoharana@gmail.com" className="glass p-3 rounded-full hover:bg-surface-hover hover:scale-110 transition-all text-primary">
               <Mail size={20} />
