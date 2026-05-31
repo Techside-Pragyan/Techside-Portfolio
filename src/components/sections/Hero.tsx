@@ -1,7 +1,8 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDownRight, Terminal, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowDownRight, Terminal, Mail } from 'lucide-react';
+import { FaGithub as Github, FaLinkedin as Linkedin } from 'react-icons/fa';
 import ParticlesBackground from '../ui/ParticlesBackground';
 import HeroObject from '../canvas/HeroObject';
 
