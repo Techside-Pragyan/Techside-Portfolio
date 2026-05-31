@@ -231,7 +231,7 @@ function Scene() {
       <pointLight position={[0, 0, 0]} intensity={2} color="#3b82f6" distance={15} />
 
       {/* Post Processing for Neon Glow */}
-      <EffectComposer disableNormalPass>
+      <EffectComposer>
         <Bloom luminanceThreshold={0.2} mipmapBlur intensity={1.5} />
       </EffectComposer>
 
