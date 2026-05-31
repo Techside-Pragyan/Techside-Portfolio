@@ -9,26 +9,28 @@ import * as THREE from 'three';
 
 // 3D Mini Globe Component for the Location Bento
 function WireframeGlobe() {
-  const meshRef = useRef<THREE.Mesh>(null);
+  const groupRef = useRef<THREE.Group>(null);
   
   useFrame((state) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.y = state.clock.getElapsedTime() * 0.15;
-      meshRef.current.rotation.x = state.clock.getElapsedTime() * 0.05;
+    if (groupRef.current) {
+      groupRef.current.rotation.y = state.clock.getElapsedTime() * 0.15;
+      groupRef.current.rotation.x = state.clock.getElapsedTime() * 0.05;
     }
   });
 
   return (
     <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
-      <Sphere ref={meshRef} args={[1.6, 32, 32]}>
-        <meshBasicMaterial color="#60a5fa" wireframe transparent opacity={0.3} />
-      </Sphere>
-      <Sphere args={[1.55, 16, 16]}>
-        <meshBasicMaterial color="#3b82f6" wireframe transparent opacity={0.1} />
-      </Sphere>
-      <Sphere args={[1.2, 16, 16]}>
-        <meshBasicMaterial color="#8b5cf6" transparent opacity={0.4} />
-      </Sphere>
+      <group ref={groupRef}>
+        <Sphere args={[1.6, 32, 32]}>
+          <meshBasicMaterial color="#60a5fa" wireframe transparent opacity={0.4} />
+        </Sphere>
+        <Sphere args={[1.55, 16, 16]}>
+          <meshBasicMaterial color="#3b82f6" wireframe transparent opacity={0.2} />
+        </Sphere>
+        <Sphere args={[1.2, 16, 16]}>
+          <meshBasicMaterial color="#8b5cf6" transparent opacity={0.6} />
+        </Sphere>
+      </group>
     </Float>
   );
 }
