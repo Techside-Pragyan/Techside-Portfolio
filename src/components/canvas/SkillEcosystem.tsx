@@ -176,7 +176,7 @@ export default function SkillEcosystem() {
         <directionalLight position={[-10, -20, -10]} intensity={1} color="#8b5cf6" />
         
         {/* Post Processing for the Neon Network Edges */}
-        <EffectComposer disableNormalPass>
+        <EffectComposer>
           <Bloom luminanceThreshold={0.2} mipmapBlur intensity={1.5} />
         </EffectComposer>
 
