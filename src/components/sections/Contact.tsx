@@ -7,9 +7,15 @@ import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 export default function Contact() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  // Honeypot: hidden field to catch spam bots (bots fill it in, humans don't see it)
+  const [honeypot, setHoneypot] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // If honeypot field is filled, it's a bot — silently ignore
+    if (honeypot) {
+      return;
+    }
     setLoading(true);
     // Simulate network request
     setTimeout(() => {
@@ -128,6 +134,18 @@ export default function Contact() {
                   rows={5}
                   className="w-full bg-surface border border-surface-border rounded-xl px-5 py-4 focus:outline-none focus:border-primary focus:bg-primary/5 transition-all resize-none"
                   placeholder="Initiate communication protocol..."
+                />
+              </div>
+
+              {/* Honeypot field: invisible to humans, spam bots fill this in */}
+              <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', top: '-9999px', width: '1px', height: '1px', overflow: 'hidden', opacity: 0 }}>
+                <input
+                  type="text"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
                 />
               </div>
 
