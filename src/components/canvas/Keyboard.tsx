@@ -7,7 +7,7 @@ import {
   SiJavascript, SiTypescript, SiHtml5, SiCss, SiReact, SiVuedotjs,
   SiNextdotjs, SiNodedotjs, SiExpress, SiTailwindcss, SiSass, SiWordpress,
   SiPython, SiDjango, SiPostgresql, SiMongodb, SiRedis, SiPrisma,
-  SiGit, SiDocker, SiVercel, SiFigma, SiLinux, SiVite, SiAmazonaws
+  SiGit, SiDocker, SiVercel, SiFigma, SiLinux, SiVite
 } from 'react-icons/si';
 
 const techs = [
