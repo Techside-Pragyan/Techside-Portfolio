@@ -231,7 +231,7 @@ export default function About() {
                     </div>
                     <div className="text-2xl font-black text-white tracking-tight drop-shadow-lg">India</div>
                   </div>
-                  <div className="absolute right-[-20px] bottom-[-20px] w-48 h-48 z-0">
+                  <div className="absolute right-[-20px] bottom-[-20px] w-48 h-48 z-0 pointer-events-none opacity-80">
                     <Canvas camera={{ position: [0, 0, 4.5], fov: 45 }}>
                       <ambientLight intensity={0.5} />
                       <directionalLight position={[10, 10, 5]} intensity={1} color="#60a5fa" />
