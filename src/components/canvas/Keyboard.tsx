@@ -154,8 +154,6 @@ export default function Keyboard() {
         {/* This creates the exact isometric angle and allows slight dragging */}
         <PresentationControls
           global
-          config={{ mass: 2, tension: 500 }}
-          snap={true}
           rotation={[-Math.PI / 6, Math.PI / 4, 0]}
           polar={[-Math.PI / 4, Math.PI / 6]}
           azimuth={[-Math.PI / 4, Math.PI / 4]}
