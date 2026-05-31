@@ -9,7 +9,7 @@ const projects = [
   {
     title: "Autonomous News Researcher",
     description: "An intelligent agent that autonomously searches, reads, and summarizes news using AI, providing a concise briefing on current events.",
-    image: "https://picsum.photos/seed/news/800/600",
+    image: "/projects/news_agent.png",
     tags: ["Python", "AI/ML", "NLP"],
     github: "#",
     live: "#"
@@ -17,7 +17,7 @@ const projects = [
   {
     title: "Multi-Document QA System",
     description: "A sophisticated AI-powered system that can read multiple documents and answer complex user queries contextually using LLMs.",
-    image: "https://picsum.photos/seed/qa/800/600",
+    image: "/projects/qa_system.png",
     tags: ["React", "Python", "LLMs", "LangChain"],
     github: "#",
     live: "#"
@@ -25,7 +25,7 @@ const projects = [
   {
     title: "Personal Health Dashboard",
     description: "A full-stack fitness tracking application with real-time analytics and predictive health insights.",
-    image: "https://picsum.photos/seed/health/800/600",
+    image: "/projects/health_dashboard.png",
     tags: ["React", "FastAPI", "MongoDB"],
     github: "#",
     live: "#"
@@ -33,7 +33,7 @@ const projects = [
   {
     title: "Language Translator",
     description: "A real-time language translation web app supporting multiple languages with high accuracy using state-of-the-art models.",
-    image: "https://picsum.photos/seed/lang/800/600",
+    image: "/projects/translator_app.png",
     tags: ["React", "Flask", "HuggingFace"],
     github: "#",
     live: "#"
@@ -41,7 +41,7 @@ const projects = [
   {
     title: "Movie Recommendation System",
     description: "A hybrid recommendation engine utilizing content-based and collaborative filtering to suggest personalized movies.",
-    image: "https://picsum.photos/seed/movie/800/600",
+    image: "/projects/movie_system.png",
     tags: ["Python", "React", "Scikit-Learn"],
     github: "#",
     live: "#"
@@ -49,7 +49,7 @@ const projects = [
   {
     title: "Plant Disease Identifier",
     description: "A deep learning model integrated into a web interface that identifies plant diseases from uploaded images with high confidence.",
-    image: "https://picsum.photos/seed/plant/800/600",
+    image: "/projects/plant_ai.png",
     tags: ["TensorFlow", "FastAPI", "React"],
     github: "#",
     live: "#"
