@@ -10,13 +10,13 @@ export default function TechStack() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center mb-10"
+        className="text-center mb-0 mt-10"
       >
-        <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-4">
-          TECH <span className="text-secondary">STACK</span>
+        <h2 className="text-5xl md:text-6xl font-black mb-2 text-white drop-shadow-md">
+          Tech Stack
         </h2>
-        <p className="text-foreground/60 text-sm font-mono uppercase tracking-widest">
-          (Hint: interact with the keys)
+        <p className="text-white/60 text-xs font-mono lowercase tracking-widest">
+          (hint: press a key)
         </p>
       </motion.div>
 
