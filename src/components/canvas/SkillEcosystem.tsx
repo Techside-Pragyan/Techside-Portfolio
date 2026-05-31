@@ -1,79 +1,63 @@
 "use client";
-import React, { useRef, useState, useMemo, useEffect } from 'react';
+import React, { useRef, useMemo, useEffect, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { Physics, RigidBody, BallCollider, InstancedRigidBodies, RapierRigidBody } from '@react-three/rapier';
-import { Environment, Html, Sphere, Sparkles, Float } from '@react-three/drei';
+import { Physics, RigidBody, RapierRigidBody } from '@react-three/rapier';
+import { Environment, Html, Sphere } from '@react-three/drei';
 import * as THREE from 'three';
+import { 
+  SiPython, SiTensorflow, SiPytorch, SiScikitlearn, SiPandas, SiNumpy, 
+  SiOpencv, SiFastapi, SiPostgresql, SiDocker, SiGit, SiGithub, SiLinux 
+} from 'react-icons/si';
+import { BrainCircuit, Cpu, Bot, Blocks } from 'lucide-react';
 
+// Selected minimal skills list as requested
 const skills = [
-  { id: 1, name: 'Python', prof: '98%', exp: '4+ Years', projects: '12+', color: '#3776AB' },
-  { id: 2, name: 'Machine Learning', prof: '95%', exp: '3+ Years', projects: '8+', color: '#10b981' },
-  { id: 3, name: 'Deep Learning', prof: '90%', exp: '2+ Years', projects: '6+', color: '#ec4899' },
-  { id: 4, name: 'TensorFlow', prof: '92%', exp: '3+ Years', projects: '7+', color: '#FF6F00' },
-  { id: 5, name: 'PyTorch', prof: '90%', exp: '2+ Years', projects: '5+', color: '#EE4C2C' },
-  { id: 6, name: 'Scikit-Learn', prof: '95%', exp: '3+ Years', projects: '9+', color: '#F7931E' },
-  { id: 7, name: 'Pandas', prof: '96%', exp: '4+ Years', projects: '15+', color: '#150458' },
-  { id: 8, name: 'NumPy', prof: '95%', exp: '4+ Years', projects: '15+', color: '#013243' },
-  { id: 9, name: 'OpenCV', prof: '85%', exp: '2+ Years', projects: '4+', color: '#5C3EE8' },
-  { id: 10, name: 'LangChain', prof: '88%', exp: '1+ Years', projects: '3+', color: '#000000' },
-  { id: 11, name: 'Hugging Face', prof: '90%', exp: '2+ Years', projects: '5+', color: '#FFD21E' },
-  { id: 12, name: 'FastAPI', prof: '92%', exp: '3+ Years', projects: '6+', color: '#009688' },
-  { id: 13, name: 'SQL', prof: '95%', exp: '3+ Years', projects: '10+', color: '#4169E1' },
-  { id: 14, name: 'Git', prof: '98%', exp: '4+ Years', projects: '20+', color: '#F05032' },
-  { id: 15, name: 'GitHub', prof: '98%', exp: '4+ Years', projects: '20+', color: '#181717' },
-  { id: 16, name: 'Docker', prof: '85%', exp: '2+ Years', projects: '5+', color: '#2496ED' },
-  { id: 17, name: 'Linux', prof: '90%', exp: '4+ Years', projects: 'All', color: '#FCC624' },
-  { id: 18, name: 'Data Science', prof: '94%', exp: '3+ Years', projects: '10+', color: '#3b82f6' },
-  { id: 19, name: 'NLP', prof: '88%', exp: '2+ Years', projects: '4+', color: '#8b5cf6' },
-  { id: 20, name: 'Generative AI', prof: '92%', exp: '1.5+ Years', projects: '5+', color: '#06b6d4' },
+  { id: 1, name: 'Python', icon: <SiPython size={60} /> },
+  { id: 2, name: 'TensorFlow', icon: <SiTensorflow size={60} /> },
+  { id: 3, name: 'PyTorch', icon: <SiPytorch size={60} /> },
+  { id: 4, name: 'Scikit-Learn', icon: <SiScikitlearn size={60} /> },
+  { id: 5, name: 'Pandas', icon: <SiPandas size={60} /> },
+  { id: 6, name: 'NumPy', icon: <SiNumpy size={60} /> },
+  { id: 7, name: 'OpenCV', icon: <SiOpencv size={60} /> },
+  { id: 8, name: 'LangChain', icon: <Blocks size={60} /> },
+  { id: 9, name: 'FastAPI', icon: <SiFastapi size={60} /> },
+  { id: 10, name: 'SQL', icon: <SiPostgresql size={60} /> },
+  { id: 11, name: 'Docker', icon: <SiDocker size={60} /> },
+  { id: 12, name: 'Git', icon: <SiGit size={60} /> },
+  { id: 13, name: 'GitHub', icon: <SiGithub size={60} /> },
+  { id: 14, name: 'Linux', icon: <SiLinux size={60} /> },
+  { id: 15, name: 'Machine Learning', icon: <BrainCircuit size={60} /> },
+  { id: 16, name: 'Deep Learning', icon: <Cpu size={60} /> },
+  { id: 17, name: 'NLP', icon: <Bot size={60} /> },
+  { id: 18, name: 'Generative AI', icon: <SparklesIcon /> },
+  { id: 19, name: 'Hugging Face', icon: <EmojiIcon /> }
 ];
 
-function CentralCore() {
-  const meshRef = useRef<THREE.Mesh>(null);
-  
-  useFrame((state) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.y = state.clock.getElapsedTime() * 0.5;
-    }
-  });
-
+// Fallback minimal icons
+function SparklesIcon() {
   return (
-    <RigidBody type="kinematicPosition" colliders="hull" position={[0, 0, 0]}>
-      <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
-        <Sphere ref={meshRef} args={[1.5, 32, 32]}>
-          <meshStandardMaterial 
-            color="#000000" 
-            emissive="#3b82f6" 
-            emissiveIntensity={0.5} 
-            roughness={0.1} 
-            metalness={0.8} 
-            wireframe 
-          />
-        </Sphere>
-        <Html center zIndexRange={[100, 0]} className="pointer-events-none">
-          <div className="text-white font-black text-xl text-center whitespace-nowrap drop-shadow-[0_0_15px_rgba(59,130,246,0.8)]">
-            AI/ML Engineer
-          </div>
-        </Html>
-        <Sparkles count={50} scale={3} size={2} color="#60a5fa" />
-      </Float>
-    </RigidBody>
+    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
   );
 }
 
-function SkillNode({ data, setActiveSkill }: any) {
-  const body = useRef<RapierRigidBody>(null);
-  const [hovered, setHovered] = useState(false);
-  const { camera } = useThree();
+function EmojiIcon() {
+  return (
+    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg>
+  );
+}
 
-  // Random initial position in a sphere around the center
+function SkillSphere({ data, radius }: any) {
+  const body = useRef<RapierRigidBody>(null);
+  const materialRef = useRef<THREE.MeshPhysicalMaterial>(null);
+
+  // Random starting position scattered around the center
   const initialPos = useMemo(() => {
-    const phi = Math.acos(-1 + (2 * Math.random()));
-    const theta = Math.sqrt(20 * Math.PI) * phi;
-    const r = 4 + Math.random() * 3;
+    const r = 5 + Math.random() * 5;
+    const theta = Math.random() * 2 * Math.PI;
+    const phi = Math.acos(2 * Math.random() - 1);
     return [
-      r * Math.cos(theta) * Math.sin(phi),
-      r * Math.sin(theta) * Math.sin(phi),
+      r * Math.sin(phi) * Math.cos(theta),
+      r * Math.sin(phi) * Math.sin(theta),
       r * Math.cos(phi)
     ];
   }, []);
@@ -81,24 +65,16 @@ function SkillNode({ data, setActiveSkill }: any) {
   useFrame((state) => {
     if (!body.current) return;
     
-    // Apply gravitational pull towards the center [0,0,0]
     const pos = body.current.translation();
     const vec = new THREE.Vector3(-pos.x, -pos.y, -pos.z);
     
-    // Calculate distance to center
-    const distance = vec.length();
+    // Very gentle cluster gravity
+    vec.normalize().multiplyScalar(0.015);
     
-    // Normalize and scale force (stronger pull if further away, push away if too close)
-    if (distance > 3) {
-      vec.normalize().multiplyScalar(0.2); // Pull
-    } else {
-      vec.normalize().multiplyScalar(-0.5); // Repel
-    }
-
-    // Add a tiny bit of noise for organic movement
-    vec.x += (Math.random() - 0.5) * 0.1;
-    vec.y += (Math.random() - 0.5) * 0.1;
-    vec.z += (Math.random() - 0.5) * 0.1;
+    // Organic noise drift
+    vec.x += (Math.sin(state.clock.elapsedTime * 0.5 + data.id) * 0.005);
+    vec.y += (Math.cos(state.clock.elapsedTime * 0.4 + data.id) * 0.005);
+    vec.z += (Math.sin(state.clock.elapsedTime * 0.6 + data.id) * 0.005);
 
     body.current.applyImpulse(vec, true);
   });
@@ -108,55 +84,25 @@ function SkillNode({ data, setActiveSkill }: any) {
       ref={body} 
       position={initialPos as [number, number, number]} 
       colliders="ball" 
-      restitution={0.8} // Bounciness
-      linearDamping={0.5} 
-      angularDamping={0.5}
+      restitution={0.6} // Soft bounce
+      linearDamping={0.8} // High damping for slow drifting
+      angularDamping={0.8} // Slow rotation
       friction={0.2}
     >
-      <Sphere 
-        args={[0.8, 32, 32]} 
-        onPointerOver={(e) => { e.stopPropagation(); setHovered(true); document.body.style.cursor = 'grab'; }}
-        onPointerOut={(e) => { e.stopPropagation(); setHovered(false); document.body.style.cursor = 'default'; }}
-        onPointerDown={(e) => { 
-          e.stopPropagation(); 
-          document.body.style.cursor = 'grabbing';
-          setActiveSkill(data);
-          
-          // Apply a physical "toss" upwards/forward when clicked
-          if (body.current) {
-            body.current.applyImpulse({ x: 0, y: 5, z: 2 }, true);
-          }
-        }}
-        onPointerUp={(e) => {
-          e.stopPropagation();
-          document.body.style.cursor = 'grab';
-        }}
-        castShadow
-        receiveShadow
-      >
+      <Sphere args={[radius, 64, 64]} castShadow receiveShadow>
         <meshPhysicalMaterial 
+          ref={materialRef}
           color="#ffffff" 
           roughness={0.1} 
           metalness={0.1}
           clearcoat={1}
           clearcoatRoughness={0.1}
-          emissive={hovered ? data.color : '#000000'}
-          emissiveIntensity={hovered ? 0.5 : 0}
         />
         
-        {/* Render text on the sphere */}
-        <Html center zIndexRange={[100, 0]} className="pointer-events-none transition-all duration-300" style={{ opacity: hovered ? 1 : 0.8 }}>
-          <div 
-            className="px-3 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all duration-300 backdrop-blur-md"
-            style={{ 
-              backgroundColor: hovered ? `${data.color}30` : 'rgba(255,255,255,0.1)',
-              color: hovered ? '#ffffff' : '#e5e7eb',
-              border: `1px solid ${hovered ? data.color : 'rgba(255,255,255,0.2)'}`,
-              boxShadow: hovered ? `0 0 20px ${data.color}80` : 'none',
-              transform: hovered ? 'scale(1.2)' : 'scale(1)'
-            }}
-          >
-            {data.name}
+        {/* Render logo tightly mapped to front of sphere */}
+        <Html transform position={[0, 0, radius + 0.01]} scale={0.3} pointerEvents="none" zIndexRange={[0, 0]}>
+          <div className="text-black flex flex-col items-center justify-center pointer-events-none opacity-80 mix-blend-multiply">
+            {data.icon}
           </div>
         </Html>
       </Sphere>
@@ -167,15 +113,15 @@ function SkillNode({ data, setActiveSkill }: any) {
 function PointerFollower() {
   const { camera, pointer } = useThree();
   useFrame(() => {
-    // Cinematic camera drift based on mouse
-    camera.position.x = THREE.MathUtils.lerp(camera.position.x, pointer.x * 4, 0.02);
-    camera.position.y = THREE.MathUtils.lerp(camera.position.y, pointer.y * 4, 0.02);
+    // Tiny subtle cinematic camera drift based on mouse
+    camera.position.x = THREE.MathUtils.lerp(camera.position.x, pointer.x * 1.5, 0.02);
+    camera.position.y = THREE.MathUtils.lerp(camera.position.y, pointer.y * 1.5, 0.02);
     camera.lookAt(0, 0, 0);
   });
   return null;
 }
 
-export default function SkillEcosystem({ setActiveSkill }: { setActiveSkill: (skill: any) => void }) {
+export default function SkillEcosystem() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -185,28 +131,30 @@ export default function SkillEcosystem({ setActiveSkill }: { setActiveSkill: (sk
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Limit spheres on mobile to maintain 60 FPS
-  const displaySkills = isMobile ? skills.slice(0, 12) : skills;
+  const displaySkills = isMobile ? skills.slice(0, 10) : skills;
 
   return (
-    <div className="w-full h-full absolute inset-0 cursor-default">
-      <Canvas camera={{ position: [0, 0, 18], fov: 40 }} shadows dpr={[1, 2]}>
+    <div className="w-full h-full absolute inset-0">
+      <Canvas camera={{ position: [0, 0, 22], fov: 35 }} shadows dpr={[1, 2]}>
         <color attach="background" args={['transparent']} />
         
-        <ambientLight intensity={0.4} />
-        <directionalLight position={[10, 20, 15]} intensity={2.5} castShadow color="#ffffff" />
-        <directionalLight position={[-10, -20, -15]} intensity={1} color="#60a5fa" />
-        <pointLight position={[0, 0, 0]} intensity={1.5} color="#3b82f6" distance={20} />
+        {/* Premium Studio Lighting */}
+        <ambientLight intensity={0.4} color="#ffffff" />
+        <directionalLight position={[10, 20, 10]} intensity={2.5} castShadow color="#ffffff" shadow-bias={-0.0001} />
+        <directionalLight position={[-15, 0, -10]} intensity={1.5} color="#e0f2fe" />
+        <directionalLight position={[0, -10, 5]} intensity={0.8} color="#ffffff" />
+        <spotLight position={[0, 15, 0]} intensity={2} angle={0.5} penumbra={1} color="#ffffff" />
 
-        <Environment preset="city" />
+        <Environment preset="studio" />
 
         <PointerFollower />
 
         <Physics gravity={[0, 0, 0]}>
-          <CentralCore />
-          {displaySkills.map((skill) => (
-            <SkillNode key={skill.id} data={skill} setActiveSkill={setActiveSkill} />
-          ))}
+          {displaySkills.map((skill, index) => {
+            // Mix of slightly larger central spheres and smaller peripheral spheres
+            const radius = index < 6 ? 1.4 : 1.1;
+            return <SkillSphere key={skill.id} data={skill} radius={radius} />;
+          })}
         </Physics>
       </Canvas>
     </div>
