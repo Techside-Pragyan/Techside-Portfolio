@@ -1,29 +1,33 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
-import Keyboard from '../canvas/Keyboard';
+import TechUniverse from '../canvas/TechUniverse';
 
 export default function TechStack() {
   return (
-    <section className="py-24 px-6 relative z-10 overflow-hidden flex flex-col items-center justify-center bg-black/20">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="text-center mb-0 mt-10"
-      >
-        <h2 className="text-5xl md:text-6xl font-black mb-2 text-white drop-shadow-md">
-          Tech Stack
-        </h2>
-        <p className="text-white/60 text-xs font-mono lowercase tracking-widest">
-          (hint: press a key)
-        </p>
-      </motion.div>
+    <section className="relative w-full h-[100vh] min-h-[800px] flex flex-col items-center justify-center overflow-hidden bg-[#020205]">
+      {/* 3D Tech Universe Background */}
+      <TechUniverse />
 
-      {/* 3D Keyboard Canvas */}
-      <div className="w-full max-w-5xl mx-auto relative z-20">
-        <Keyboard />
+      {/* Foreground UI Overlay */}
+      <div className="absolute top-0 w-full pt-32 pointer-events-none z-10 flex flex-col items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
+          <h2 className="text-5xl md:text-7xl font-black mb-2 text-white drop-shadow-2xl tracking-tight">
+            Tech Stack
+          </h2>
+          <p className="text-white/60 text-sm font-mono lowercase tracking-widest drop-shadow-md">
+            (hint: press a key)
+          </p>
+        </motion.div>
       </div>
+      
+      {/* Subtle vignette for deep space effect */}
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-transparent to-[#020205]/80" />
     </section>
   );
 }
