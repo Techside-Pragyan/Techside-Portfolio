@@ -20,7 +20,7 @@ function WireframeGlobe() {
 
   return (
     <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
-      <group ref={groupRef}>
+      <group ref={groupRef} scale={0.75}>
         <Sphere args={[1.6, 32, 32]}>
           <meshBasicMaterial color="#60a5fa" wireframe transparent opacity={0.4} />
         </Sphere>
