@@ -1,6 +1,6 @@
 "use client";
-import React, { useRef } from 'react';
-import { motion, useMotionValue, useMotionTemplate } from 'framer-motion';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, useMotionValue, useMotionTemplate, AnimatePresence } from 'framer-motion';
 import { Cpu, Terminal, GraduationCap, Code2, MapPin, Sparkles, BrainCircuit } from 'lucide-react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Sphere, Float } from '@react-three/drei';
@@ -82,6 +82,61 @@ const timeline = [
     icon: <Terminal size={24} className="text-accent group-hover:text-white transition-colors" />
   }
 ];
+
+const profileImages = [
+  '/images/profile-1.jpg',
+  '/images/profile-2.jpg',
+  '/images/profile-3.jpg',
+  '/images/profile-4.jpg',
+  '/images/profile-5.jpg',
+];
+
+function ProfileCarousel() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % profileImages.length);
+    }, 3500); // Crossfade every 3.5 seconds
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <SpotlightCard className="h-full p-0 relative group">
+      <AnimatePresence>
+        <motion.img
+          key={currentIndex}
+          src={profileImages[currentIndex]}
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 0.6, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 2, ease: "easeInOut" }}
+          className="absolute inset-0 w-full h-full object-cover object-top grayscale mix-blend-screen"
+          alt="Pragyan Paramita Moharana"
+          onError={(e) => {
+            // Fallback if user hasn't added images yet
+            (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000';
+          }}
+        />
+      </AnimatePresence>
+
+      {/* Cyber/Tech overlay gradients */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#020205] via-[#020205]/20 to-transparent"></div>
+      <div className="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
+      
+      {/* Decorative Scanline Overlay */}
+      <div className="absolute inset-0 bg-[repeating-linear-gradient(transparent,transparent_2px,rgba(0,0,0,0.1)_3px,rgba(0,0,0,0.1)_3px)] pointer-events-none"></div>
+
+      {/* Text overlay */}
+      <div className="absolute bottom-8 left-8 flex items-center gap-3 z-30">
+        <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_rgba(59,130,246,0.8)]"></div>
+        <span className="text-white/80 font-mono text-xs uppercase tracking-widest bg-black/50 px-3 py-1 rounded-full backdrop-blur-md border border-white/10">
+          Sys.Visual_Profile
+        </span>
+      </div>
+    </SpotlightCard>
+  );
+}
 
 export default function About() {
   return (
@@ -234,6 +289,17 @@ export default function About() {
                 ))}
               </div>
             </SpotlightCard>
+          </motion.div>
+
+          {/* Bento 5: Visual Profile Carousel (2x1) */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4, type: 'spring', bounce: 0.4 }}
+            className="md:col-span-3 lg:col-span-2 row-span-1 h-full"
+          >
+            <ProfileCarousel />
           </motion.div>
 
         </div>
