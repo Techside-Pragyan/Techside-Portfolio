@@ -11,23 +11,23 @@ import {
 import { BrainCircuit, Cpu, Bot, Blocks } from 'lucide-react';
 
 const skillsData = [
-  { id: 1, name: 'Python', color: '#3b82f6', icon: <SiPython size={24} /> },
-  { id: 2, name: 'TensorFlow', color: '#f59e0b', icon: <SiTensorflow size={24} /> },
-  { id: 3, name: 'PyTorch', color: '#ef4444', icon: <SiPytorch size={24} /> },
-  { id: 4, name: 'Scikit-Learn', color: '#f97316', icon: <SiScikitlearn size={24} /> },
-  { id: 5, name: 'Pandas', color: '#8b5cf6', icon: <SiPandas size={24} /> },
-  { id: 6, name: 'NumPy', color: '#0ea5e9', icon: <SiNumpy size={24} /> },
-  { id: 7, name: 'OpenCV', color: '#10b981', icon: <SiOpencv size={24} /> },
-  { id: 8, name: 'LangChain', color: '#d946ef', icon: <Blocks size={24} /> },
-  { id: 9, name: 'FastAPI', color: '#14b8a6', icon: <SiFastapi size={24} /> },
-  { id: 10, name: 'SQL', color: '#3b82f6', icon: <SiPostgresql size={24} /> },
-  { id: 11, name: 'Docker', color: '#0ea5e9', icon: <SiDocker size={24} /> },
-  { id: 12, name: 'Git', color: '#f43f5e', icon: <SiGit size={24} /> },
-  { id: 13, name: 'GitHub', color: '#ffffff', icon: <SiGithub size={24} /> },
-  { id: 14, name: 'Linux', color: '#eab308', icon: <SiLinux size={24} /> },
-  { id: 15, name: 'Machine Learning', color: '#10b981', icon: <BrainCircuit size={24} /> },
-  { id: 16, name: 'Deep Learning', color: '#ec4899', icon: <Cpu size={24} /> },
-  { id: 17, name: 'NLP', color: '#8b5cf6', icon: <Bot size={24} /> },
+  { id: 1, name: 'Python', color: '#3b82f6', icon: <SiPython size={24} />, prof: '98%', exp: '4+ Years', projects: '15+' },
+  { id: 2, name: 'TensorFlow', color: '#f59e0b', icon: <SiTensorflow size={24} />, prof: '92%', exp: '3+ Years', projects: '8+' },
+  { id: 3, name: 'PyTorch', color: '#ef4444', icon: <SiPytorch size={24} />, prof: '90%', exp: '2+ Years', projects: '5+' },
+  { id: 4, name: 'Scikit-Learn', color: '#f97316', icon: <SiScikitlearn size={24} />, prof: '95%', exp: '3+ Years', projects: '10+' },
+  { id: 5, name: 'Pandas', color: '#8b5cf6', icon: <SiPandas size={24} />, prof: '96%', exp: '4+ Years', projects: '20+' },
+  { id: 6, name: 'NumPy', color: '#0ea5e9', icon: <SiNumpy size={24} />, prof: '95%', exp: '4+ Years', projects: '20+' },
+  { id: 7, name: 'OpenCV', color: '#10b981', icon: <SiOpencv size={24} />, prof: '85%', exp: '2+ Years', projects: '6+' },
+  { id: 8, name: 'LangChain', color: '#d946ef', icon: <Blocks size={24} />, prof: '88%', exp: '1.5+ Years', projects: '4+' },
+  { id: 9, name: 'FastAPI', color: '#14b8a6', icon: <SiFastapi size={24} />, prof: '92%', exp: '3+ Years', projects: '7+' },
+  { id: 10, name: 'SQL', color: '#3b82f6', icon: <SiPostgresql size={24} />, prof: '95%', exp: '3+ Years', projects: '12+' },
+  { id: 11, name: 'Docker', color: '#0ea5e9', icon: <SiDocker size={24} />, prof: '85%', exp: '2+ Years', projects: '5+' },
+  { id: 12, name: 'Git', color: '#f43f5e', icon: <SiGit size={24} />, prof: '98%', exp: '4+ Years', projects: 'All' },
+  { id: 13, name: 'GitHub', color: '#ffffff', icon: <SiGithub size={24} />, prof: '98%', exp: '4+ Years', projects: 'All' },
+  { id: 14, name: 'Linux', color: '#eab308', icon: <SiLinux size={24} />, prof: '90%', exp: '4+ Years', projects: 'All' },
+  { id: 15, name: 'Machine Learning', color: '#10b981', icon: <BrainCircuit size={24} />, prof: '95%', exp: '3+ Years', projects: '10+' },
+  { id: 16, name: 'Deep Learning', color: '#ec4899', icon: <Cpu size={24} />, prof: '90%', exp: '2+ Years', projects: '6+' },
+  { id: 17, name: 'NLP', color: '#8b5cf6', icon: <Bot size={24} />, prof: '88%', exp: '2+ Years', projects: '4+' },
 ];
 
 function generateSpherePositions(count: number, radius: number) {
@@ -44,13 +44,11 @@ function generateSpherePositions(count: number, radius: number) {
   return positions;
 }
 
-// Custom Edge component for "Data Packets" flowing animation
 function DataEdge({ p1, p2, isHovered, color, isDimmed }: any) {
   const lineRef = useRef<any>(null);
   
   useFrame((state) => {
     if (lineRef.current?.material) {
-      // Speed up the data flow dramatically when hovered
       lineRef.current.material.dashOffset -= isHovered ? 0.05 : 0.002;
     }
   });
@@ -71,7 +69,7 @@ function DataEdge({ p1, p2, isHovered, color, isDimmed }: any) {
   );
 }
 
-function ComplexNode({ pos, skill, isHovered, isDimmed, setHoveredNode }: any) {
+function ComplexNode({ pos, skill, isHovered, isDimmed, setHoveredNode, setActiveSkill }: any) {
   const outerRef = useRef<THREE.Group>(null);
   
   useFrame((state) => {
@@ -84,10 +82,10 @@ function ComplexNode({ pos, skill, isHovered, isDimmed, setHoveredNode }: any) {
   return (
     <group 
       position={[pos.x, pos.y, pos.z]}
-      onPointerOver={(e) => { e.stopPropagation(); setHoveredNode(); document.body.style.cursor = 'crosshair'; }}
+      onPointerOver={(e) => { e.stopPropagation(); setHoveredNode(); document.body.style.cursor = 'pointer'; }}
       onPointerOut={(e) => { e.stopPropagation(); setHoveredNode(null); document.body.style.cursor = 'default'; }}
+      onClick={(e) => { e.stopPropagation(); setActiveSkill(skill); }}
     >
-      {/* Outer spinning wireframe shield */}
       <group ref={outerRef}>
         <Icosahedron args={[isHovered ? 0.7 : 0.4, 0]}>
           <meshBasicMaterial 
@@ -99,7 +97,6 @@ function ComplexNode({ pos, skill, isHovered, isDimmed, setHoveredNode }: any) {
         </Icosahedron>
       </group>
 
-      {/* Solid glowing core */}
       <Sphere args={[isHovered ? 0.4 : 0.2, 32, 32]}>
         <meshStandardMaterial 
           color={isHovered ? '#ffffff' : '#0f172a'}
@@ -110,7 +107,6 @@ function ComplexNode({ pos, skill, isHovered, isDimmed, setHoveredNode }: any) {
         />
       </Sphere>
 
-      {/* Premium HTML Tooltip */}
       <Html center zIndexRange={[100, 0]} className="pointer-events-none transition-all duration-500">
         <div 
           className="flex flex-col items-center gap-2 transition-all duration-500 ease-out"
@@ -135,7 +131,7 @@ function ComplexNode({ pos, skill, isHovered, isDimmed, setHoveredNode }: any) {
   );
 }
 
-function NeuralNetwork() {
+function NeuralNetwork({ setActiveSkill }: { setActiveSkill: (skill: any) => void }) {
   const groupRef = useRef<THREE.Group>(null);
   const [hoveredNode, setHoveredNode] = useState<number | null>(null);
 
@@ -156,7 +152,6 @@ function NeuralNetwork() {
     return lines;
   }, [positions, radius]);
 
-  // Compute connected nodes for dimming effect
   const connectedNodes = useMemo(() => {
     if (hoveredNode === null) return [];
     const connected = [hoveredNode];
@@ -203,7 +198,8 @@ function NeuralNetwork() {
             skill={skill}
             isHovered={isHovered}
             isDimmed={isDimmed}
-            setHoveredNode={() => setHoveredNode(i)}
+            setHoveredNode={(val: any) => setHoveredNode(val !== undefined ? val : i)}
+            setActiveSkill={setActiveSkill}
           />
         );
       })}
@@ -221,7 +217,7 @@ function PointerCamera() {
   return null;
 }
 
-export default function SkillEcosystem() {
+export default function SkillEcosystem({ setActiveSkill }: { setActiveSkill: (skill: any) => void }) {
   return (
     <div className="w-full h-full absolute inset-0 bg-transparent">
       <Canvas camera={{ position: [0, 0, 18], fov: 45 }} dpr={[1, 2]}>
@@ -238,7 +234,7 @@ export default function SkillEcosystem() {
         </EffectComposer>
 
         <Float speed={1.5} rotationIntensity={0.2} floatIntensity={0.5}>
-          <NeuralNetwork />
+          <NeuralNetwork setActiveSkill={setActiveSkill} />
         </Float>
         
         <PointerCamera />
