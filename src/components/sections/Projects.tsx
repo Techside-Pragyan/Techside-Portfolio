@@ -49,7 +49,7 @@ const projects = [
   {
     title: "Plant Disease Identifier",
     description: "A deep learning model integrated into a web interface that identifies plant diseases from uploaded images with high confidence.",
-    image: "https://images.unsplash.com/photo-1530836369250-ef71a3f5e48c?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1490750967868-88cb44cb2722?auto=format&fit=crop&q=80&w=800",
     tags: ["TensorFlow", "FastAPI", "React"],
     github: "#",
     live: "#"
