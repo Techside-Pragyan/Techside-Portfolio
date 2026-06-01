@@ -100,9 +100,9 @@ export default function Skills() {
               <Activity size={14} /> System Status
             </div>
             <div className="text-white/80 font-mono text-sm leading-relaxed">
-              > All primary systems nominal.<br/>
-              > Deep Learning models training...<br/>
-              > Web frameworks fully deployed.<br/>
+              &gt; All primary systems nominal.<br/>
+              &gt; Deep Learning models training...<br/>
+              &gt; Web frameworks fully deployed.<br/>
               <span className="text-green-400 animate-pulse">_</span>
             </div>
           </div>
