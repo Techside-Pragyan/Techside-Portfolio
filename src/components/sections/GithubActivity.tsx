@@ -89,7 +89,7 @@ export default function GithubActivity() {
             <div className="relative w-full overflow-x-auto pb-4 custom-scrollbar flex justify-center">
               <div className="absolute inset-0 bg-secondary/20 blur-[100px] rounded-full opacity-0 group-hover:opacity-50 transition-opacity duration-700 pointer-events-none"></div>
               <img
-                src={`${BASE}/github-metrics.svg`}
+                src={`https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_USER}/output/galaga-contribution-graph-dark.svg`}
                 alt="GitHub Contribution Calendar"
                 className="min-w-[800px] h-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-500 relative z-10 mix-blend-screen"
                 onError={(e) => {
