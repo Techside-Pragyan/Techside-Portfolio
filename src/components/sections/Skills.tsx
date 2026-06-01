@@ -37,7 +37,7 @@ export default function Skills() {
             <div className="h-[2px] w-12 bg-primary"></div>
           </div>
           <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-white drop-shadow-2xl text-center">
-            TECHNOLOGIES <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">& TOOLS</span>
+            CORE <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">SKILLS</span>
           </h2>
           <p className="text-white/50 font-light mt-2 max-w-lg text-center text-sm md:text-base px-6 drop-shadow-md">
             Hover to explore the neural pathways. Click any node to access detailed capabilities.
