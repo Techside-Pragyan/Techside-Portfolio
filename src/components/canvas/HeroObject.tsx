@@ -32,7 +32,7 @@ function ParticleCore() {
   return (
     <group rotation={[0, 0, Math.PI / 4]}>
       <Points ref={ref} positions={sphere} stride={3} frustumCulled={false}>
-        <PointMaterial transparent color="#f97316" size={0.015} sizeAttenuation={true} depthWrite={false} />
+        <PointMaterial transparent color="#0ea5e9" size={0.015} sizeAttenuation={true} depthWrite={false} />
       </Points>
     </group>
   );
@@ -62,14 +62,14 @@ function HolographicCore() {
       <group ref={meshRef}>
         {/* Outer Wireframe Icosahedron */}
         <Icosahedron args={[1.5, 1]} wireframe>
-          <meshBasicMaterial color="#dc2626" transparent opacity={0.3} wireframe />
+          <meshBasicMaterial color="#3b82f6" transparent opacity={0.3} wireframe />
         </Icosahedron>
         
         {/* Inner Solid Icosahedron */}
         <Icosahedron args={[1.2, 0]}>
           <meshStandardMaterial 
-            color="#f97316" 
-            emissive="#dc2626"
+            color="#0ea5e9" 
+            emissive="#3b82f6"
             emissiveIntensity={0.5}
             transparent 
             opacity={0.8}
@@ -88,7 +88,7 @@ function HolographicCore() {
             zIndexRange={[100, 0]}
             className="pointer-events-none"
           >
-            <div className="px-3 py-1 bg-black/50 border border-primary/40 backdrop-blur-md rounded-full whitespace-nowrap text-orange-400 font-mono text-[10px] tracking-widest shadow-[0_0_15px_rgba(220,38,38,0.5)]">
+            <div className="px-3 py-1 bg-black/50 border border-primary/40 backdrop-blur-md rounded-full whitespace-nowrap text-cyan-400 font-mono text-[10px] tracking-widest shadow-[0_0_15px_rgba(59,130,246,0.5)]">
               {label.text}
             </div>
           </Html>
@@ -103,9 +103,9 @@ export default function HeroObject() {
     <div className="w-full h-full absolute inset-0 z-0 pointer-events-none sm:pointer-events-auto">
       <Canvas camera={{ position: [0, 0, 6], fov: 45 }}>
         <ambientLight intensity={0.2} />
-        <directionalLight position={[10, 10, 5]} intensity={2} color="#dc2626" />
-        <directionalLight position={[-10, -10, -5]} intensity={1} color="#ea580c" />
-        <pointLight position={[0, 0, 0]} intensity={2} color="#f97316" distance={10} />
+        <directionalLight position={[10, 10, 5]} intensity={2} color="#3b82f6" />
+        <directionalLight position={[-10, -10, -5]} intensity={1} color="#8b5cf6" />
+        <pointLight position={[0, 0, 0]} intensity={2} color="#0ea5e9" distance={10} />
         
         <HolographicCore />
         <ParticleCore />

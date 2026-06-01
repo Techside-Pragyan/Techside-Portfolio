@@ -22,13 +22,13 @@ function WireframeGlobe() {
     <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
       <group ref={groupRef} scale={0.75}>
         <Sphere args={[1.6, 32, 32]}>
-          <meshBasicMaterial color="#fca5a5" wireframe transparent opacity={0.4} />
+          <meshBasicMaterial color="#60a5fa" wireframe transparent opacity={0.4} />
         </Sphere>
         <Sphere args={[1.55, 16, 16]}>
-          <meshBasicMaterial color="#dc2626" wireframe transparent opacity={0.2} />
+          <meshBasicMaterial color="#3b82f6" wireframe transparent opacity={0.2} />
         </Sphere>
         <Sphere args={[1.2, 16, 16]}>
-          <meshBasicMaterial color="#ea580c" transparent opacity={0.6} />
+          <meshBasicMaterial color="#8b5cf6" transparent opacity={0.6} />
         </Sphere>
       </group>
     </Float>
@@ -48,13 +48,13 @@ function SpotlightCard({ children, className = "" }: { children: React.ReactNode
 
   return (
     <div
-      className={`group relative overflow-hidden rounded-[2.5rem] border border-white/5 bg-black/40 backdrop-blur-3xl shadow-2xl transition-all duration-500 hover:border-white/20 hover:shadow-[0_0_40px_rgba(220,38,38,0.3)] hover:-translate-y-2 ${className}`}
+      className={`group relative overflow-hidden rounded-[2.5rem] border border-white/5 bg-black/40 backdrop-blur-3xl shadow-2xl transition-all duration-500 hover:border-white/20 hover:shadow-[0_0_40px_rgba(59,130,246,0.3)] hover:-translate-y-2 ${className}`}
       onMouseMove={handleMouseMove}
     >
       <motion.div
         className="pointer-events-none absolute -inset-px rounded-[2.5rem] opacity-0 transition duration-500 group-hover:opacity-100 z-10"
         style={{
-          background: useMotionTemplate`radial-gradient(400px circle at ${mouseX}px ${mouseY}px, rgba(220, 38, 38, 0.2), transparent 80%)`,
+          background: useMotionTemplate`radial-gradient(400px circle at ${mouseX}px ${mouseY}px, rgba(59, 130, 246, 0.2), transparent 80%)`,
         }}
       />
       <div className="relative z-20 h-full w-full">
@@ -111,7 +111,7 @@ function PortraitGallery() {
       <div className="absolute inset-0 bg-[repeating-linear-gradient(transparent,transparent_2px,rgba(0,0,0,0.2)_3px,rgba(0,0,0,0.2)_3px)] pointer-events-none mix-blend-overlay group-hover:opacity-0 transition-opacity duration-700"></div>
 
       {/* Interactive Border Glow */}
-      <div className="absolute inset-0 border-[2px] border-white/0 group-hover:border-primary/50 rounded-[2.5rem] transition-colors duration-700 pointer-events-none shadow-[inset_0_0_40px_rgba(220,38,38,0)] group-hover:shadow-[inset_0_0_60px_rgba(220,38,38,0.5)] z-20"></div>
+      <div className="absolute inset-0 border-[2px] border-white/0 group-hover:border-primary/50 rounded-[2.5rem] transition-colors duration-700 pointer-events-none shadow-[inset_0_0_40px_rgba(59,130,246,0)] group-hover:shadow-[inset_0_0_60px_rgba(59,130,246,0.5)] z-20"></div>
 
       {/* Floating Status Badge */}
       <motion.div 
@@ -140,7 +140,7 @@ export default function About() {
     <section id="about" className="py-32 px-6 relative z-10 overflow-hidden bg-[#010103]">
       
       {/* Animated Hex/Grid Background */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#dc26261a_1px,transparent_1px),linear-gradient(to_bottom,#dc26261a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none opacity-50 z-0"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#3b82f61a_1px,transparent_1px),linear-gradient(to_bottom,#3b82f61a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none opacity-50 z-0"></div>
 
       {/* Glowing Orbs in Background */}
       <div className="absolute top-40 left-20 w-96 h-96 bg-primary/20 rounded-full blur-[150px] pointer-events-none z-0"></div>
@@ -173,7 +173,7 @@ export default function About() {
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ delay: 0.4 }}
-                  className="text-primary font-mono tracking-[0.4em] uppercase text-xs drop-shadow-[0_0_10px_rgba(220,38,38,0.8)]"                >
+                  className="text-primary font-mono tracking-[0.4em] uppercase text-xs drop-shadow-[0_0_10px_rgba(59,130,246,0.8)]"                >
                   Sys.Init.Profile
                 </motion.span>
               </div>
@@ -199,7 +199,7 @@ export default function About() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: i * 0.1, type: "spring", stiffness: 100 }}
                     className={word.includes("algorithmic") || word.includes("logic") || word.includes("creative") 
-                      ? "text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary drop-shadow-[0_0_15px_rgba(220,38,38,0.5)]" 
+                      ? "text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]" 
                       : "text-white"}
                   >
                     {word}
@@ -233,7 +233,7 @@ export default function About() {
                   <div className="absolute right-[-20px] bottom-[-20px] w-48 h-48 z-0 pointer-events-none opacity-80">
                     <Canvas camera={{ position: [0, 0, 4.5], fov: 45 }}>
                       <ambientLight intensity={0.5} />
-                      <directionalLight position={[10, 10, 5]} intensity={1} color="#fca5a5" />
+                      <directionalLight position={[10, 10, 5]} intensity={1} color="#60a5fa" />
                       <WireframeGlobe />
                     </Canvas>
                   </div>
@@ -272,7 +272,7 @@ export default function About() {
               <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10} transitionSpeed={2000}>
                 <SpotlightCard className="h-44 p-6 flex flex-col justify-center items-center text-center group/stat">
                   <div className="absolute inset-0 bg-gradient-to-b from-secondary/5 to-transparent opacity-0 group-hover/stat:opacity-100 transition-opacity duration-500"></div>
-                  <div className="relative z-10 text-6xl font-black text-transparent bg-clip-text bg-gradient-to-br from-primary to-secondary mb-2 tracking-tighter drop-shadow-[0_0_20px_rgba(220,38,38,0.4)] group-hover/stat:scale-110 transition-transform duration-500">60+</div>
+                  <div className="relative z-10 text-6xl font-black text-transparent bg-clip-text bg-gradient-to-br from-primary to-secondary mb-2 tracking-tighter drop-shadow-[0_0_20px_rgba(59,130,246,0.4)] group-hover/stat:scale-110 transition-transform duration-500">60+</div>
                   <div className="relative z-10 text-secondary font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold">Projects Built</div>
                 </SpotlightCard>
               </Tilt>
@@ -318,7 +318,7 @@ export default function About() {
                       <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-r from-transparent via-primary to-transparent -translate-x-full group-hover/timeline:animate-[shimmer_1.5s_infinite]"></div>
                     </div>
                   )}
-                  <div className="glass w-16 h-16 rounded-2xl flex items-center justify-center mb-6 relative z-10 border border-white/10 group-hover/timeline:border-primary/50 group-hover/timeline:-translate-y-3 group-hover/timeline:shadow-[0_20px_40px_rgba(220,38,38,0.4)] group-hover/timeline:bg-primary/10 transition-all duration-500">
+                  <div className="glass w-16 h-16 rounded-2xl flex items-center justify-center mb-6 relative z-10 border border-white/10 group-hover/timeline:border-primary/50 group-hover/timeline:-translate-y-3 group-hover/timeline:shadow-[0_20px_40px_rgba(59,130,246,0.4)] group-hover/timeline:bg-primary/10 transition-all duration-500">
                     <span className="text-primary group-hover/timeline:text-white transition-colors">{item.icon}</span>
                   </div>
                   <span className="text-xs font-mono text-primary mb-2 tracking-widest uppercase font-bold">{item.year}</span>

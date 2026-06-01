@@ -4,13 +4,13 @@
   --color-background: #050505;
   --color-foreground: #f0f0f0;
   
-  --color-primary: #dc2626;
-  --color-primary-glow: rgba(220, 38, 38, 0.5);
+  --color-primary: #3b82f6;
+  --color-primary-glow: rgba(59, 130, 246, 0.5);
   
-  --color-secondary: #ea580c;
-  --color-secondary-glow: rgba(234, 88, 12, 0.5);
+  --color-secondary: #8b5cf6;
+  --color-secondary-glow: rgba(139, 92, 246, 0.5);
   
-  --color-accent: #f97316;
+  --color-accent: #0ea5e9;
   
   --color-surface: rgba(255, 255, 255, 0.03);
   --color-surface-hover: rgba(255, 255, 255, 0.08);
