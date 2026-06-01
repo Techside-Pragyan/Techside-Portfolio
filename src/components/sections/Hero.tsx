@@ -1,37 +1,106 @@
 "use client";
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, Terminal, Mail } from 'lucide-react';
-import { FaGithub as Github, FaLinkedin as Linkedin } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, Terminal, Mail, FileText, Globe } from 'lucide-react';
+import { FaGithub as Github, FaLinkedin as Linkedin, FaTwitter as XIcon } from 'react-icons/fa';
+import { SiLeetcode } from 'react-icons/si';
 import ParticlesBackground from '../ui/ParticlesBackground';
 import HeroObject from '../canvas/HeroObject';
 
 export default function Hero() {
+  const [booting, setBooting] = useState(true);
+  const [bootText, setBootText] = useState("");
+
+  const bootSequence = [
+    "INITIALIZING PRAGYAN AI OS...",
+    "Loading Neural Networks...",
+    "Loading Machine Learning Models...",
+    "Connecting Intelligence Layer...",
+    "System Ready"
+  ];
+
+  useEffect(() => {
+    // Check if already booted in this session
+    const hasBooted = sessionStorage.getItem("hasBooted");
+    if (hasBooted) {
+      setBooting(false);
+      return;
+    }
+
+    let currentLine = 0;
+    let currentChar = 0;
+    let currentText = "";
+
+    const typeChar = () => {
+      if (currentLine >= bootSequence.length) {
+        setTimeout(() => {
+          setBooting(false);
+          sessionStorage.setItem("hasBooted", "true");
+        }, 1000);
+        return;
+      }
+
+      if (currentChar < bootSequence[currentLine].length) {
+        currentText += bootSequence[currentLine][currentChar];
+        setBootText(currentText);
+        currentChar++;
+        setTimeout(typeChar, Math.random() * 30 + 20); // Typing speed
+      } else {
+        currentText += "\n";
+        setBootText(currentText);
+        currentLine++;
+        currentChar = 0;
+        setTimeout(typeChar, 300); // Delay between lines
+      }
+    };
+
+    setTimeout(typeChar, 500); // Initial delay
+  }, []);
+
+  if (booting) {
+    return (
+      <div className="fixed inset-0 bg-[#050505] z-[9999] flex items-center justify-start p-8 md:p-24 font-mono text-primary text-sm md:text-xl overflow-hidden">
+        <div className="whitespace-pre-wrap flex flex-col">
+          {bootText}
+          <motion.div 
+            animate={{ opacity: [0, 1, 0] }} 
+            transition={{ repeat: Infinity, duration: 0.8 }}
+            className="w-3 h-5 bg-primary inline-block ml-1 mt-1"
+          />
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <section id="hero" className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#020205]">
+    <section id="hero" className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#050505]">
       {/* 3D Background & Particles (Z-0) */}
-      <div className="absolute inset-0 z-0 opacity-40">
+      <div className="absolute inset-0 z-0 opacity-60">
         <ParticlesBackground />
       </div>
 
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,#020205_100%)] opacity-80 z-0" />
+      {/* Aurora Gradient Lights */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] mix-blend-screen pointer-events-none"></div>
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-[120px] mix-blend-screen pointer-events-none"></div>
+
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,#050505_100%)] opacity-90 z-0" />
 
       {/* Main Content Container */}
-      <div className="container mx-auto max-w-7xl px-6 relative z-10 flex flex-col-reverse md:flex-row items-center justify-between h-full pt-20 md:pt-0">
+      <div className="container mx-auto max-w-7xl px-6 relative z-10 flex flex-col md:flex-row items-center justify-between h-full pt-24 md:pt-0">
         
         {/* LEFT COLUMN: Text & Actions */}
-        <div className="w-full md:w-1/2 flex flex-col justify-center items-start space-y-8 pointer-events-auto mt-10 md:mt-0 z-20">
+        <div className="w-full md:w-[55%] flex flex-col justify-center items-start space-y-8 pointer-events-auto mt-10 md:mt-0 z-20">
           
           {/* Badge */}
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="flex items-center gap-3 glass-card px-5 py-2.5 rounded-full border border-primary/30 shadow-[0_0_20px_rgba(59,130,246,0.15)] backdrop-blur-xl bg-black/20"
+            className="flex items-center gap-3 glass-card px-5 py-2.5 rounded-full border border-primary/40 shadow-[0_0_20px_rgba(59,130,246,0.3)] backdrop-blur-xl bg-black/40"
           >
-            <div className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse shadow-[0_0_10px_rgba(59,130,246,0.8)]"></div>
-            <span className="text-primary font-mono text-xs md:text-sm uppercase tracking-widest">
-              SYS.INIT // AI.ENGINEER
+            <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_rgba(59,130,246,1)]"></div>
+            <span className="text-primary font-mono text-xs md:text-sm uppercase tracking-[0.2em]">
+              System Online // Core Active
             </span>
           </motion.div>
 
@@ -40,19 +109,16 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-            className="flex flex-col"
+            className="flex flex-col relative"
           >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter leading-[1.1] drop-shadow-2xl">
-              Architecting <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent relative inline-block">
-                Intelligent
-                <div className="absolute -inset-2 bg-primary/20 blur-2xl -z-10 rounded-full opacity-50"></div>
-              </span> <br/>
-              Systems.
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter leading-[1.1] drop-shadow-2xl uppercase">
+              PRAGYAN PARAMITA <br/> MOHARANA
             </h1>
-            <h2 className="text-xl md:text-2xl text-white/50 font-light mt-6 tracking-wide border-l-2 border-primary/50 pl-4">
-              Pragyan Paramita Moharana
+            <h2 className="text-3xl md:text-5xl font-black mt-2 text-transparent bg-clip-text bg-gradient-to-r from-primary via-cyan-400 to-secondary relative inline-block text-glow tracking-tight uppercase">
+              AI / ML ENGINEER
+              <div className="absolute -inset-2 bg-primary/20 blur-3xl -z-10 rounded-full opacity-60"></div>
             </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-primary to-transparent mt-8"></div>
           </motion.div>
 
           {/* Bio */}
@@ -60,54 +126,76 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
-            className="glass-card p-5 rounded-2xl border border-white/5 shadow-[0_20px_40px_rgba(0,0,0,0.5)] max-w-md bg-black/40 backdrop-blur-xl relative overflow-hidden group hover:border-primary/30 transition-colors duration-500"
+            className="glass-card p-6 rounded-2xl border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.8)] max-w-xl bg-black/50 backdrop-blur-2xl relative overflow-hidden group hover:border-primary/40 transition-colors duration-500"
           >
-            <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-primary to-accent group-hover:shadow-[0_0_15px_rgba(59,130,246,1)] transition-all"></div>
-            <div className="flex items-center gap-3 mb-3">
-              <Terminal size={16} className="text-primary" />
-              <span className="text-xs font-mono text-white/70 uppercase tracking-wider">Profile_Active</span>
-            </div>
-            <p className="text-sm md:text-base text-white/70 leading-relaxed font-light">
-              Bridging innovative ideas with transformative technologies. Engineering extreme performance AI solutions and full-stack applications for the future.
+            <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-primary to-secondary group-hover:shadow-[0_0_20px_rgba(59,130,246,1)] transition-all"></div>
+            <h3 className="text-lg font-bold text-white mb-2">Building Intelligent Systems That Solve Real Problems</h3>
+            <p className="text-sm md:text-base text-white/70 leading-relaxed font-light mb-3">
+              AI/ML Engineer | Full Stack Developer | Future Innovator
+            </p>
+            <p className="text-sm text-white/50 leading-relaxed font-light">
+              Passionate about Artificial Intelligence, Machine Learning, Full-Stack Development and building products that create real-world impact.
             </p>
           </motion.div>
 
-          {/* Actions & Socials */}
+          {/* Actions */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut", delay: 0.6 }}
-            className="flex flex-wrap items-center gap-6 pt-2"
+            className="flex flex-wrap items-center gap-4 pt-2 w-full"
           >
-            <a href="#projects" className="group relative px-8 py-4 bg-white text-black font-black text-sm uppercase tracking-widest rounded-full hover:scale-105 transition-all duration-300 flex items-center gap-3 overflow-hidden shadow-[0_0_30px_rgba(255,255,255,0.15)] hover:shadow-[0_0_40px_rgba(59,130,246,0.4)]">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
-              <span className="relative z-10 group-hover:text-primary transition-colors duration-300">Explore Work</span>
-              <ArrowRight size={18} className="relative z-10 group-hover:text-primary transition-all duration-300 group-hover:translate-x-1" />
+            <a href="#projects" className="group relative px-6 py-3.5 bg-primary text-white font-bold text-sm uppercase tracking-widest rounded-full hover:scale-105 transition-all duration-300 flex items-center gap-3 overflow-hidden neon-glow">
+              <span className="relative z-10">Explore My Universe</span>
+              <Globe size={18} className="relative z-10 group-hover:rotate-12 transition-transform duration-300" />
             </a>
 
-            <div className="flex items-center gap-4">
-              <a href="https://github.com/Techside-Pragyan" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full glass bg-black/40 border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:border-primary hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:-translate-y-1 transition-all duration-300">
-                <Github size={20} />
-              </a>
-              <a href="https://www.linkedin.com/in/pragyan-paramita-moharana" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full glass bg-black/40 border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:border-primary hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:-translate-y-1 transition-all duration-300">
-                <Linkedin size={20} />
-              </a>
-              <a href="mailto:pragyanpramitamoharana@gmail.com" className="w-12 h-12 rounded-full glass bg-black/40 border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:border-primary hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:-translate-y-1 transition-all duration-300">
-                <Mail size={20} />
-              </a>
-            </div>
+            <a href="#github" className="group relative px-6 py-3.5 bg-transparent border border-white/20 text-white font-bold text-sm uppercase tracking-widest rounded-full hover:bg-white/5 hover:border-white/40 transition-all duration-300 flex items-center gap-3">
+              <span>View Projects</span>
+              <Terminal size={18} />
+            </a>
+
+            <a href="#" className="group relative px-6 py-3.5 bg-transparent border border-white/20 text-white font-bold text-sm uppercase tracking-widest rounded-full hover:bg-white/5 hover:border-white/40 transition-all duration-300 flex items-center gap-3">
+              <span>Download Resume</span>
+              <FileText size={18} />
+            </a>
+          </motion.div>
+
+          {/* Socials */}
+          <motion.div 
+             initial={{ opacity: 0 }}
+             animate={{ opacity: 1 }}
+             transition={{ duration: 1, delay: 0.8 }}
+             className="flex items-center gap-5 pt-4"
+          >
+             <a href="https://github.com/Techside-Pragyan" target="_blank" rel="noreferrer" className="text-white/50 hover:text-primary transition-colors hover:scale-110 transform duration-300">
+               <Github size={24} />
+             </a>
+             <a href="https://www.linkedin.com/in/pragyan-paramita-moharana" target="_blank" rel="noreferrer" className="text-white/50 hover:text-primary transition-colors hover:scale-110 transform duration-300">
+               <Linkedin size={24} />
+             </a>
+             <a href="#" target="_blank" rel="noreferrer" className="text-white/50 hover:text-primary transition-colors hover:scale-110 transform duration-300">
+               <SiLeetcode size={24} />
+             </a>
+             <a href="#" target="_blank" rel="noreferrer" className="text-white/50 hover:text-primary transition-colors hover:scale-110 transform duration-300">
+               <XIcon size={24} />
+             </a>
+             <a href="mailto:pragyanpramitamoharana@gmail.com" className="text-white/50 hover:text-primary transition-colors hover:scale-110 transform duration-300">
+               <Mail size={24} />
+             </a>
           </motion.div>
         </div>
 
-        {/* RIGHT COLUMN: 3D Canvas */}
+        {/* RIGHT COLUMN: 3D Holographic AI Core */}
         <motion.div 
-          initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
-          animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-          transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 }}
-          className="w-full md:w-1/2 h-[45vh] md:h-[80vh] relative pointer-events-auto flex items-center justify-center mt-10 md:mt-0"
+          initial={{ opacity: 0, filter: "blur(20px)" }}
+          animate={{ opacity: 1, filter: "blur(0px)" }}
+          transition={{ duration: 2, ease: "easeOut", delay: 0.5 }}
+          className="w-full md:w-[45%] h-[50vh] md:h-[80vh] relative pointer-events-auto flex items-center justify-center mt-10 md:mt-0"
         >
-          {/* Subtle glow behind the 3D object to make it pop */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] bg-primary/20 blur-[100px] rounded-full pointer-events-none mix-blend-screen"></div>
+          {/* Intense Core Glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-primary/10 blur-[120px] rounded-full pointer-events-none mix-blend-screen"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40%] h-[40%] bg-cyan-400/20 blur-[80px] rounded-full pointer-events-none mix-blend-screen animate-pulse"></div>
           
           <HeroObject />
         </motion.div>
