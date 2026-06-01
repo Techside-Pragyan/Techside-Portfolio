@@ -51,7 +51,7 @@ export default function GithubActivity() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="group relative overflow-hidden rounded-[2.5rem] bg-black/40 border border-white/5 backdrop-blur-3xl p-8 md:p-12 hover:border-primary/30 transition-all duration-500 shadow-2xl hover:shadow-[0_0_60px_rgba(59,130,246,0.15)] flex flex-col items-center justify-center cursor-crosshair"
+            className="group relative overflow-hidden rounded-[2.5rem] bg-black/40 border border-white/5 backdrop-blur-3xl p-8 md:p-12 hover:border-primary/30 transition-all duration-500 shadow-2xl hover:shadow-[0_0_60px_rgba(220,38,38,0.15)] flex flex-col items-center justify-center cursor-crosshair"
           >
             <div className="flex items-center gap-3 self-start mb-12 text-white font-mono uppercase tracking-widest text-sm relative z-10">
               <div className="p-2 bg-primary/20 rounded-lg group-hover:bg-primary group-hover:text-white text-primary transition-colors">
@@ -65,7 +65,7 @@ export default function GithubActivity() {
               <img
                 src={`${BASE}/profile-3d-contrib/profile-night-view.svg`}
                 alt="GitHub 3D Contribution Graph"
-                className="w-full h-auto object-contain opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 drop-shadow-[0_0_30px_rgba(59,130,246,0.3)] relative z-10 mix-blend-screen"
+                className="w-full h-auto object-contain opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 drop-shadow-[0_0_30px_rgba(220,38,38,0.3)] relative z-10 mix-blend-screen"
                 style={{ filter: "hue-rotate(-10deg) saturate(1.5)" }}
               />
             </div>
@@ -77,7 +77,7 @@ export default function GithubActivity() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="group relative overflow-hidden rounded-[2.5rem] bg-black/40 border border-white/5 backdrop-blur-3xl p-8 md:p-12 hover:border-secondary/30 transition-all duration-500 shadow-2xl hover:shadow-[0_0_60px_rgba(139,92,246,0.15)] flex flex-col items-center justify-center cursor-crosshair"
+            className="group relative overflow-hidden rounded-[2.5rem] bg-black/40 border border-white/5 backdrop-blur-3xl p-8 md:p-12 hover:border-secondary/30 transition-all duration-500 shadow-2xl hover:shadow-[0_0_60px_rgba(234,88,12,0.15)] flex flex-col items-center justify-center cursor-crosshair"
           >
             <div className="flex items-center gap-3 self-start mb-12 text-white font-mono uppercase tracking-widest text-sm relative z-10">
               <div className="p-2 bg-secondary/20 rounded-lg group-hover:bg-secondary group-hover:text-white text-secondary transition-colors">
