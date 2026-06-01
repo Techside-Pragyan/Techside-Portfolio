@@ -5,11 +5,11 @@ import { Float, Text, OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 
 const skills = [
-  { name: 'AI / ML', color: '#3b82f6', position: [-3, 1.5, 0] as [number, number, number] },
+  { name: 'AI / ML', color: '#dc2626', position: [-3, 1.5, 0] as [number, number, number] },
   { name: 'Python', color: '#facc15', position: [3, 2, -1] as [number, number, number] },
   { name: 'TensorFlow', color: '#f97316', position: [0, 3, -2] as [number, number, number] },
   { name: 'OpenCV', color: '#10b981', position: [-2, -2, 1] as [number, number, number] },
-  { name: 'SQL', color: '#8b5cf6', position: [2, -1.5, 2] as [number, number, number] },
+  { name: 'SQL', color: '#ea580c', position: [2, -1.5, 2] as [number, number, number] },
 ];
 
 function SkillSphere({ position, color, name }: { position: [number, number, number], color: string, name: string }) {
@@ -49,7 +49,7 @@ export default function SkillSpheres() {
       <Canvas camera={{ position: [0, 0, 8], fov: 45 }}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 10, 5]} intensity={1} color="#ffffff" />
-        <directionalLight position={[-10, -10, -5]} intensity={0.5} color="#3b82f6" />
+        <directionalLight position={[-10, -10, -5]} intensity={0.5} color="#dc2626" />
         
         <group>
           {skills.map((skill, index) => (
