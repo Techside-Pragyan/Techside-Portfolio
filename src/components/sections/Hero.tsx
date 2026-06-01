@@ -96,9 +96,9 @@ export default function Hero() {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="flex items-center gap-3 glass-card px-5 py-2.5 rounded-full border border-primary/40 shadow-[0_0_20px_rgba(59,130,246,0.3)] backdrop-blur-xl bg-black/40"
+            className="flex items-center gap-3 glass-card px-5 py-2.5 rounded-full border border-primary/40 shadow-[0_0_20px_rgba(220,38,38,0.3)] backdrop-blur-xl bg-black/40"
           >
-            <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_rgba(59,130,246,1)]"></div>
+            <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_rgba(220,38,38,1)]"></div>
             <span className="text-primary font-mono text-xs md:text-sm uppercase tracking-[0.2em]">
               System Online // Core Active
             </span>
@@ -114,7 +114,7 @@ export default function Hero() {
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter leading-[1.1] drop-shadow-2xl uppercase">
               PRAGYAN PARAMITA <br/> MOHARANA
             </h1>
-            <h2 className="text-3xl md:text-5xl font-black mt-2 text-transparent bg-clip-text bg-gradient-to-r from-primary via-cyan-400 to-secondary relative inline-block text-glow tracking-tight uppercase">
+            <h2 className="text-3xl md:text-5xl font-black mt-2 text-transparent bg-clip-text bg-gradient-to-r from-primary via-orange-400 to-secondary relative inline-block text-glow tracking-tight uppercase">
               AI / ML ENGINEER
               <div className="absolute -inset-2 bg-primary/20 blur-3xl -z-10 rounded-full opacity-60"></div>
             </h2>
@@ -128,7 +128,7 @@ export default function Hero() {
             transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
             className="glass-card p-6 rounded-2xl border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.8)] max-w-xl bg-black/50 backdrop-blur-2xl relative overflow-hidden group hover:border-primary/40 transition-colors duration-500"
           >
-            <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-primary to-secondary group-hover:shadow-[0_0_20px_rgba(59,130,246,1)] transition-all"></div>
+            <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-primary to-secondary group-hover:shadow-[0_0_20px_rgba(220,38,38,1)] transition-all"></div>
             <h3 className="text-lg font-bold text-white mb-2">Building Intelligent Systems That Solve Real Problems</h3>
             <p className="text-sm md:text-base text-white/70 leading-relaxed font-light mb-3">
               AI/ML Engineer | Full Stack Developer | Future Innovator
@@ -195,7 +195,7 @@ export default function Hero() {
         >
           {/* Intense Core Glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-primary/10 blur-[120px] rounded-full pointer-events-none mix-blend-screen"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40%] h-[40%] bg-cyan-400/20 blur-[80px] rounded-full pointer-events-none mix-blend-screen animate-pulse"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40%] h-[40%] bg-orange-400/20 blur-[80px] rounded-full pointer-events-none mix-blend-screen animate-pulse"></div>
           
           <HeroObject />
         </motion.div>
