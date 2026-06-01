@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Terminal, FileText, Globe } from 'lucide-react';
+import { Terminal, FileText, Globe, Mail } from 'lucide-react';
 import { FaGithub as Github, FaLinkedin as Linkedin, FaTwitter as XIcon } from 'react-icons/fa';
 import { SiLeetcode } from 'react-icons/si';
 import ParticlesBackground from '../ui/ParticlesBackground';
