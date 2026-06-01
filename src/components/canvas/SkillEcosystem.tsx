@@ -220,7 +220,7 @@ function PointerCamera() {
 export default function SkillEcosystem({ setActiveSkill }: { setActiveSkill: (skill: any) => void }) {
   return (
     <div className="w-full h-full absolute inset-0 bg-transparent">
-      <Canvas camera={{ position: [0, 0, 18], fov: 45 }} dpr={[1, 2]}>
+      <Canvas camera={{ position: [0, 0, 24], fov: 45 }} dpr={[1, 2]}>
         <color attach="background" args={['#020205']} />
         
         <Stars radius={100} depth={50} count={5000} factor={5} saturation={1} fade speed={2} />
