@@ -52,14 +52,14 @@ const skillsData = [
   { id: 35, name: 'Render', color: '#46e3b7', icon: <SiRender size={24} />, prof: '85%', exp: '1.5+ Years', projects: '5+' },
   { id: 36, name: 'Cloudflare', color: '#f38020', icon: <SiCloudflare size={24} />, prof: '85%', exp: '2+ Years', projects: '5+' },
   { id: 37, name: 'Docker', color: '#2496ed', icon: <SiDocker size={24} />, prof: '85%', exp: '2+ Years', projects: '6+' },
-  { id: 38, name: 'Cloud computing', color: '#3b82f6', icon: <Cloud size={24} />, prof: '85%', exp: '2+ Years', projects: '8+' },
+  { id: 38, name: 'Cloud computing', color: '#dc2626', icon: <Cloud size={24} />, prof: '85%', exp: '2+ Years', projects: '8+' },
   { id: 39, name: 'Git', color: '#f05032', icon: <SiGit size={24} />, prof: '98%', exp: '4+ Years', projects: 'All' },
   { id: 40, name: 'GitHub', color: '#ffffff', icon: <SiGithub size={24} />, prof: '98%', exp: '4+ Years', projects: 'All' },
   { id: 41, name: 'Postman', color: '#ff6c37', icon: <SiPostman size={24} />, prof: '92%', exp: '3+ Years', projects: '15+' },
   { id: 42, name: 'Figma', color: '#f24e1e', icon: <SiFigma size={24} />, prof: '88%', exp: '2+ Years', projects: '8+' },
   { id: 43, name: 'Canva', color: '#00c4cc', icon: <SiCanva size={24} />, prof: '95%', exp: '4+ Years', projects: '20+' },
   { id: 44, name: 'Cyber security', color: '#10b981', icon: <Shield size={24} />, prof: '80%', exp: '1+ Years', projects: '2+' },
-  { id: 45, name: 'IOT', color: '#8b5cf6', icon: <Wifi size={24} />, prof: '85%', exp: '2+ Years', projects: '3+' },
+  { id: 45, name: 'IOT', color: '#ea580c', icon: <Wifi size={24} />, prof: '85%', exp: '2+ Years', projects: '3+' },
 ];
 
 function generateSpherePositions(count: number, radius: number) {
@@ -121,7 +121,7 @@ function ComplexNode({ pos, skill, isHovered, isDimmed, setHoveredNode, setActiv
       <group ref={outerRef}>
         <Icosahedron args={[isHovered ? 0.7 : 0.4, 0]}>
           <meshBasicMaterial 
-            color={isHovered ? skill.color : '#3b82f6'} 
+            color={isHovered ? skill.color : '#dc2626'} 
             wireframe 
             transparent 
             opacity={isDimmed ? 0.05 : (isHovered ? 0.8 : 0.2)} 
@@ -131,8 +131,8 @@ function ComplexNode({ pos, skill, isHovered, isDimmed, setHoveredNode, setActiv
 
       <Sphere args={[isHovered ? 0.4 : 0.2, 32, 32]}>
         <meshStandardMaterial 
-          color={isHovered ? '#ffffff' : '#0f172a'}
-          emissive={isHovered ? skill.color : '#1e3a8a'}
+          color={isHovered ? '#ffffff' : '#450a0a'}
+          emissive={isHovered ? skill.color : '#7f1d1d'}
           emissiveIntensity={isHovered ? 3 : 0.5}
           transparent
           opacity={isDimmed ? 0.1 : 1}
@@ -258,8 +258,8 @@ export default function SkillEcosystem({ setActiveSkill }: { setActiveSkill: (sk
         <Stars radius={100} depth={50} count={5000} factor={5} saturation={1} fade speed={2} />
         
         <ambientLight intensity={0.2} color="#ffffff" />
-        <directionalLight position={[10, 20, 10]} intensity={2} color="#60a5fa" />
-        <directionalLight position={[-10, -20, -10]} intensity={1} color="#8b5cf6" />
+        <directionalLight position={[10, 20, 10]} intensity={2} color="#fca5a5" />
+        <directionalLight position={[-10, -20, -10]} intensity={1} color="#ea580c" />
         
         <EffectComposer>
           <Bloom luminanceThreshold={0.2} mipmapBlur intensity={2} />
