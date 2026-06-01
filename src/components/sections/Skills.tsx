@@ -31,7 +31,7 @@ export default function Skills() {
         >
           <div className="flex items-center gap-4">
             <div className="h-[2px] w-12 bg-primary"></div>
-            <span className="text-primary font-mono tracking-[0.3em] uppercase text-sm drop-shadow-[0_0_10px_rgba(220,38,38,0.5)]">
+            <span className="text-primary font-mono tracking-[0.3em] uppercase text-sm drop-shadow-[0_0_10px_rgba(59,130,246,0.5)]">
               Sys.Init.Neural_Net
             </span>
             <div className="h-[2px] w-12 bg-primary"></div>

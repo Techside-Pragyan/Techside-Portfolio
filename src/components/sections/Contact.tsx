@@ -152,7 +152,7 @@ export default function Contact() {
               <button 
                 type="submit" 
                 disabled={loading}
-                className="group relative flex items-center justify-center gap-3 w-full py-4 mt-2 rounded-xl bg-primary text-white font-bold tracking-widest uppercase hover:shadow-[0_0_20px_rgba(220,38,38,0.5)] transition-all disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden"
+                className="group relative flex items-center justify-center gap-3 w-full py-4 mt-2 rounded-xl bg-primary text-white font-bold tracking-widest uppercase hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] transition-all disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden"
               >
                 <span className="relative z-10">{loading ? 'Transmitting...' : 'Transmit Data'}</span>
                 {!loading && <Send size={18} className="relative z-10 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}

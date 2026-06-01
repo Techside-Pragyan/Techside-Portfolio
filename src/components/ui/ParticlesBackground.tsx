@@ -22,7 +22,7 @@ export default function ParticlesBackground() {
 
   return (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none mix-blend-screen">
-      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(220,38,38,0.15),rgba(255,255,255,0))]"></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(59,130,246,0.15),rgba(255,255,255,0))]"></div>
       
       {particles.map((p) => (
         <motion.div
