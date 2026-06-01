@@ -27,7 +27,7 @@ export default function Skills() {
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="absolute top-32 md:top-40 flex flex-col items-center gap-4"
+          className="absolute top-40 md:top-48 flex flex-col items-center gap-4"
         >
           <div className="flex items-center gap-4">
             <div className="h-[2px] w-12 bg-primary"></div>

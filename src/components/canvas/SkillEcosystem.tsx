@@ -167,7 +167,7 @@ function NeuralNetwork({ setActiveSkill }: { setActiveSkill: (skill: any) => voi
   const groupRef = useRef<THREE.Group>(null);
   const [hoveredNode, setHoveredNode] = useState<number | null>(null);
 
-  const radius = 5.0;
+  const radius = 5.8;
   const positions = useMemo(() => generateSpherePositions(skillsData.length, radius), []);
 
   const edges = useMemo(() => {
@@ -252,7 +252,7 @@ function PointerCamera() {
 export default function SkillEcosystem({ setActiveSkill }: { setActiveSkill: (skill: any) => void }) {
   return (
     <div className="w-full h-full absolute inset-0 bg-transparent">
-      <Canvas camera={{ position: [0, 0, 20], fov: 45 }} dpr={[1, 2]}>
+      <Canvas camera={{ position: [0, 0, 22], fov: 45 }} dpr={[1, 2]}>
         <color attach="background" args={['#020205']} />
         
         <Stars radius={100} depth={50} count={5000} factor={5} saturation={1} fade speed={2} />
