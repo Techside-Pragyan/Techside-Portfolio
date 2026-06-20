@@ -14,27 +14,25 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
       return;
     }
 
-    let interval: NodeJS.Timeout;
     let currentProgress = 0;
 
     interval = setInterval(() => {
-      // Fast, smooth increment to 100
-      currentProgress += Math.random() * 8 + 2;
+      // Slow, steady increment by 1
+      currentProgress += 1;
       
       if (currentProgress >= 100) {
-        currentProgress = 100;
         setProgress(100);
         clearInterval(interval);
         
-        // Wait half a second at 100% before removing
+        // Wait at 100% before removing
         setTimeout(() => {
           setIsLoading(false);
           sessionStorage.setItem('site-loaded', 'true');
-        }, 500);
+        }, 800);
       } else {
-        setProgress(Math.floor(currentProgress));
+        setProgress(currentProgress);
       }
-    }, 40);
+    }, 30); // 30ms * 100 = 3 seconds total loading time
 
     return () => clearInterval(interval);
   }, []);
@@ -47,9 +45,14 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
             key="preloader"
             initial={{ opacity: 1 }}
             exit={{ y: "-100%" }}
-            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+            transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
             className="fixed inset-0 z-[99999] bg-[#050505] flex flex-col items-center justify-center pointer-events-none"
           >
+            {/* Status Text */}
+            <div className="mb-6 font-mono text-sm tracking-[0.4em] uppercase text-white/50">
+              Initializing...
+            </div>
+
             {/* Minimalist 0-100 Counter */}
             <div className="flex items-baseline">
               <span className="text-7xl md:text-[10rem] font-black tracking-tighter text-white tabular-nums">
@@ -63,7 +66,7 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
             {/* Simple Loading Bar at the bottom of the screen */}
             <div className="absolute bottom-0 left-0 w-full h-[3px] bg-white/10">
               <motion.div 
-                className="h-full bg-white"
+                className="h-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.5)]"
                 initial={{ width: "0%" }}
                 animate={{ width: `${progress}%` }}
                 transition={{ ease: "linear", duration: 0.05 }}
