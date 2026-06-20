@@ -14,10 +14,11 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
       return;
     }
 
+    let interval: NodeJS.Timeout;
     let currentProgress = 0;
 
-    const interval = setInterval(() => {
-      // Slow, steady increment by 1
+    interval = setInterval(() => {
+      // Steady increment
       currentProgress += 1;
       
       if (currentProgress >= 100) {
@@ -44,33 +45,40 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
           <motion.div
             key="preloader"
             initial={{ opacity: 1 }}
-            exit={{ y: "-100%" }}
-            transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed inset-0 z-[99999] bg-[#050505] flex flex-col items-center justify-center pointer-events-none"
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="fixed inset-0 z-[99999] bg-black flex flex-col items-center justify-center pointer-events-none"
           >
-            {/* Status Text */}
-            <div className="mb-6 font-mono text-sm tracking-[0.4em] uppercase text-white/50">
-              Initializing...
-            </div>
+            <div className="flex flex-col items-center justify-center w-full max-w-md px-6">
+              
+              {/* Top Text */}
+              <h2 className="text-[#00d0ff] text-2xl md:text-3xl font-bold tracking-widest mb-6 uppercase" style={{ textShadow: "0 0 10px rgba(0, 208, 255, 0.5)" }}>
+                PLEASE WAIT
+              </h2>
 
-            {/* Minimalist 0-100 Counter */}
-            <div className="flex items-baseline">
-              <span className="text-7xl md:text-[10rem] font-black tracking-tighter text-white tabular-nums">
-                {progress}
-              </span>
-              <span className="text-3xl md:text-6xl font-bold text-white/40 ml-2">
-                %
-              </span>
-            </div>
+              {/* Segmented Progress Bar Container */}
+              <div className="w-full h-8 md:h-10 border-2 border-white/10 rounded-sm p-1 relative overflow-hidden bg-black flex items-center">
+                
+                {/* The glowing segmented bar itself */}
+                <motion.div 
+                  className="h-full bg-transparent"
+                  style={{ 
+                    // This creates the vertical segments
+                    backgroundImage: "repeating-linear-gradient(to right, #00ff44 0px, #00ff44 4px, transparent 4px, transparent 6px)",
+                    // Add glow to the green segments
+                    filter: "drop-shadow(0 0 8px rgba(0, 255, 68, 0.8))"
+                  }}
+                  initial={{ width: "0%" }}
+                  animate={{ width: `${progress}%` }}
+                  transition={{ ease: "linear", duration: 0.05 }}
+                />
+              </div>
 
-            {/* Simple Loading Bar at the bottom of the screen */}
-            <div className="absolute bottom-0 left-0 w-full h-[3px] bg-white/10">
-              <motion.div 
-                className="h-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.5)]"
-                initial={{ width: "0%" }}
-                animate={{ width: `${progress}%` }}
-                transition={{ ease: "linear", duration: 0.05 }}
-              />
+              {/* Bottom Percentage */}
+              <div className="text-[#00d0ff] text-xl md:text-2xl font-bold mt-6 tracking-wider" style={{ textShadow: "0 0 10px rgba(0, 208, 255, 0.5)" }}>
+                {progress}%
+              </div>
+
             </div>
           </motion.div>
         )}
