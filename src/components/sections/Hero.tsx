@@ -148,8 +148,12 @@ export default function Hero() {
         </div>
 
         {/* RIGHT COLUMN: 3D Object */}
-        <div className="w-full md:w-[40%] h-[400px] md:h-[600px] relative pointer-events-auto">
-          <HeroObject />
+        <div className="w-full md:w-[40%] h-[400px] md:h-[600px] relative pointer-events-auto flex items-center justify-center">
+          {/* We make the Canvas container significantly larger than its grid column 
+              to ensure the rotating 3D labels and glowing mesh are never cut off by a hard line. */}
+          <div className="absolute w-[160%] h-[120%] z-0">
+            <HeroObject />
+          </div>
         </div>
 
       </div>
