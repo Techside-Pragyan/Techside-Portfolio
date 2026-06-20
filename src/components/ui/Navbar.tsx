@@ -57,9 +57,8 @@ export default function Navbar() {
         {navItems.map((item) => {
           const isActive = activeItem === item.to;
           return (
-              <MagneticButton intensity={0.2}>
+              <MagneticButton key={item.name} intensity={0.2}>
                 <a
-                  key={item.name}
                   href={item.to}
                   onClick={(e) => handleClick(e, item.to)}
                   onMouseEnter={() => setHoveredItem(item.name)}
