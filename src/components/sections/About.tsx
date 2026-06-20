@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useState, useEffect } from 'react';
-import { motion, useMotionValue, useMotionTemplate, AnimatePresence, useSpring } from 'framer-motion';
+import { motion, useMotionValue, useMotionTemplate, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Cpu, Terminal, GraduationCap, Code2, MapPin, Sparkles, BrainCircuit, ArrowRight } from 'lucide-react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Sphere, Float } from '@react-three/drei';
@@ -79,8 +79,10 @@ const profileImages = [
 ];
 
 // High-End Vertical Portrait Gallery
-function PortraitGallery() {
+function PortraitGallery({ scrollYProgress }: { scrollYProgress: any }) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  
+  const yParallax = useTransform(scrollYProgress, [0, 1], [0, -100]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -90,7 +92,7 @@ function PortraitGallery() {
   }, []);
 
   return (
-    <div className="relative w-full aspect-[3/4] max-w-md mx-auto lg:mx-0 lg:ml-auto rounded-[2.5rem] overflow-hidden group shadow-[0_30px_60px_rgba(0,0,0,0.8)] border border-white/10 cursor-crosshair">
+    <motion.div style={{ y: yParallax }} className="relative w-full aspect-[3/4] max-w-md mx-auto lg:mx-0 lg:ml-auto rounded-[2.5rem] overflow-hidden group shadow-[0_30px_60px_rgba(0,0,0,0.8)] border border-white/10 cursor-crosshair">
       <AnimatePresence mode="wait">
         <motion.img
           key={currentIndex}
@@ -129,15 +131,20 @@ function PortraitGallery() {
           <ArrowRight size={18} className="text-primary group-hover:text-white transition-colors" />
         </div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 }
 
 export default function About() {
   const bioWords = "Bridging the gap between algorithmic logic & creative design.".split(" ");
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
 
   return (
-    <section id="about" className="py-32 px-6 relative z-10 overflow-hidden bg-[#010103]">
+    <section id="about" ref={containerRef} className="py-32 px-6 relative z-10 overflow-hidden bg-[#010103]">
       
       {/* Animated Hex/Grid Background */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#3b82f61a_1px,transparent_1px),linear-gradient(to_bottom,#3b82f61a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none opacity-50 z-0"></div>
@@ -287,7 +294,7 @@ export default function About() {
             transition={{ duration: 1.2, type: "spring", bounce: 0.4 }}
             className="w-full lg:w-2/5 flex items-center justify-center lg:justify-end mt-12 lg:mt-0"
           >
-            <PortraitGallery />
+            <PortraitGallery scrollYProgress={scrollYProgress} />
           </motion.div>
 
         </div>
