@@ -107,15 +107,15 @@ export default function Hero() {
 
           {/* Title */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+            initial={{ opacity: 0, y: 50, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
             className="flex flex-col relative"
           >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter leading-[1.1] drop-shadow-2xl uppercase">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter leading-[1] drop-shadow-2xl uppercase outline-text">
               PRAGYAN PARAMITA <br/> MOHARANA
             </h1>
-            <h2 className="text-3xl md:text-5xl font-black mt-2 text-transparent bg-clip-text bg-gradient-to-r from-primary via-cyan-400 to-secondary relative inline-block text-glow tracking-tight uppercase">
+            <h2 className="text-3xl md:text-5xl font-black mt-4 text-transparent bg-clip-text bg-gradient-to-r from-primary via-cyan-400 to-secondary relative inline-block text-glow tracking-tight uppercase">
               AI / ML ENGINEER
               <div className="absolute -inset-2 bg-primary/20 blur-3xl -z-10 rounded-full opacity-60"></div>
             </h2>
@@ -124,9 +124,9 @@ export default function Hero() {
 
           {/* Bio */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
+            initial={{ opacity: 0, y: 30, x: -20 }}
+            animate={{ opacity: 1, y: 0, x: 0 }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
             className="glass-card p-6 rounded-2xl border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.8)] max-w-xl bg-black/50 backdrop-blur-2xl relative overflow-hidden group hover:border-primary/40 transition-colors duration-500"
           >
             <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-primary to-secondary group-hover:shadow-[0_0_20px_rgba(59,130,246,1)] transition-all"></div>
