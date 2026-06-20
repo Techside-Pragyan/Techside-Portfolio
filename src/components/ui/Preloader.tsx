@@ -16,7 +16,7 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
 
     let currentProgress = 0;
 
-    interval = setInterval(() => {
+    const interval = setInterval(() => {
       // Slow, steady increment by 1
       currentProgress += 1;
       
