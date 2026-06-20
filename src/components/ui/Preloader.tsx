@@ -20,38 +20,45 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
     
     setHasLoadedBefore(false);
 
-    let currentProgress = 0;
+    let startTime: number | null = null;
+    let animationFrameId: number;
+    const duration = 4000; // Exact 4-second loading time
 
-    // 3 seconds total (30ms * 100 ticks)
-    const timer = setInterval(() => {
-      currentProgress += 1;
+    const animateProgress = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
       
-      if (currentProgress >= 100) {
-        setProgress(100);
+      // Mathematically calculate progress based on exactly 4000ms
+      const currentProgress = Math.min(Math.floor((elapsed / duration) * 100), 100);
+      
+      setProgress(currentProgress);
+
+      // Exact status text changes
+      if (currentProgress < 15) setStatusText("Initializing...");
+      else if (currentProgress < 30) setStatusText("Loading Components...");
+      else if (currentProgress < 45) setStatusText("Connecting Systems...");
+      else if (currentProgress < 60) setStatusText("Loading Assets...");
+      else if (currentProgress < 75) setStatusText("Preparing Portfolio...");
+      else if (currentProgress < 90) setStatusText("Optimizing Experience...");
+      else setStatusText("Final Checks...");
+
+      if (currentProgress < 100) {
+        animationFrameId = requestAnimationFrame(animateProgress);
+      } else {
         setStatusText("Ready");
         setSystemReady(true);
-        clearInterval(timer);
         
         // Wait 0.8 seconds at 100% to show SYSTEM READY, then slide up preloader
         setTimeout(() => {
           setIsLoading(false);
           sessionStorage.setItem('site-loaded', 'true');
         }, 800);
-      } else {
-        setProgress(currentProgress);
-
-        // Exact status text changes
-        if (currentProgress < 15) setStatusText("Initializing...");
-        else if (currentProgress < 30) setStatusText("Loading Components...");
-        else if (currentProgress < 45) setStatusText("Connecting Systems...");
-        else if (currentProgress < 60) setStatusText("Loading Assets...");
-        else if (currentProgress < 75) setStatusText("Preparing Portfolio...");
-        else if (currentProgress < 90) setStatusText("Optimizing Experience...");
-        else setStatusText("Final Checks...");
       }
-    }, 30);
+    };
 
-    return () => clearInterval(timer);
+    animationFrameId = requestAnimationFrame(animateProgress);
+
+    return () => cancelAnimationFrame(animationFrameId);
   }, []);
 
   return (
