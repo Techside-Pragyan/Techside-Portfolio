@@ -145,20 +145,26 @@ export default function Hero() {
             transition={{ duration: 1, ease: "easeOut", delay: 0.6 }}
             className="flex flex-wrap items-center gap-4 pt-2 w-full"
           >
-            <a href="#projects" className="group relative px-6 py-3.5 bg-primary text-white font-bold text-sm uppercase tracking-widest rounded-full hover:scale-105 transition-all duration-300 flex items-center gap-3 overflow-hidden neon-glow">
-              <span className="relative z-10">Explore My Universe</span>
-              <Globe size={18} className="relative z-10 group-hover:rotate-12 transition-transform duration-300" />
-            </a>
+            <MagneticButton>
+              <a href="#projects" className="group relative px-6 py-3.5 bg-primary text-white font-bold text-sm uppercase tracking-widest rounded-full hover:scale-105 transition-all duration-300 flex items-center gap-3 overflow-hidden neon-glow">
+                <span className="relative z-10">Explore My Universe</span>
+                <Globe size={18} className="relative z-10 group-hover:rotate-12 transition-transform duration-300" />
+              </a>
+            </MagneticButton>
 
-            <a href="#github" className="group relative px-6 py-3.5 bg-transparent border border-white/20 text-white font-bold text-sm uppercase tracking-widest rounded-full hover:bg-white/5 hover:border-white/40 transition-all duration-300 flex items-center gap-3">
-              <span>View Projects</span>
-              <Terminal size={18} />
-            </a>
+            <MagneticButton>
+              <a href="#github" className="group relative px-6 py-3.5 bg-transparent border border-white/20 text-white font-bold text-sm uppercase tracking-widest rounded-full hover:bg-white/5 hover:border-white/40 transition-all duration-300 flex items-center gap-3">
+                <span>View Projects</span>
+                <Terminal size={18} />
+              </a>
+            </MagneticButton>
 
-            <a href="#" className="group relative px-6 py-3.5 bg-transparent border border-white/20 text-white font-bold text-sm uppercase tracking-widest rounded-full hover:bg-white/5 hover:border-white/40 transition-all duration-300 flex items-center gap-3">
-              <span>Download Resume</span>
-              <FileText size={18} />
-            </a>
+            <MagneticButton>
+              <a href="#" className="group relative px-6 py-3.5 bg-transparent border border-white/20 text-white font-bold text-sm uppercase tracking-widest rounded-full hover:bg-white/5 hover:border-white/40 transition-all duration-300 flex items-center gap-3">
+                <span>Download Resume</span>
+                <FileText size={18} />
+              </a>
+            </MagneticButton>
           </motion.div>
 
           {/* Socials */}
