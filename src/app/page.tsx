@@ -15,6 +15,7 @@ export default function Home() {
       <About />
       <Skills />
       <GithubActivity />
+      <Timeline />
       <Projects />
       <Contact />
     </main>
