@@ -20,20 +20,19 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
     
     setHasLoadedBefore(false);
 
-    let interval: NodeJS.Timeout;
     let currentProgress = 0;
 
-    // 4 seconds / 100 steps = 40ms per step
-    interval = setInterval(() => {
+    // 3 seconds total (30ms * 100 ticks)
+    const timer = setInterval(() => {
       currentProgress += 1;
       
       if (currentProgress >= 100) {
         setProgress(100);
         setStatusText("Ready");
         setSystemReady(true);
-        clearInterval(interval);
+        clearInterval(timer);
         
-        // Wait 0.8 seconds at 100% to show SYSTEM READY, then remove preloader
+        // Wait 0.8 seconds at 100% to show SYSTEM READY, then slide up preloader
         setTimeout(() => {
           setIsLoading(false);
           sessionStorage.setItem('site-loaded', 'true');
@@ -50,9 +49,9 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
         else if (currentProgress < 90) setStatusText("Optimizing Experience...");
         else setStatusText("Final Checks...");
       }
-    }, 40);
+    }, 30);
 
-    return () => clearInterval(interval);
+    return () => clearInterval(timer);
   }, []);
 
   return (
@@ -62,8 +61,8 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
           <motion.div
             key="preloader"
             initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
+            exit={{ y: "-100%" }}
+            transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
             className="fixed inset-0 z-[99999] bg-[#000000] flex flex-col items-center justify-center pointer-events-none overflow-hidden"
           >
             {/* Background Effects */}
