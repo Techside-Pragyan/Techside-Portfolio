@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Home, User, Code, Briefcase, Heart, Mail } from 'lucide-react';
 import clsx from 'clsx';
+import MagneticButton from './MagneticButton';
 
 const navItems = [
   { name: 'Home', to: '#hero', icon: <Home size={20} /> },
@@ -56,39 +57,41 @@ export default function Navbar() {
         {navItems.map((item) => {
           const isActive = activeItem === item.to;
           return (
-            <a
-              key={item.name}
-              href={item.to}
-              onClick={(e) => handleClick(e, item.to)}
-              onMouseEnter={() => setHoveredItem(item.name)}
-              onMouseLeave={() => setHoveredItem(null)}
-              className={clsx(
-                'relative flex items-center justify-center w-12 h-12 rounded-full transition-colors duration-300',
-                isActive ? 'text-primary' : 'text-foreground/70 hover:text-foreground'
-              )}
-            >
-              {isActive && (
-                <motion.div
-                  layoutId="nav-pill"
-                  className="absolute inset-0 bg-primary/10 rounded-full border border-primary/20 z-[-1]"
-                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                />
-              )}
-              {item.icon}
+              <MagneticButton intensity={0.2}>
+                <a
+                  key={item.name}
+                  href={item.to}
+                  onClick={(e) => handleClick(e, item.to)}
+                  onMouseEnter={() => setHoveredItem(item.name)}
+                  onMouseLeave={() => setHoveredItem(null)}
+                  className={clsx(
+                    'relative flex items-center justify-center w-12 h-12 rounded-full transition-colors duration-300',
+                    isActive ? 'text-primary' : 'text-foreground/70 hover:text-foreground'
+                  )}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="nav-pill"
+                      className="absolute inset-0 bg-primary/10 rounded-full border border-primary/20 z-[-1]"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                  {item.icon}
 
-              <AnimatePresence>
-                {hoveredItem === item.name && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10, scale: 0.8 }}
-                    animate={{ opacity: 1, y: -50, scale: 1 }}
-                    exit={{ opacity: 0, y: 10, scale: 0.8 }}
-                    className="absolute px-3 py-1 bg-surface border border-surface-border rounded-lg text-xs font-bold uppercase tracking-widest whitespace-nowrap z-50 pointer-events-none backdrop-blur-md text-foreground"
-                  >
-                    {item.name}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </a>
+                  <AnimatePresence>
+                    {hoveredItem === item.name && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10, scale: 0.8 }}
+                        animate={{ opacity: 1, y: -50, scale: 1 }}
+                        exit={{ opacity: 0, y: 10, scale: 0.8 }}
+                        className="absolute px-3 py-1 bg-surface border border-surface-border rounded-lg text-xs font-bold uppercase tracking-widest whitespace-nowrap z-50 pointer-events-none backdrop-blur-md text-foreground"
+                      >
+                        {item.name}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </a>
+              </MagneticButton>
           );
         })}
         

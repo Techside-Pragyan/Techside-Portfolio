@@ -6,6 +6,7 @@ import { FaGithub as Github, FaLinkedin as Linkedin, FaTwitter as XIcon } from '
 import { SiLeetcode } from 'react-icons/si';
 import ParticlesBackground from '../ui/ParticlesBackground';
 import HeroObject from '../canvas/HeroObject';
+import MagneticButton from '../ui/MagneticButton';
 
 export default function Hero() {
   const [booting, setBooting] = useState(true);
