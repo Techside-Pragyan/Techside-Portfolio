@@ -9,9 +9,9 @@ const BASE = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_USER}/ma
 
 export default function GithubActivity() {
   return (
-    <section id="github" className="py-32 px-6 relative z-10 bg-[#010103] overflow-hidden">
+    <section id="github" className="py-32 px-6 relative z-10 bg-background overflow-hidden">
       {/* Background gradients */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/5 via-[#010103] to-[#010103] pointer-events-none z-0"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/5 via-background to-background pointer-events-none z-0"></div>
 
       <div className="container mx-auto max-w-7xl relative z-10">
 

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Home, User, Code, Briefcase, Heart, Mail } from 'lucide-react';
 import clsx from 'clsx';
 import MagneticButton from './MagneticButton';
+import { ThemeToggle } from './ThemeToggle';
 
 const navItems = [
   { name: 'Home', to: '#hero', icon: <Home size={20} /> },
@@ -94,6 +95,10 @@ export default function Navbar() {
           );
         })}
         
+        <div className="w-[1px] h-6 bg-surface-border mx-1"></div>
+        
+        <ThemeToggle />
+
         <div className="w-[1px] h-6 bg-surface-border mx-1"></div>
         
         <div className="flex gap-1 px-2 items-center justify-center">

@@ -44,7 +44,7 @@ export default function Timeline() {
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section id="experience" ref={containerRef} className="py-32 px-6 relative z-10 bg-[#020202]">
+    <section id="experience" ref={containerRef} className="py-32 px-6 relative z-10 bg-background">
       <div className="container mx-auto max-w-5xl relative">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

@@ -144,7 +144,7 @@ export default function About() {
   });
 
   return (
-    <section id="about" ref={containerRef} className="py-32 px-6 relative z-10 overflow-hidden bg-[#010103]">
+    <section id="about" ref={containerRef} className="py-32 px-6 relative z-10 overflow-hidden bg-background">
       
       {/* Animated Hex/Grid Background */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#3b82f61a_1px,transparent_1px),linear-gradient(to_bottom,#3b82f61a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none opacity-50 z-0"></div>

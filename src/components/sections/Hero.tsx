@@ -54,7 +54,7 @@ export default function Hero() {
   }, [currentText, isDeleting, currentRoleIndex]);
 
   return (
-    <section id="hero" className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#050505]">
+    <section id="hero" className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-background">
       {/* 3D Background & Particles (Z-0) */}
       <div className="absolute inset-0 z-0 opacity-60">
         <ParticlesBackground />
@@ -64,7 +64,7 @@ export default function Hero() {
       <div className="absolute top-0 left-1/4 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-primary/20 rounded-full blur-[100px] md:blur-[150px] mix-blend-screen pointer-events-none animate-pulse"></div>
       <div className="absolute bottom-0 right-1/4 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-cyan-400/20 rounded-full blur-[100px] md:blur-[150px] mix-blend-screen pointer-events-none animate-pulse" style={{ animationDelay: '2s' }}></div>
 
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,#050505_100%)] opacity-90 z-0" />
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,var(--color-background)_100%)] opacity-90 z-0" />
 
       {/* Main Content Container */}
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 relative z-10 flex flex-col lg:flex-row items-center justify-between h-full pt-28 pb-10 lg:pt-0 lg:pb-0 gap-8 lg:gap-0">
@@ -103,7 +103,7 @@ export default function Hero() {
             </div>
 
             {/* Refined Name */}
-            <h1 className="text-[2.5rem] leading-[1.1] sm:text-5xl lg:text-6xl font-serif text-white tracking-wide drop-shadow-2xl">
+            <h1 className="text-[2.5rem] leading-[1.1] sm:text-5xl lg:text-6xl font-serif text-foreground tracking-wide drop-shadow-2xl">
               Pragyan Paramita <br className="hidden sm:block"/> Moharana.
             </h1>
             

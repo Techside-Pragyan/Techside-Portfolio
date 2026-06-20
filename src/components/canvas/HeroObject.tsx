@@ -61,7 +61,7 @@ function HolographicCore() {
     <Float speed={1.5} rotationIntensity={0.5} floatIntensity={1.5}>
       <group ref={meshRef}>
         {/* Outer Wireframe Icosahedron */}
-        <Icosahedron args={[1.5, 1]} wireframe>
+        <Icosahedron args={[1.5, 1]}>
           <meshBasicMaterial color="#3b82f6" transparent opacity={0.3} wireframe />
         </Icosahedron>
         
@@ -88,7 +88,7 @@ function HolographicCore() {
             zIndexRange={[100, 0]}
             className="pointer-events-none"
           >
-            <div className="px-3 py-1 bg-black/50 border border-primary/40 backdrop-blur-md rounded-full whitespace-nowrap text-cyan-400 font-mono text-[10px] tracking-widest shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+            <div className="px-3 py-1 bg-surface border border-primary/40 backdrop-blur-md rounded-full whitespace-nowrap text-cyan-400 font-mono text-[10px] tracking-widest shadow-[0_0_15px_rgba(59,130,246,0.5)]">
               {label.text}
             </div>
           </Html>

@@ -19,7 +19,7 @@ export default function Skills() {
       </div>
 
       {/* Subtle top/bottom vignette to blend perfectly with other sections */}
-      <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(to_bottom,#020205_0%,transparent_5%,transparent_95%,#020205_100%)] z-10" />
+      <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(to_bottom,var(--color-background)_0%,transparent_5%,transparent_95%,var(--color-background)_100%)] z-10" />
 
       {/* Background Typography */}
       <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none z-20 overflow-hidden">

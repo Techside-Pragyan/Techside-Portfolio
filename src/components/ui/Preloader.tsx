@@ -53,7 +53,7 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0, scale: 1.1, filter: "blur(10px)" }}
             transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed inset-0 z-[99999] bg-[#020202] flex flex-col items-center justify-center pointer-events-none overflow-hidden"
+            className="fixed inset-0 z-[99999] bg-background flex flex-col items-center justify-center pointer-events-none overflow-hidden"
           >
             {/* Ambient Liquid Core (Background) */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">

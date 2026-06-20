@@ -148,7 +148,7 @@ function ComplexNode({ pos, skill, isHovered, isDimmed, setHoveredNode, setActiv
           }}
         >
           <div 
-            className="bg-[#050505]/90 backdrop-blur-2xl border px-5 py-3 rounded-2xl flex items-center gap-3 shadow-[0_20px_40px_rgba(0,0,0,0.8)]"
+            className="bg-surface backdrop-blur-2xl border border-surface-border px-5 py-3 rounded-2xl flex items-center gap-3 shadow-[0_20px_40px_rgba(0,0,0,0.2)]"
             style={{ 
               borderColor: `${skill.color}80`,
               boxShadow: `0 0 30px ${skill.color}30, inset 0 0 10px ${skill.color}20` 

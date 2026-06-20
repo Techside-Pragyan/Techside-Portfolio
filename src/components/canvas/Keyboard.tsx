@@ -114,7 +114,7 @@ function Keycap({ position, color, icon, name }: { position: [number, number, nu
 
         {hovered && (
           <Html position={[0, 0.6, 0]} center className="pointer-events-none z-50">
-            <div className="bg-[#111] backdrop-blur-md text-white text-[10px] font-mono px-3 py-1.5 rounded-lg border border-white/10 shadow-xl whitespace-nowrap">
+            <div className="bg-surface backdrop-blur-md text-foreground text-[10px] font-mono px-3 py-1.5 rounded-lg border border-white/10 shadow-xl whitespace-nowrap">
               {name}
             </div>
           </Html>
