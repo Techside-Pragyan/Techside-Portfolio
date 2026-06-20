@@ -1,9 +1,13 @@
 "use client";
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
 import { ExternalLink } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
@@ -57,95 +61,129 @@ const projects = [
 ];
 
 export default function Projects() {
-  return (
-    <section id="projects" className="py-32 px-6 relative z-10 overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary-glow rounded-full blur-[150px] pointer-events-none -z-10" />
+  const containerRef = useRef<HTMLDivElement>(null);
+  const scrollWrapperRef = useRef<HTMLDivElement>(null);
 
-      <div className="container mx-auto max-w-7xl relative">
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      const scrollWrapper = scrollWrapperRef.current;
+      const container = containerRef.current;
+      
+      if (!scrollWrapper || !container) return;
+
+      const getScrollAmount = () => {
+        let scrollWidth = scrollWrapper.scrollWidth;
+        return -(scrollWidth - window.innerWidth);
+      };
+
+      const tween = gsap.to(scrollWrapper, {
+        x: getScrollAmount,
+        ease: "none",
+        scrollTrigger: {
+          trigger: container,
+          start: "top top",
+          end: () => `+=${getScrollAmount() * -1}`,
+          pin: true,
+          animation: tween,
+          scrub: 1,
+          invalidateOnRefresh: true
+        }
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section id="projects" ref={containerRef} className="relative z-10 overflow-hidden h-screen flex flex-col justify-center bg-[#050505]">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[150px] pointer-events-none -z-10" />
+
+      <div className="container mx-auto max-w-7xl relative px-6 mb-12 shrink-0">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20 flex flex-col items-center"
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6"
         >
-          <div className="flex items-center gap-4 mb-4">
-            <div className="h-[2px] w-12 bg-primary"></div>
-            <span className="text-primary font-mono tracking-[0.3em] uppercase text-xs">Portfolios</span>
-            <div className="h-[2px] w-12 bg-primary"></div>
+          <div>
+            <div className="flex items-center gap-4 mb-4">
+              <div className="h-[2px] w-12 bg-primary"></div>
+              <span className="text-primary font-mono tracking-[0.3em] uppercase text-xs">Portfolios</span>
+            </div>
+            <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-foreground outline-text">
+              FEATURED <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary" style={{ WebkitTextStroke: '0px' }}>PROJECTS</span>
+            </h2>
           </div>
-          <h2 className="text-5xl md:text-6xl font-black mb-6 tracking-tighter text-foreground">
-            FEATURED <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">PROJECTS</span>
-          </h2>
-          <p className="text-foreground/70 max-w-2xl mx-auto font-light leading-relaxed">
-            A selection of my recent works ranging from AI/ML models to premium full-stack web applications.
+          <p className="text-foreground/70 max-w-sm font-light leading-relaxed pb-3">
+            Scroll to explore a selection of my recent works ranging from AI/ML models to premium full-stack web applications.
           </p>
         </motion.div>
+      </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, idx) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
+      {/* Horizontal Scroll Wrapper */}
+      <div ref={scrollWrapperRef} className="flex gap-8 px-6 pb-12 w-max" style={{ paddingLeft: 'max(24px, calc((100vw - 1280px) / 2 + 24px))', paddingRight: 'max(24px, calc((100vw - 1280px) / 2 + 24px))' }}>
+        {projects.map((project, idx) => (
+          <div
+            key={project.title}
+            className="w-[350px] md:w-[450px] shrink-0 h-[500px]"
+          >
+            <Tilt
+              tiltMaxAngleX={10}
+              tiltMaxAngleY={10}
+              perspective={1000}
+              scale={1.02}
+              transitionSpeed={2000}
               className="h-full"
             >
-              <Tilt
-                tiltMaxAngleX={10}
-                tiltMaxAngleY={10}
-                perspective={1000}
-                scale={1.02}
-                transitionSpeed={2000}
-                className="h-full"
+              <div 
+                className="glass-card relative h-full flex flex-col overflow-hidden rounded-[2rem] group cursor-none"
+                data-cursor-text="VIEW PROJECT"
               >
-                <div className="glass-card relative h-full flex flex-col overflow-hidden rounded-[2rem] group">
-                  <div className="relative h-56 overflow-hidden border-b border-surface-border">
-                    <div className="absolute inset-0 bg-primary/20 mix-blend-overlay z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <img 
-                      src={project.image} 
-                      alt={project.title} 
-                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
-                    />
+                <div className="relative h-56 overflow-hidden border-b border-surface-border shrink-0">
+                  <div className="absolute inset-0 bg-primary/20 mix-blend-overlay z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <img 
+                    src={project.image} 
+                    alt={project.title} 
+                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
+                  />
+                </div>
+                
+                <div className="p-8 flex-1 flex flex-col relative z-20">
+                  <h3 className="text-2xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors duration-300">
+                    {project.title}
+                  </h3>
+                  <p className="text-foreground/70 font-light text-sm mb-6 flex-1 leading-relaxed line-clamp-3">
+                    {project.description}
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2 mb-8 mt-auto">
+                    {project.tags.map(tag => (
+                      <span key={tag} className="px-3 py-1 text-[10px] font-mono uppercase rounded-full glass text-primary border border-primary/20">
+                        {tag}
+                      </span>
+                    ))}
                   </div>
                   
-                  <div className="p-8 flex-1 flex flex-col relative z-20">
-                    <h3 className="text-2xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors duration-300">
-                      {project.title}
-                    </h3>
-                    <p className="text-foreground/70 font-light text-sm mb-6 flex-1 leading-relaxed">
-                      {project.description}
-                    </p>
-                    
-                    <div className="flex flex-wrap gap-2 mb-8">
-                      {project.tags.map(tag => (
-                        <span key={tag} className="px-3 py-1 text-[10px] font-mono uppercase rounded-full glass text-primary border border-primary/20">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    
-                    <div className="flex items-center justify-between mt-auto pt-4 border-t border-surface-border">
-                      <a 
-                        href={project.github} 
-                        className="flex items-center gap-2 text-xs font-bold text-foreground/70 hover:text-foreground transition-colors uppercase tracking-widest"
-                      >
-                        <FaGithub size={16} /> Code
-                      </a>
-                      <a 
-                        href={project.live} 
-                        className="flex items-center gap-2 text-xs font-bold text-secondary hover:text-primary transition-colors uppercase tracking-widest"
-                      >
-                        Demo <ExternalLink size={16} />
-                      </a>
-                    </div>
+                  <div className="flex items-center justify-between pt-4 border-t border-surface-border">
+                    <a 
+                      href={project.github} 
+                      className="flex items-center gap-2 text-xs font-bold text-foreground/70 hover:text-foreground transition-colors uppercase tracking-widest relative z-[101]"
+                    >
+                      <FaGithub size={16} /> Code
+                    </a>
+                    <a 
+                      href={project.live} 
+                      className="flex items-center gap-2 text-xs font-bold text-secondary hover:text-primary transition-colors uppercase tracking-widest relative z-[101]"
+                    >
+                      Demo <ExternalLink size={16} />
+                    </a>
                   </div>
                 </div>
-              </Tilt>
-            </motion.div>
-          ))}
-        </div>
+              </div>
+            </Tilt>
+          </div>
+        ))}
       </div>
     </section>
   );
