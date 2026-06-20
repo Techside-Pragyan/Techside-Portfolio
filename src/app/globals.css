@@ -61,6 +61,11 @@ body {
   text-shadow: 0 0 10px var(--color-primary-glow);
 }
 
+@utility outline-text {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+  color: transparent;
+}
+
 /* Hide scrollbar but keep functionality */
 ::-webkit-scrollbar {
   width: 8px;
