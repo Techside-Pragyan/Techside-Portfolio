@@ -19,6 +19,20 @@ export default function Hero() {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [currentText, setCurrentText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
+  const [currentTime, setCurrentTime] = useState<Date | null>(null);
+
+  useEffect(() => {
+    setCurrentTime(new Date());
+    const timer = setInterval(() => setCurrentTime(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const greeting = currentTime ? (() => {
+    const hour = currentTime.getHours();
+    if (hour < 12) return 'Good Morning';
+    if (hour < 18) return 'Good Afternoon';
+    return 'Good Evening';
+  })() : 'Welcome to my space';
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -65,12 +79,27 @@ export default function Hero() {
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
             className="flex flex-col relative w-full"
           >
-            {/* Elegant Greeting Tag */}
-            <div className="flex items-center gap-3 lg:gap-4 mb-4 lg:mb-6">
-               <div className="w-8 lg:w-12 h-[1px] bg-gradient-to-r from-[#00d0ff] to-transparent"></div>
-               <span className="font-mono text-[#00d0ff] tracking-[0.2em] lg:tracking-[0.25em] uppercase text-[10px] md:text-sm drop-shadow-[0_0_10px_rgba(0,208,255,0.5)]">
-                 Welcome to my space
-               </span>
+            {/* Elegant Greeting Tag & Time */}
+            <div className="flex flex-col gap-2 mb-4 lg:mb-6">
+              <div className="flex items-center gap-3 lg:gap-4">
+                 <div className="w-8 lg:w-12 h-[1px] bg-gradient-to-r from-[#00d0ff] to-transparent"></div>
+                 <span className="font-mono text-[#00d0ff] tracking-[0.2em] lg:tracking-[0.25em] uppercase text-[10px] md:text-sm drop-shadow-[0_0_10px_rgba(0,208,255,0.5)]">
+                   {greeting}
+                 </span>
+              </div>
+              <div className="flex items-center pl-11 lg:pl-16 h-4">
+                 {currentTime && (
+                   <motion.span 
+                     initial={{ opacity: 0 }}
+                     animate={{ opacity: 1 }}
+                     className="font-mono text-[#00ffaa]/70 uppercase text-[10px] tracking-widest flex items-center gap-3"
+                   >
+                     <span>{currentTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })}</span>
+                     <span className="w-1 h-1 rounded-full bg-[#00ffaa]/40"></span>
+                     <span>{currentTime.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</span>
+                   </motion.span>
+                 )}
+              </div>
             </div>
 
             {/* Refined Name */}
