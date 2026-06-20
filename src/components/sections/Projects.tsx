@@ -84,7 +84,6 @@ export default function Projects() {
           start: "top top",
           end: () => `+=${getScrollAmount() * -1}`,
           pin: true,
-          animation: tween,
           scrub: 1,
           invalidateOnRefresh: true
         }
