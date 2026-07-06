@@ -7,6 +7,8 @@ import Projects from "@/components/sections/Projects";
 import Contact from "@/components/sections/Contact";
 import Timeline from "@/components/sections/Timeline";
 
+import BackendStatus from "@/components/ui/BackendStatus";
+
 export default function Home() {
   return (
     <main className="w-full h-full flex flex-col">
@@ -18,6 +20,7 @@ export default function Home() {
       <Timeline />
       <Projects />
       <Contact />
+      <BackendStatus />
     </main>
   );
 }
