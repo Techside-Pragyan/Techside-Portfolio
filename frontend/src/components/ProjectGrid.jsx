@@ -64,7 +64,7 @@ export default function ProjectGrid() {
               whileHover={{ opacity: 1 }}
             >
               <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#fff', fontSize: '0.9rem', cursor: 'pointer' }} className="hover-link">
-                <Github size={18} /> Code
+                <Code size={18} /> Code
               </a>
               <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#fff', fontSize: '0.9rem', cursor: 'pointer' }} className="hover-link">
                 <ExternalLink size={18} /> Live Demo
